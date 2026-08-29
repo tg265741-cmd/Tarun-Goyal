@@ -10,14 +10,15 @@
   const empty = document.getElementById('emptyMsg');
   const state = { door: null, acc: null, feat: null, price: null };
 
-  /* URL presets: locks.html?f=main|glass|room|face|fp|wifi|camera */
-  const q = new URLSearchParams(location.search).get('f');
+  /* URL presets: locks.html?f=main|glass|room|face|fp|wifi|camera|rfid|otp|pin|app */
   const presetMap = {
     main: ['door', 'main'], glass: ['door', 'glass'], room: ['door', 'room'],
     face: ['acc', 'face3d'], face3d: ['acc', 'face3d'], fp: ['acc', 'fp'],
     fingerprint: ['acc', 'fp'], wifi: ['feat', 'wifi'], camera: ['feat', 'camera'],
-    rfid: ['acc', 'rfid'], card: ['acc', 'rfid'], otp: ['acc', 'otp'], pin: ['acc', 'pin']
+    rfid: ['acc', 'rfid'], card: ['acc', 'rfid'], otp: ['acc', 'otp'], pin: ['acc', 'pin'],
+    app: ['feat', 'wifi']
   };
+  const q = new URLSearchParams(location.search).get('f');
   if (q && presetMap[q]) state[presetMap[q][0]] = presetMap[q][1];
 
   const chips = document.querySelectorAll('.fchip');

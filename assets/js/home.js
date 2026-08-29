@@ -78,8 +78,9 @@
       { k: 'camera', t: 'Door Camera', s: 'SEE VISITORS' },
       { k: 'key', t: 'Key', s: 'ALWAYS BACKUP' }
     ];
+    const tileHref = { camera: 'locks.html?f=camera', card: 'locks.html?f=rfid', key: 'locks.html' };
     rail.innerHTML = methods.map((m, i) => `
-      <a class="access-tile" href="locks.html?f=${m.k === 'camera' ? 'camera' : m.k === 'card' ? 'rfid' : m.k}" data-reveal style="--reveal-delay:${i * 0.05}s">
+      <a class="access-tile" href="${tileHref[m.k] || 'locks.html?f=' + m.k}" data-reveal style="--reveal-delay:${i * 0.05}s">
         ${icon(m.k === 'card' ? 'card' : m.k === 'otp' ? 'otp' : m.k)}
         <strong>${m.t}</strong><span>${m.s}</span>
       </a>`).join('');
