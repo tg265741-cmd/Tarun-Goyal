@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Golens for Business — Builders, Hotels, Offices & Dealers</title>
+<meta name="description" content="Partner with Golens: bulk smart-lock supply for builders, architects, hotels and offices; dealership enquiries; attendance and access-control projects. Direct from the importer.">
+<link rel="canonical" href="https://golens.in/pages/become-a-dealer">
+<meta name="theme-color" content="#0b0e13">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 2 29 7v8c0 8-5.5 13.4-13 15C8.5 28.4 3 23 3 15V7z' fill='none' stroke='%23b9975a' stroke-width='2'/%3E%3C/svg%3E">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header id="siteHeader"></header>
+
+<main id="main" class="chapter-ink">
+
+  <section class="section-tight" style="padding-top:calc(76px + 3.5rem)">
+    <div class="shell">
+      <div class="section-head" style="max-width:860px">
+        <p class="eyebrow">Golens for business</p>
+        <h1 class="display d-1">Doors are your product.<br>Let's make them <em style="font-style:italic;color:var(--bronze-1)">smart.</em></h1>
+        <p class="lede">Golens supplies smart locks, attendance and access-control hardware to builders, architects, interior designers, hotels, offices and institutions — direct from the importer, with project support.</p>
+      </div>
+      <div style="display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1rem">
+        <button class="btn btn-bronze" data-wa="Hi Golens! I have a bulk requirement for a project." data-wa-source="b2b_hero">Start a bulk enquiry</button>
+        <a class="btn btn-ghost" href="https://golens.in/pages/become-a-dealer" data-event="cta_click" data-event-params='{"cta":"b2b_dealer"}'>Become a dealer ↗</a>
+        <a class="btn btn-ghost" href="https://golens.in/pages/buy-bulk-discounts" data-event="cta_click" data-event-params='{"cta":"b2b_bulk_page"}'>Bulk discounts ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="shell">
+      <div class="grid-portals" id="b2bGrid"></div>
+    </div>
+  </section>
+
+  <section class="section-tight chapter-ink-deep">
+    <div class="shell split-2-even" id="b2bProject">
+      <div>
+        <p class="eyebrow">Why Golens on projects</p>
+        <h2 class="display d-2" style="margin:.6rem 0 1rem">One supplier. Every door in the drawing.</h2>
+        <ul class="why-plain">
+          <li>Main doors with face, camera and app; glass cabins without drilling; rooms and wardrobes with slim locks — one catalogue, one purchase order.</li>
+          <li>Attendance &amp; access control for offices: face + fingerprint machines with cloud software and Wi-Fi.</li>
+          <li>Direct-from-importer pricing and warranty handling — GoLens Import &amp; Export Pvt Ltd.</li>
+          <li>Compatibility guidance per drawing: send the door schedule, get the lock schedule.</li>
+        </ul>
+        <div style="display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.4rem">
+          <button class="btn btn-bronze" data-wa="Hi Golens! We're specifying locks for a project — can we review the door schedule together?" data-wa-source="b2b_why">Send a door schedule</button>
+        </div>
+      </div>
+      <div style="border-radius:12px;overflow:hidden"><img src="assets/img/door-glass.jpg" alt="Modern glass office doors" loading="lazy"></div>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="shell">
+      <div class="banner-cta" data-reveal>
+        <img src="assets/img/door-main.jpg" alt="" loading="lazy">
+        <p class="eyebrow" style="justify-content:center">Partner with Golens</p>
+        <h2>Tell us about the project.</h2>
+        <p>Quantities, timelines, door types — a real person replies with real pricing. Bulk discount terms are published on golens.in.</p>
+        <div class="btn-row">
+          <button class="btn btn-bronze" data-wa="Hi Golens! Project enquiry — here are the details: (quantities, door types, city)" data-wa-source="b2b_cta">WhatsApp the project desk</button>
+          <a class="btn btn-ghost" href="mailto:care@golens.in?subject=Project%20enquiry">Email care@golens.in</a>
+          <a class="btn btn-ghost" href="tel:18001237255" data-event="call_click" data-event-params='{"source":"b2b"}'>Call 1800-123-7255</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="siteFooter"></footer>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+  const groups = [
+    { t: 'Builders & Developers', s: 'Whole-tower lock schedules, main doors to amenities, delivered in phases.', img: 'assets/img/door-main.jpg' },
+    { t: 'Architects & ID studios', s: 'Spec-ready finishes and hardware that respect the drawing.', img: 'assets/img/door-room.jpg' },
+    { t: 'Hotels & Guesthouses', s: 'Passage-mode knobs, OTP access and audit trails for rooms.', img: 'assets/img/travel-remote.jpg' },
+    { t: 'Offices & Institutions', s: 'Glass-cabin locks plus attendance & access-control machines.', img: 'assets/img/door-glass.jpg' }
+  ];
+  document.getElementById('b2bGrid').innerHTML = groups.map((g, i) => `
+    <a class="portal" href="#b2bProject" data-reveal style="--reveal-delay:${i * 0.07}s">
+      <img src="${g.img}" alt="" loading="lazy">
+      <div class="portal-body"><span class="mono-chip">SEGMENT</span><h3>${g.t}</h3><p>${g.s}</p><span class="link-arrow">See how we work →</span></div>
+    </a>`).join('');
+  window.GobserveReveals();
+</script>
+</body>
+</html>
