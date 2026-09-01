@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://cdn.shopify.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/samsung.css">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 2 29 7v8c0 8-5.5 13.4-13 15C8.5 28.4 3 23 3 15V7z' fill='none' stroke='%23034ea2' stroke-width='2.4'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 2 29 7v8c0 8-5.5 13.4-13 15C8.5 28.4 3 23 3 15V7z' fill='none' stroke='%23c8102e' stroke-width='2.4'/%3E%3C/svg%3E">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -22,7 +22,7 @@
   <section class="page-hero">
     <div class="container" style="text-align:center;max-width:820px;margin-inline:auto">
       <nav class="crumbs" style="justify-content:center" aria-label="Breadcrumb"><a href="index.html">Home</a> / <span>Find My Lock</span></nav>
-      <h1>Sixty seconds to <span style="color:var(--blue)">your</span> lock.</h1>
+      <h1>Sixty seconds to <span style="color:var(--red)">your</span> lock.</h1>
       <p style="margin-inline:auto">Six honest questions. We score every lock in the real Golens catalogue against your answers — and show you why the winner won.</p>
       <div class="wiz-steps" id="wizSteps" style="justify-content:center"></div>
     </div>
@@ -36,7 +36,7 @@
         <h2 class="sec-head" style="margin:0"><div class="kicker">Prefer a human?</div></h2>
         <p style="color:var(--text-2);max-width:52ch">Our experts know every door type in India — send a photo and get a straight answer.</p>
         <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
-          <button class="btn-s btn-blue" data-wa="Hi Golens! I used Find My Lock but I'd like an expert to double-check my choice." data-wa-source="finder_result">WhatsApp an expert</button>
+          <button class="btn-s btn-red" data-wa="Hi Golens! I used Find My Lock but I'd like an expert to double-check my choice." data-wa-source="finder_result">WhatsApp an expert</button>
           <button class="btn-s" style="border:1.5px solid #ddd" id="restartBtn">Start over</button>
         </div>
       </div>
@@ -198,7 +198,7 @@
             <h2 style="font-size:clamp(1.4rem,2.6vw,2rem);font-weight:800;margin:12px 0 8px">Your door needs a human eye.</h2>
             <p style="color:var(--text-2);max-width:54ch">Your combination is unusual — and we don't guess. Send a photo of your door and a Golens expert will confirm exactly what fits, usually the same day.</p>
             <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px">
-              <button class="btn-s btn-blue" data-wa="Hi Golens! Find My Lock couldn't auto-match my door — here's a photo." data-wa-source="finder_nomatch">Send a door photo</button>
+              <button class="btn-s btn-red" data-wa="Hi Golens! Find My Lock couldn't auto-match my door — here's a photo." data-wa-source="finder_nomatch">Send a door photo</button>
               <a class="btn-s" style="border:1.5px solid #ddd" href="locks.html">Browse the full range</a>
             </div>
           </div>
@@ -224,7 +224,7 @@
           <div style="display:flex;gap:10px;flex-wrap:wrap">
             <a class="btn-s btn-dark" href="product.html?p=${best.p.id}">Explore &amp; buy</a>
             <a class="btn-s" style="border:1.5px solid #ddd" href="compare.html?ids=${[best.p.id].concat(alts.map(a => a.p.id)).join(',')}">Compare alternatives</a>
-            <button class="btn-s btn-blue" data-wa="Hi Golens! Find My Lock recommended the ${best.p.name} for my ${answers.door} door — can you double-check?" data-wa-source="finder_result">Ask an expert</button>
+            <button class="btn-s btn-red" data-wa="Hi Golens! Find My Lock recommended the ${best.p.name} for my ${answers.door} door — can you double-check?" data-wa-source="finder_result">Ask an expert</button>
           </div>
         </div>
       </div>

@@ -20,7 +20,7 @@ Built as a static site (HTML + CSS + vanilla JS, no build step) with a **single 
 
 ```
 assets/
-  css/samsung.css   # whole design system (white, Manrope, #034ea2 blue)
+  css/samsung.css   # whole design system (white, Manrope, #c8102e red accent)
   js/data.js        # catalogue: 36 SKUs, collections, store facts (authoritative)
   js/samsung.js     # shared runtime: header/footer injection, mega menu, mobile nav,
                     # search overlay (Ctrl+K), cart drawer (localStorage → golens.in checkout),
