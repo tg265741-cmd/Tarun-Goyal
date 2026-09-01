@@ -11,70 +11,76 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdn.shopify.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/samsung.css?v=5">
+<link rel="stylesheet" href="assets/css/samsung.css?v=6">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 2 29 7v8c0 8-5.5 13.4-13 15C8.5 28.4 3 23 3 15V7z' fill='none' stroke='%23c8102e' stroke-width='2.4'/%3E%3C/svg%3E">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","name":"Golens","legalName":"GoLens Import & Export Pvt Ltd","url":"https://golens.in","email":"care@golens.in","telephone":"1800-123-7255","address":{"@type":"PostalAddress","addressLocality":"Bikaner","addressRegion":"Rajasthan","addressCountry":"IN"}}
 </script>
 </head>
-<body>
+<body class="dji-hero">
 <a class="skip-link" href="#main">Skip to content</a>
 <div id="gsHeader"></div>
 
 <main id="main">
 
-<!-- HERO CAROUSEL -->
-<section class="hero-s" id="heroCar" aria-label="Featured products">
-  <div class="hero-track" id="heroTrack">
-    <div class="hero-slide hs-product">
-      <!-- DJI-style banner-link: whole slide clickable, below CTAs (z1 < hs-text z2) -->
+<!-- ============================================================
+     HERO — DJI-style full-bleed cinematic carousel
+     · background starts at top edge, behind the transparent navbar
+     · centered eyebrow / product name / subtitle + pill outline CTAs
+     · bottom-left prev/current/next product list, edge arrows, dots on mobile
+     · whole-slide banner-link: click anywhere → product page
+     ============================================================ -->
+<section class="hero-dji" id="heroCar" aria-label="Featured products">
+  <div class="hdji-stack" id="heroTrack">
+
+    <article class="hdji-slide on" data-theme="light" data-name="Golens X95">
+      <div class="bg bg-lite" aria-hidden="true"></div>
+      <img class="pimg" src="https://cdn.shopify.com/s/files/1/0715/3113/5255/files/2_34f94d9c-88fb-4e64-a3e5-d9fc00f303d0.jpg?width=1000&format=pjpg" alt="Golens X95 smart lock with 3D face recognition and camera" fetchpriority="high">
       <a class="banner-link" href="product.html?p=x95" aria-label="Golens X95" tabindex="-1"></a>
-      <div class="hs-text">
-        <span class="hs-eyebrow"><span class="new">Flagship</span> 8 Ways to Unlock</span>
-        <h1>Golens X95<br>Your door knows you.</h1>
-        <p>3D Face ID · Built-in visitor camera · Wi-Fi with app control — no extra gateway needed.</p>
-        <div class="hs-price">₹12,900 <s>₹52,499</s> <span class="save-tag">SAVE 75%</span></div>
-        <div class="hs-ctas">
-          <!-- CTA: Samsung pattern — solid primary (brand red) + outlined secondary -->
-          <a class="btn-s btn-red" href="https://golens.in/products/golens-x95-premium-luxurious-design-smart-door-lock-digital-door-lock-8-ways-to-unlock-3d-face-recognition-camera-wi-fi-remote-using-app-fingerprint-rfid-card-pin-manual-key-2-years-warranty" target="_blank" rel="noopener">Buy now</a>
-          <a class="btn-s btn-ghost" href="product.html?p=x95">Learn more</a>
+      <div class="hdji-copy">
+        <p class="eyebrow">3D Face ID · Built-in Visitor Camera · Wi-Fi</p>
+        <h1 class="hdji-title">Golens X95</h1>
+        <p class="hdji-sub">Your Door Knows You</p>
+        <div class="hdji-ctas">
+          <a class="pill" href="product.html?p=x95">Learn More <svg class="par" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 5l7 7-7 7" stroke-linecap="round"/></svg></a>
+          <a class="pill pill-buy" href="https://golens.in/products/golens-x95-premium-luxurious-design-smart-door-lock-digital-door-lock-8-ways-to-unlock-3d-face-recognition-camera-wi-fi-remote-using-app-fingerprint-rfid-card-pin-manual-key-2-years-warranty" target="_blank" rel="noopener">Buy Now <svg class="par" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 5l7 7-7 7" stroke-linecap="round"/></svg></a>
         </div>
       </div>
-      <div class="hs-media"><div class="glow"></div><img src="https://cdn.shopify.com/s/files/1/0715/3113/5255/files/2_34f94d9c-88fb-4e64-a3e5-d9fc00f303d0.jpg?width=900&format=pjpg" alt="Golens X95 smart lock with 3D face recognition and camera" fetchpriority="high"></div>
-    </div>
-    <div class="hero-slide hs-image-slide">
-      <a class="banner-link" href="locks.html" aria-label="Golens Smart Locks" tabindex="-1"></a>
+    </article>
+
+    <article class="hdji-slide" data-theme="dark" data-name="Every Door, Made Smarter">
       <img class="bg" src="assets/img/door-main.jpg" alt="Premium home entrance with teak main door" loading="lazy">
-      <div class="shade"></div>
-      <div class="hs-text">
-        <span class="hs-eyebrow">Smart Locks</span>
-        <h1>Every door,<br>made smarter.</h1>
-        <p>Face, fingerprint, PIN, card, app or key — from ₹6,890. Fitted by our experts or any carpenter.</p>
-        <div class="hs-ctas">
-          <a class="btn-s btn-red" href="locks.html">Shop all locks</a>
-          <a class="btn-s btn-outline-w" href="find-my-lock.html">Find my lock</a>
+      <span class="scrim" aria-hidden="true"></span>
+      <a class="banner-link" href="locks.html" aria-label="Golens Smart Locks" tabindex="-1"></a>
+      <div class="hdji-copy">
+        <p class="eyebrow">Smart Locks</p>
+        <h1 class="hdji-title">Every Door,<br>Made Smarter</h1>
+        <p class="hdji-sub">Face, fingerprint, PIN, card, app or key — from ₹6,890</p>
+        <div class="hdji-ctas">
+          <a class="pill" href="locks.html">Learn More <svg class="par" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 5l7 7-7 7" stroke-linecap="round"/></svg></a>
         </div>
       </div>
-    </div>
-    <div class="hero-slide hs-product" style="background:linear-gradient(115deg,#eef2f9 0%,#e8edf6 50%,#fff 100%)">
+    </article>
+
+    <article class="hdji-slide" data-theme="light" data-name="Golens Protector X57">
+      <div class="bg bg-lite bg-lite2" aria-hidden="true"></div>
+      <img class="pimg" src="https://cdn.shopify.com/s/files/1/0715/3113/5255/files/1MAIN_2.jpg?width=1000&format=pjpg" alt="Golens Protector X57 smart lock with built-in CCTV door viewer" loading="lazy">
       <a class="banner-link" href="product.html?p=x57" aria-label="Golens Protector X57" tabindex="-1"></a>
-      <div class="hs-text">
-        <span class="hs-eyebrow"><span class="new">Most Advanced</span> 12 Ways to Unlock</span>
-        <h1>Golens Protector<br>X57 · The guardian.</h1>
-        <p>Built-in CCTV door viewer · Separate chime &amp; bell · Works with Alexa, Google &amp; Apple.</p>
-        <div class="hs-price">₹36,499</div>
-        <div class="hs-ctas">
-          <a class="btn-s btn-red" href="https://golens.in/products/golens-x57-premium-luxurious-design-smart-door-lock-digital-door-lock-8-ways-to-unlock-3d-face-recognition-camera-rf-remote-using-app-fingerprint-rfid-card-pin-manual-key-2-years-warranty" target="_blank" rel="noopener">Buy now</a>
-          <a class="btn-s btn-ghost" href="product.html?p=x57">Learn more</a>
+      <div class="hdji-copy">
+        <p class="eyebrow">Built-in CCTV Door Viewer · 12 Ways to Unlock</p>
+        <h1 class="hdji-title">Protector X57</h1>
+        <p class="hdji-sub">The Guardian — Works with Alexa, Google &amp; Apple</p>
+        <div class="hdji-ctas">
+          <a class="pill" href="product.html?p=x57">Learn More <svg class="par" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 5l7 7-7 7" stroke-linecap="round"/></svg></a>
+          <a class="pill pill-buy" href="https://golens.in/products/golens-x57-premium-luxurious-design-smart-door-lock-digital-door-lock-8-ways-to-unlock-3d-face-recognition-camera-rf-remote-using-app-fingerprint-rfid-card-pin-manual-key-2-years-warranty" target="_blank" rel="noopener">Buy Now <svg class="par" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 5l7 7-7 7" stroke-linecap="round"/></svg></a>
         </div>
       </div>
-      <div class="hs-media"><div class="glow"></div><img src="https://cdn.shopify.com/s/files/1/0715/3113/5255/files/1MAIN_2.jpg?width=900&format=pjpg" alt="Golens Protector X57 smart lock with built-in CCTV door viewer" loading="lazy"></div>
-    </div>
+    </article>
+
   </div>
-  <div class="hero-arrows">
-    <button id="hPrev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 5l-7 7 7 7" stroke-linecap="round"/></svg></button>
-    <button id="hNext" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 5l7 7-7 7" stroke-linecap="round"/></svg></button>
-  </div>
+  <button class="hdji-arrow hdji-prev" id="hPrev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 5l-7 7 7 7" stroke-linecap="round"/></svg></button>
+  <button class="hdji-arrow hdji-next" id="hNext" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5l7 7-7 7" stroke-linecap="round"/></svg></button>
+  <div class="hdji-list" id="heroList" aria-label="Featured products"></div>
   <div class="hero-dots" id="heroDots" role="tablist" aria-label="Slides"></div>
 </section>
 
@@ -207,45 +213,72 @@
 </main>
 <div id="gsFooter"></div>
 
-<script src="assets/js/data.js?v=2"></script>
-<script src="assets/js/samsung.js?v=2"></script>
+<script src="assets/js/data.js?v=6"></script>
+<script src="assets/js/samsung.js?v=6"></script>
 <script>
 (function () {
   'use strict';
   const G = window.GOLENS;
   const rm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* hero carousel */
-  const track = document.getElementById('heroTrack');
-  const slides = track.children;
+  /* = HERO — DJI-style fade carousel (vanilla) = */
+  const hero = document.getElementById('heroCar');
+  const slides = [...hero.querySelectorAll('.hdji-slide')];
   const dotsBox = document.getElementById('heroDots');
+  const listBox = document.getElementById('heroList');
+  const names = slides.map(s => s.dataset.name);
   let cur = 0, timer;
-  for (let i = 0; i < slides.length; i++) {
+
+  slides.forEach((s, i) => {
     const b = document.createElement('button');
     b.setAttribute('role', 'tab');
     b.setAttribute('aria-label', 'Slide ' + (i + 1));
     b.addEventListener('click', () => go(i, true));
     dotsBox.appendChild(b);
-  }
+  });
   const dots = dotsBox.children;
+
+  /* bottom-left prev/current/next product list (DJI indicator) */
+  function renderList() {
+    listBox.innerHTML = [-1, 0, 1].map(o => {
+      const idx = (cur + o + names.length) % names.length;
+      const cls = o === 0 ? 'cur' : o === -1 ? 'prev' : 'next';
+      return `<button class="hdji-li ${cls}" data-go="${idx}"><span>${names[idx]}</span></button>`;
+    }).join('');
+  }
+  listBox.addEventListener('click', e => {
+    const b = e.target.closest('.hdji-li');
+    if (b) go(+b.dataset.go, true);
+  });
+
   function go(i, user) {
     cur = (i + slides.length) % slides.length;
-    track.style.transform = `translateX(-${cur * 100}%)`;
+    slides.forEach((s, j) => s.classList.toggle('on', j === cur));   /* cinematic crossfade via CSS opacity */
     for (let j = 0; j < dots.length; j++) dots[j].classList.toggle('on', j === cur);
-    dotsBox.classList.toggle('on-dark', slides[cur].classList.contains('hs-image-slide'));
+    renderList();
+    document.body.classList.toggle('hero-dark', slides[cur].dataset.theme === 'dark'); /* navbar text adapts */
     if (user) restart();
   }
-  function restart() { clearInterval(timer); if (!rm) timer = setInterval(() => go(cur + 1), 4500) /* CHANGE 1: autoplay every 4.5s */; }
+  function restart() { clearInterval(timer); if (!rm) timer = setInterval(() => go(cur + 1), 4500); }
+
   document.getElementById('hNext').addEventListener('click', () => go(cur + 1, true));
   document.getElementById('hPrev').addEventListener('click', () => go(cur - 1, true));
   let tx = null;
-  track.addEventListener('touchstart', e => tx = e.touches[0].clientX, { passive: true });
-  track.addEventListener('touchend', e => {
+  hero.addEventListener('touchstart', e => tx = e.touches[0].clientX, { passive: true });
+  hero.addEventListener('touchend', e => {
     if (tx === null) return;
     const dx = e.changedTouches[0].clientX - tx;
     if (Math.abs(dx) > 45) go(cur + (dx < 0 ? 1 : -1), true);
     tx = null;
   }, { passive: true });
+
+  /* transparent floating navbar: hero pulled up behind header; solid on scroll */
+  const hdr = document.querySelector('body.dji-hero .header');
+  function sizeHero() { if (hdr) hero.style.setProperty('--hh', hdr.offsetHeight + 'px'); }
+  window.addEventListener('scroll', () => document.body.classList.toggle('hdr-solid', window.scrollY > 44), { passive: true });
+  sizeHero();
+  window.addEventListener('resize', sizeHero);
+
   go(0); restart();
 
   /* categories */
