@@ -520,3 +520,16 @@ html { scroll-behavior: smooth; }
   .hero-slide .hs-ctas { flex-direction: column; align-items: stretch; gap: 10px; }
   .hero-slide .hs-ctas .btn-s { width: 100%; }
 }
+
+/* ============================================================
+   HERO — DJI-style banner-link (whole-slide clickable layer)
+   Full-cover <a> per slide: above the background image/product art,
+   BELOW text & CTAs (z1 < .hs-text z2; arrows z4 / dots z5).
+   .hs-text gets pointer-events:none so empty areas inside the text
+   block pass clicks through to the banner-link; real links re-enable.
+   ============================================================ */
+.banner-link { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; cursor: pointer; }
+.hero-slide { cursor: pointer; }
+.hero-slide .hs-text { pointer-events: none; }
+.hero-slide .hs-text a, .hero-slide .hs-text button { pointer-events: auto; }
+.hero-slide .hs-ctas a { cursor: pointer; }
