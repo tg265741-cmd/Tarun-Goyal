@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdn.shopify.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/samsung.css?v=8">
+<link rel="stylesheet" href="assets/css/samsung.css?v=9">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 2 29 7v8c0 8-5.5 13.4-13 15C8.5 28.4 3 23 3 15V7z' fill='none' stroke='%23c8102e' stroke-width='2.4'/%3E%3C/svg%3E">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","name":"Golens","legalName":"GoLens Import & Export Pvt Ltd","url":"https://golens.in","email":"care@golens.in","telephone":"1800-123-7255","address":{"@type":"PostalAddress","addressLocality":"Bikaner","addressRegion":"Rajasthan","addressCountry":"IN"}}
@@ -191,8 +191,8 @@
 </main>
 <div id="gsFooter"></div>
 
-<script src="assets/js/data.js?v=8"></script>
-<script src="assets/js/samsung.js?v=8"></script>
+<script src="assets/js/data.js?v=9"></script>
+<script src="assets/js/samsung.js?v=9"></script>
 <script>
 (function () {
   'use strict';
@@ -205,7 +205,6 @@
   const dotsBox = document.getElementById('heroDots');
   const listBox = document.getElementById('heroList');
   const names = slides.map(s => s.dataset.name);
-  if (names.length < 3) document.getElementById('heroList').style.display = 'none'; /* hide list when it would repeat names */
   let cur = 0, timer;
 
   slides.forEach((s, i) => {
@@ -217,12 +216,16 @@
   });
   const dots = dotsBox.children;
 
-  /* bottom-left prev/current/next product list (DJI indicator) */
+  /* bottom-left CLICKABLE prev/current/next product list (DJI pattern)
+     ≥3 slides: prev/cur/next window · 2 slides: both names (no duplicates)
+     every item is a real <button data-go="index">; cur self-refreshes autoplay */
   function renderList() {
-    listBox.innerHTML = [-1, 0, 1].map(o => {
-      const idx = (cur + o + names.length) % names.length;
-      const cls = o === 0 ? 'cur' : o === -1 ? 'prev' : 'next';
-      return `<button class="hdji-li ${cls}" data-go="${idx}"><span>${names[idx]}</span></button>`;
+    const win = names.length >= 3
+      ? [-1, 0, 1].map(o => ({ off: o, idx: (cur + o + names.length) % names.length }))
+      : names.map((_, idx) => ({ off: idx - cur, idx }));
+    listBox.innerHTML = win.map(({ off, idx }) => {
+      const cls = off === 0 ? 'cur' : off === -1 ? 'prev' : 'next';
+      return `<button class="hdji-li ${cls}" data-go="${idx}"${off === 0 ? ' aria-current="true"' : ''}><span>${names[idx]}</span></button>`;
     }).join('');
   }
   listBox.addEventListener('click', e => {

@@ -601,3 +601,10 @@ body.hero-dark .hdji-list::before { background: rgba(255,255,255,.28); }
 @media (prefers-reduced-motion: reduce) {
   .hdji-slide, .hdji-ctas .pill, .hdji-ctas .pill .par { transition: none !important; }
 }
+
+/* DJI list buttons — transparent bg, pointer cursor, cur most prominent */
+.hdji-li { cursor: pointer; }
+.hdji-li span { pointer-events: none; }
+.hdji-li:hover span { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+.hdji-li[aria-current="true"] { cursor: default; }
+.hdji-li[aria-current="true"]:hover span { text-decoration: none; }
