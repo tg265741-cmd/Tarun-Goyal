@@ -614,3 +614,40 @@ html { scroll-behavior: smooth; }
   .slide-product { animation: none !important; opacity: 1; }
   .slide-bg-img { opacity: 1; transition: none; }
 }
+
+/* ============================================================
+   CHANGE 3 — "Shop by category" boutique card grid
+   Portrait 3:4 cards · full-card link · bottom caption on scrim.
+   Same radius (var(--radius)) and hover-shadow family as .fcard
+   so the page reads as one design system.
+   ============================================================ */
+.catgrid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; }
+@media (max-width: 1024px) { .catgrid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+/* mobile: 2 columns; the last "View All" card spans both, landscape */
+@media (max-width: 640px) {
+  .catgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .catgrid .catcard:last-child { grid-column: 1 / -1; aspect-ratio: 21 / 10; }
+}
+.catcard { position: relative; display: block; aspect-ratio: 3 / 4; border-radius: var(--radius); overflow: hidden; background: var(--grey-2); box-shadow: 0 1px 2px rgba(16,16,20,.04); transition: box-shadow .45s var(--ease), transform .45s var(--ease); }
+.catcard img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .9s var(--ease); }
+.catcard .veil { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 38%, rgba(0,0,0,.30) 68%, rgba(0,0,0,.66) 100%); transition: background .45s; }
+.catcard .cap { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; padding: 16px; display: grid; gap: 5px; color: #fff; }
+.catcard .cap strong { font-size: 16px; font-weight: 800; letter-spacing: -.01em; line-height: 1.22; text-shadow: 0 1px 12px rgba(0,0,0,.35); }
+.catcard .go { display: inline-flex; align-items: center; gap: .38rem; font-size: 12px; font-weight: 800; letter-spacing: .04em; color: rgba(255,255,255,.82); transition: color .3s; }
+.catcard .go svg { width: 14px; height: 14px; transition: transform .4s var(--ease); }
+/* hover: image scales inside the rounded card, scrim darkens, arrow slides right */
+.catcard:hover, .catcard:focus-visible { box-shadow: 0 26px 48px -22px rgba(16,16,20,.35); transform: translateY(-4px); }
+.catcard:hover img, .catcard:focus-visible img { transform: scale(1.045); }
+.catcard:hover .veil, .catcard:focus-visible .veil { background: linear-gradient(180deg, rgba(0,0,0,.04) 28%, rgba(0,0,0,.44) 66%, rgba(0,0,0,.80) 100%); }
+.catcard:hover .go, .catcard:focus-visible .go { color: #fff; }
+.catcard:hover .go svg, .catcard:focus-visible .go svg { transform: translateX(6px); }
+.catcard:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
+@media (max-width: 640px) {
+  .catcard .cap { padding: 12px; }
+  .catcard .cap strong { font-size: 13.5px; }
+  .catcard .go { font-size: 11px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .catcard, .catcard img, .catcard .go svg, .catcard .veil { transition: none !important; }
+  .catcard:hover { transform: none; }
+}

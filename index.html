@@ -13,7 +13,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <!-- CHANGE 2: Swiper.js via CDN (fade carousel) — loads before our sheet so overrides win -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-<link rel="stylesheet" href="assets/css/samsung.css?v=3">
+<link rel="stylesheet" href="assets/css/samsung.css?v=4">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 2 29 7v8c0 8-5.5 13.4-13 15C8.5 28.4 3 23 3 15V7z' fill='none' stroke='%23c8102e' stroke-width='2.4'/%3E%3C/svg%3E">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","name":"Golens","legalName":"GoLens Import & Export Pvt Ltd","url":"https://golens.in","email":"care@golens.in","telephone":"1800-123-7255","address":{"@type":"PostalAddress","addressLocality":"Bikaner","addressRegion":"Rajasthan","addressCountry":"IN"}}
@@ -114,13 +114,19 @@
   </div>
 </div>
 
-<!-- SHOP BY CATEGORY -->
-<section class="section-s container">
+<!-- ============================================================
+     CHANGE 3 — "Shop by category" boutique card grid
+     (was: small circle tiles) — portrait 3:4 cards, full-card <a>,
+     bottom caption on a scrim, "Explore now" slides on hover.
+     Links use only filters that exist on locks.html
+     (f=face, f=fp, f=camera, f=budget → Under-₹10k chip, + View All).
+     ============================================================ -->
+<section class="section-s container" id="categories">
   <div class="sec-head" data-rv>
-    <div><div class="kicker">Golens Store</div><h2>Shop by category</h2></div>
+    <div><div class="kicker">Golens Store</div><h2>Shop by category</h2><p class="sub">Find the lock that fits how you live.</p></div>
     <a class="link-s" href="locks.html">View all products <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 12h15M13 6l6 6-6 6" stroke-linecap="round"/></svg></a>
   </div>
-  <div class="cat-row" id="catRow"></div>
+  <div class="catgrid" id="catGrid"></div>
 </section>
 
 <!-- FEATURED SMART LOCKS -->
@@ -310,20 +316,28 @@
     }
   }, 100);
 
-  /* categories */
+  /* = CHANGE 3 — category cards (real Golens imagery from data.js) =
+     links point ONLY at filters that exist on locks.html */
   const cats = [
-    { t: 'Main Door', s: 'from ₹6,890', img: G.byId('x95').image, href: 'locks.html?f=main' },
-    { t: 'Glass Door', s: 'from ₹7,590', img: G.byId('armorface').image, href: 'locks.html?f=glass' },
-    { t: 'Interior', s: 'from ₹6,890', img: G.byId('x39').image, href: 'locks.html?f=room' },
-    { t: 'Cameras', s: 'from ₹2,590', img: G.byId('wc22k').image, href: 'https://golens.in/collections/cameras' },
-    { t: 'Doorbell', s: 'video + monitor', img: G.byId('db1').image, href: 'https://golens.in/collections/doorbell' },
-    { t: 'Attendance', s: 'for offices', img: G.byId('am05e').image, href: 'https://golens.in/collections/attendance-machines' }
+    { t: 'Face Recognition Locks', href: 'locks.html?f=face', img: G.byId('x95g').image, alt: 'Face recognition smart locks', cat: 'face' },
+    { t: 'Fingerprint Locks', href: 'locks.html?f=fp', img: G.byId('titan').image, alt: 'Fingerprint smart locks', cat: 'fingerprint' },
+    { t: 'Locks with Camera', href: 'locks.html?f=camera', img: G.byId('x28').image, alt: 'Smart locks with built-in camera', cat: 'camera' },
+    { t: 'Budget Friendly', href: 'locks.html?f=budget', img: G.byId('x39').image, alt: 'Budget friendly smart locks', cat: 'budget' },
+    { t: 'View All Locks', href: 'locks.html', img: 'assets/img/door-main.jpg', alt: 'All Golens smart locks', cat: 'all' }
   ];
-  document.getElementById('catRow').innerHTML = cats.map((c, i) => `
-    <a class="cat-tile" href="${c.href}" data-rv style="--rvd:${i * .06}s">
-      <span class="circ"><img src="${c.img}" alt="${c.t}" loading="lazy"></span>
-      <strong>${c.t}</strong><span>${c.s}</span>
+  const catGrid = document.getElementById('catGrid');
+  catGrid.innerHTML = cats.map((c, i) => `
+    <a class="catcard" href="${c.href}" data-cat="${c.cat}" data-rv style="--rvd:${i * .07}s" aria-label="${c.alt}">
+      <img src="${c.img}" alt="${c.alt}" loading="lazy">
+      <span class="veil" aria-hidden="true"></span>
+      <span class="cap"><strong>${c.t}</strong>
+        <span class="go">Explore now <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M4 12h15M13 6l6 6-6 6" stroke-linecap="round"/></svg></span>
+      </span>
     </a>`).join('');
+  catGrid.addEventListener('click', e => {
+    const card = e.target.closest('.catcard');
+    if (card) window.Gtrack('category_card_click', { category: card.dataset.cat });
+  });
 
   /* rows */
   const card = window.Gcard;
