@@ -11,7 +11,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdn.shopify.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/samsung.css?v=2">
+<!-- CHANGE 2: Swiper.js via CDN (fade carousel) — loads before our sheet so overrides win -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<link rel="stylesheet" href="assets/css/samsung.css?v=3">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 2 29 7v8c0 8-5.5 13.4-13 15C8.5 28.4 3 23 3 15V7z' fill='none' stroke='%23c8102e' stroke-width='2.4'/%3E%3C/svg%3E">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","name":"Golens","legalName":"GoLens Import & Export Pvt Ltd","url":"https://golens.in","email":"care@golens.in","telephone":"1800-123-7255","address":{"@type":"PostalAddress","addressLocality":"Bikaner","addressRegion":"Rajasthan","addressCountry":"IN"}}
@@ -23,54 +25,83 @@
 
 <main id="main">
 
-<!-- HERO CAROUSEL -->
-<section class="hero-s" id="heroCar" aria-label="Featured products">
-  <div class="hero-track" id="heroTrack">
-    <div class="hero-slide hs-product">
-      <div class="hs-text">
-        <span class="hs-eyebrow"><span class="new">Flagship</span> 8 Ways to Unlock</span>
-        <h1>Golens X95<br>Your door knows you.</h1>
-        <p>3D Face ID · Built-in visitor camera · Wi-Fi with app control — no extra gateway needed.</p>
-        <div class="hs-price">₹12,900 <s>₹52,499</s> <span class="save-tag">SAVE 75%</span></div>
-        <div class="hs-ctas">
-          <a class="btn-s btn-dark" href="https://golens.in/products/golens-x95-premium-luxurious-design-smart-door-lock-digital-door-lock-8-ways-to-unlock-3d-face-recognition-camera-wi-fi-remote-using-app-fingerprint-rfid-card-pin-manual-key-2-years-warranty" target="_blank" rel="noopener">Buy now</a>
-          <a class="btn-s btn-light" style="border:1.5px solid #ccc" href="product.html?p=x95">Learn more</a>
+<!-- ============================================================
+     HERO — CHANGE 2: Swiper.js fade carousel (was: custom translateX slider)
+     Each former hero section is now one slide:
+       slide 1 · X95        (data-theme="light", data-slide-id="x95")
+       slide 2 · Brand film (data-theme="dark",  data-slide-id="brand")
+       slide 3 · X57        (data-theme="light", data-slide-id="x57")
+     CHANGE 1: CTA block redesigned (outlined Buy + animated-underline Learn more)
+     CHANGE 1.6: background lives in its own layer, separate from text
+     ============================================================ -->
+<section class="hero-sw" id="heroCar" aria-label="Featured products">
+  <div class="swiper heroSwiper">
+
+    <div class="swiper-wrapper">
+
+      <!-- Slide 1 — Golens X95 (light) -->
+      <div class="swiper-slide sw-slide" data-theme="light" data-slide-id="x95">
+        <div class="slide-bg" aria-hidden="true"></div><!-- CHANGE 6: separate bg layer -->
+        <span class="slide-glow" aria-hidden="true"></span>
+        <img class="slide-product" src="https://cdn.shopify.com/s/files/1/0715/3113/5255/files/2_34f94d9c-88fb-4e64-a3e5-d9fc00f303d0.jpg?width=900&format=pjpg" alt="Golens X95 smart lock with 3D face recognition and camera" fetchpriority="high">
+        <div class="slide-content">
+          <span class="hs-eyebrow anim a1"><span class="new">Flagship</span> 8 Ways to Unlock</span>
+          <h1 class="anim a2">Golens X95<br>Your door knows you.</h1>
+          <p class="anim a3">3D Face ID · Built-in visitor camera · Wi-Fi with app control — no extra gateway needed.</p>
+          <div class="hs-price anim a4">₹12,900 <s>₹52,499</s> <span class="save-tag">SAVE 75%</span></div>
+          <!-- CHANGE 1: CTA block — outlined secondary + animated-underline primary link -->
+          <div class="sw-ctas anim a5">
+            <a class="btn-out" href="https://golens.in/products/golens-x95-premium-luxurious-design-smart-door-lock-digital-door-lock-8-ways-to-unlock-3d-face-recognition-camera-wi-fi-remote-using-app-fingerprint-rfid-card-pin-manual-key-2-years-warranty" target="_blank" rel="noopener" data-slide-id="x95" data-cta="buy" aria-label="Buy Golens X95 smart lock">Buy now</a>
+            <a class="lnk-anim" href="product.html?p=x95" data-slide-id="x95" data-cta="learn" aria-label="Learn more about Golens X95">Learn more</a>
+          </div>
         </div>
+        <!-- CHANGE 4: whole-slide clickable layer (under the CTAs via z-index) -->
+        <a class="slide-cover" href="product.html?p=x95" tabindex="-1" aria-hidden="true"></a>
       </div>
-      <div class="hs-media"><div class="glow"></div><img src="https://cdn.shopify.com/s/files/1/0715/3113/5255/files/2_34f94d9c-88fb-4e64-a3e5-d9fc00f303d0.jpg?width=900&format=pjpg" alt="Golens X95 smart lock with 3D face recognition and camera" fetchpriority="high"></div>
-    </div>
-    <div class="hero-slide hs-image-slide">
-      <img class="bg" src="assets/img/door-main.jpg" alt="Premium home entrance with teak main door" loading="lazy">
-      <div class="shade"></div>
-      <div class="hs-text">
-        <span class="hs-eyebrow">Smart Locks</span>
-        <h1>Every door,<br>made smarter.</h1>
-        <p>Face, fingerprint, PIN, card, app or key — from ₹6,890. Fitted by our experts or any carpenter.</p>
-        <div class="hs-ctas">
-          <a class="btn-s btn-light" href="locks.html">Shop all locks</a>
-          <a class="btn-s btn-outline-w" href="find-my-lock.html">Find my lock</a>
+
+      <!-- Slide 2 — Brand film (dark) -->
+      <div class="swiper-slide sw-slide" data-theme="dark" data-slide-id="brand">
+        <img class="slide-bg-img" src="assets/img/door-main.jpg" alt="" loading="lazy"><!-- CHANGE 6 + 7: lazy bg layer -->
+        <div class="slide-scrim" aria-hidden="true"></div>
+        <div class="slide-content">
+          <span class="hs-eyebrow anim a1">Smart Locks</span>
+          <h1 class="anim a2">Every door,<br>made smarter.</h1>
+          <p class="anim a3">Face, fingerprint, PIN, card, app or key — from ₹6,890. Fitted by our experts or any carpenter.</p>
+          <div class="sw-ctas anim a4">
+            <a class="btn-out" href="find-my-lock.html" data-slide-id="brand" data-cta="finder" aria-label="Find the right Golens lock for your door">Find my lock</a>
+            <a class="lnk-anim" href="locks.html" data-slide-id="brand" data-cta="shop" aria-label="Shop all Golens smart locks">Shop all locks</a>
+          </div>
         </div>
+        <a class="slide-cover" href="locks.html" tabindex="-1" aria-hidden="true"></a>
       </div>
-    </div>
-    <div class="hero-slide hs-product" style="background:linear-gradient(115deg,#eef2f9 0%,#e8edf6 50%,#fff 100%)">
-      <div class="hs-text">
-        <span class="hs-eyebrow"><span class="new">Most Advanced</span> 12 Ways to Unlock</span>
-        <h1>Golens Protector<br>X57 · The guardian.</h1>
-        <p>Built-in CCTV door viewer · Separate chime &amp; bell · Works with Alexa, Google &amp; Apple.</p>
-        <div class="hs-price">₹36,499</div>
-        <div class="hs-ctas">
-          <a class="btn-s btn-dark" href="https://golens.in/products/golens-x57-premium-luxurious-design-smart-door-lock-digital-door-lock-8-ways-to-unlock-3d-face-recognition-camera-rf-remote-using-app-fingerprint-rfid-card-pin-manual-key-2-years-warranty" target="_blank" rel="noopener">Buy now</a>
-          <a class="btn-s btn-light" style="border:1.5px solid #ccc" href="product.html?p=x57">Learn more</a>
+
+      <!-- Slide 3 — Protector X57 (light) -->
+      <div class="swiper-slide sw-slide sw-slide-alt" data-theme="light" data-slide-id="x57">
+        <div class="slide-bg" aria-hidden="true"></div>
+        <span class="slide-glow" aria-hidden="true"></span>
+        <img class="slide-product" src="https://cdn.shopify.com/s/files/1/0715/3113/5255/files/1MAIN_2.jpg?width=900&format=pjpg" alt="Golens Protector X57 smart lock with built-in CCTV door viewer" loading="lazy">
+        <div class="slide-content">
+          <span class="hs-eyebrow anim a1"><span class="new">Most Advanced</span> 12 Ways to Unlock</span>
+          <h1 class="anim a2">Golens Protector<br>X57 · The guardian.</h1>
+          <p class="anim a3">Built-in CCTV door viewer · Separate chime &amp; bell · Works with Alexa, Google &amp; Apple.</p>
+          <div class="hs-price anim a4">₹36,499</div>
+          <div class="sw-ctas anim a5">
+            <a class="btn-out" href="https://golens.in/products/golens-x57-premium-luxurious-design-smart-door-lock-digital-door-lock-8-ways-to-unlock-3d-face-recognition-camera-rf-remote-using-app-fingerprint-rfid-card-pin-manual-key-2-years-warranty" target="_blank" rel="noopener" data-slide-id="x57" data-cta="buy" aria-label="Buy Golens Protector X57 smart lock">Buy now</a>
+            <a class="lnk-anim" href="product.html?p=x57" data-slide-id="x57" data-cta="learn" aria-label="Learn more about Golens Protector X57">Learn more</a>
+          </div>
         </div>
+        <a class="slide-cover" href="product.html?p=x57" tabindex="-1" aria-hidden="true"></a>
       </div>
-      <div class="hs-media"><div class="glow"></div><img src="https://cdn.shopify.com/s/files/1/0715/3113/5255/files/1MAIN_2.jpg?width=900&format=pjpg" alt="Golens Protector X57 smart lock with built-in CCTV door viewer" loading="lazy"></div>
+
     </div>
+
+    <!-- CHANGE 2.4: nav arrows — real <button> elements (keyboard accessible) -->
+    <button class="hero-nav heroNavPrev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 5l-7 7 7 7" stroke-linecap="round"/></svg></button>
+    <button class="hero-nav heroNavNext" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 5l7 7-7 7" stroke-linecap="round"/></svg></button>
+    <!-- pagination dots (Swiper renders clickable <button> bullets) -->
+    <div class="swiper-pagination heroDots"></div>
+
   </div>
-  <div class="hero-arrows">
-    <button id="hPrev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 5l-7 7 7 7" stroke-linecap="round"/></svg></button>
-    <button id="hNext" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 5l7 7-7 7" stroke-linecap="round"/></svg></button>
-  </div>
-  <div class="hero-dots" id="heroDots" role="tablist" aria-label="Slides"></div>
 </section>
 
 <!-- BENEFITS -->
@@ -202,46 +233,82 @@
 </main>
 <div id="gsFooter"></div>
 
-<script src="assets/js/data.js?v=2"></script>
-<script src="assets/js/samsung.js?v=2"></script>
+<!-- CHANGE 2: Swiper.js engine (defer; inline init polls for it with a graceful fallback) -->
+<script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="assets/js/data.js?v=3"></script>
+<script src="assets/js/samsung.js?v=3"></script>
 <script>
 (function () {
   'use strict';
   const G = window.GOLENS;
   const rm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* hero carousel */
-  const track = document.getElementById('heroTrack');
-  const slides = track.children;
-  const dotsBox = document.getElementById('heroDots');
-  let cur = 0, timer;
-  for (let i = 0; i < slides.length; i++) {
-    const b = document.createElement('button');
-    b.setAttribute('role', 'tab');
-    b.setAttribute('aria-label', 'Slide ' + (i + 1));
-    b.addEventListener('click', () => go(i, true));
-    dotsBox.appendChild(b);
+  /* = HERO — CHANGE 2: Swiper fade carousel (replaces custom slider) = */
+  const heroEl = document.getElementById('heroCar');
+  const heroSwEl = heroEl.querySelector('.heroSwiper');
+
+  /* CHANGE 1.5 — entrance animation: IntersectionObserver adds .hero--in-view,
+     CSS keyframes fade + slide-up the headline/description/buttons (staggered) */
+  if ('IntersectionObserver' in window) {
+    const hio = new IntersectionObserver(es => es.forEach(en => {
+      if (en.isIntersecting) { heroEl.classList.add('hero--in-view'); hio.disconnect(); }
+    }), { threshold: .18 });
+    hio.observe(heroEl);
+  } else heroEl.classList.add('hero--in-view');
+
+  /* CHANGE 2.7 — image fade-in once loaded (no blank flash) */
+  heroEl.querySelectorAll('img').forEach(im => {
+    if (im.complete && im.naturalWidth) im.classList.add('img-in');
+    else im.addEventListener('load', () => im.classList.add('img-in'));
+  });
+
+  /* CHANGE 2.9 — analytics hooks: data-slide-id / data-cta already on each link */
+  heroEl.querySelectorAll('.sw-ctas a').forEach(a => {
+    a.addEventListener('click', () => window.Gtrack('hero_cta_click', { slide: a.dataset.slideId, cta: a.dataset.cta }));
+  });
+
+  /* re-trigger staggered text animation whenever a new slide becomes active */
+  function heroReAnim() {
+    const c = heroEl.querySelector('.swiper-slide-active .slide-content') || heroEl.querySelector('.swiper-slide .slide-content');
+    if (!c) return;
+    c.classList.remove('anim-in'); void c.offsetWidth; c.classList.add('anim-in');
   }
-  const dots = dotsBox.children;
-  function go(i, user) {
-    cur = (i + slides.length) % slides.length;
-    track.style.transform = `translateX(-${cur * 100}%)`;
-    for (let j = 0; j < dots.length; j++) dots[j].classList.toggle('on', j === cur);
-    dotsBox.classList.toggle('on-dark', slides[cur].classList.contains('hs-image-slide'));
-    if (user) restart();
-  }
-  function restart() { clearInterval(timer); if (!rm) timer = setInterval(() => go(cur + 1), 5200); }
-  document.getElementById('hNext').addEventListener('click', () => go(cur + 1, true));
-  document.getElementById('hPrev').addEventListener('click', () => go(cur - 1, true));
-  let tx = null;
-  track.addEventListener('touchstart', e => tx = e.touches[0].clientX, { passive: true });
-  track.addEventListener('touchend', e => {
-    if (tx === null) return;
-    const dx = e.changedTouches[0].clientX - tx;
-    if (Math.abs(dx) > 45) go(cur + (dx < 0 ? 1 : -1), true);
-    tx = null;
-  }, { passive: true });
-  go(0); restart();
+
+  /* init Swiper once its CDN script arrives; graceful fallback if the CDN is blocked */
+  let tries = 0;
+  const heroTimer = setInterval(() => {
+    tries++;
+    if (window.Swiper) {
+      clearInterval(heroTimer);
+      const heroSw = new window.Swiper(heroSwEl, {
+        effect: 'fade',                                  /* CHANGE 2.3: smooth crossfade */
+        fadeEffect: { crossfade: true },
+        speed: rm ? 0 : 900,
+        loop: true,                                      /* CHANGE 2.5: infinite loop */
+        autoplay: rm ? false : {                         /* CHANGE 2.6: 6.5s, pauses on hover/touch,
+                                                             resumes shortly after manual nav */
+          delay: 6500, disableOnInteraction: false, pauseOnMouseEnter: true
+        },
+        pagination: { el: '.heroDots', clickable: true },
+        navigation: { prevEl: '.heroNavPrev', nextEl: '.heroNavNext' },
+        keyboard: { enabled: true },
+        a11y: { enabled: true },
+        on: {
+          slideChange() {
+            const el = this.slides[this.activeIndex];
+            if (el) heroSwEl.dataset.theme = el.dataset.theme; /* dots/arrows adapt to dark slides */
+            window.Gtrack('hero_slide_change', { slide: el && el.dataset.slideId });
+          },
+          slideChangeTransitionEnd: heroReAnim
+        }
+      });
+      heroSwEl.classList.add('swiper-ready');
+      heroReAnim();
+    } else if (tries > 30) {
+      clearInterval(heroTimer);
+      heroSwEl.classList.add('no-swiper');               /* offline fallback: CSS scroll-snap */
+    }
+  }, 100);
 
   /* categories */
   const cats = [
