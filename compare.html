@@ -3,50 +3,131 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Compare Smart Locks — Side by Side | Golens</title>
-<meta name="description" content="Compare Golens smart locks side by side: access methods, security, smart features, installation, warranty and price. Built for non-technical buyers.">
+<title>Compare Golens Smart Locks — Side by Side</title>
+<meta name="description" content="Compare Golens smart locks side by side: ways to unlock, Wi-Fi, camera, door fit, warranty and real prices.">
 <link rel="canonical" href="https://golens.in/">
-<meta name="theme-color" content="#0b0e13">
+<meta name="theme-color" content="#ffffff">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdn.shopify.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/site.css">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 2 29 7v8c0 8-5.5 13.4-13 15C8.5 28.4 3 23 3 15V7z' fill='none' stroke='%23b9975a' stroke-width='2'/%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/samsung.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 2 29 7v8c0 8-5.5 13.4-13 15C8.5 28.4 3 23 3 15V7z' fill='none' stroke='%23034ea2' stroke-width='2.4'/%3E%3C/svg%3E">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
-<header id="siteHeader"></header>
+<div id="gsHeader"></div>
 
-<main id="main" class="chapter-ink">
-  <section class="section-tight" style="padding-top:calc(76px + 3rem)">
-    <div class="shell">
-      <div class="section-head">
-        <p class="eyebrow">Compare</p>
-        <h1 class="display d-1">Two to four locks. One clear answer.</h1>
-        <p class="lede">Plain-language comparison — what each lock lets you <em>do</em>, not just what's in the spec sheet. On mobile, swipe the table sideways.</p>
-      </div>
-
-      <div style="margin-top:2rem">
-        <p class="mono-chip" style="color:var(--on-ink-2);margin-bottom:.8rem">CHOOSE LOCKS TO COMPARE (2–4)</p>
-        <div id="cmpPicker" style="display:flex;gap:.6rem;flex-wrap:wrap"></div>
-      </div>
-
-      <div class="cmp-table-wrap" style="margin-top:2rem" id="cmpWrap">
-        <table class="cmp-table" id="cmpTable"></table>
-      </div>
-
-      <div style="display:flex;gap:.9rem;flex-wrap:wrap;margin-top:2rem;align-items:center">
-        <p style="color:var(--on-ink-2);font-size:.88rem">Still torn? Our experts compare doors, not just locks — send a photo.</p>
-        <button class="btn btn-bronze btn-sm" data-wa="Hi Golens! I'm comparing locks and need help deciding." data-wa-source="compare">Ask an expert</button>
+<main id="main">
+  <section class="page-hero">
+    <div class="container">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> / <span>Compare</span></nav>
+      <h1>Compare locks, honestly.</h1>
+      <p>Pick up to 4 locks. Every cell below is what the official listing says — nothing more. <a class="link-s" href="find-my-lock.html">Not sure? Get a recommendation →</a></p>
+      <div style="margin-top:22px;max-width:520px;position:relative">
+        <input type="search" id="pickInput" placeholder="Search a lock to add — try “x95”, “titan”, “glass”…" aria-label="Add a lock to compare"
+          style="width:100%;padding:.9rem 1rem;border:1.5px solid var(--grey-4);border-radius:12px;font:inherit;background:#fff">
+        <div id="pickList" style="position:absolute;top:calc(100% + 6px);left:0;right:0;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 18px 40px -18px rgba(0,0,0,.25);z-index:80;display:none;overflow:hidden"></div>
       </div>
     </div>
   </section>
-</main>
 
-<footer id="siteFooter"></footer>
+  <section class="container section-s">
+    <div class="cmp-wrap">
+      <table class="cmp-s" id="cmpTable"></table>
+    </div>
+    <p style="font-size:12px;color:var(--text-3);margin-top:12px">“—” means the official listing doesn't state it. We don't guess; ask us on WhatsApp and we'll confirm from the source.</p>
+  </section>
+</main>
+<div id="gsFooter"></div>
+
 <script src="assets/js/data.js"></script>
-<script src="assets/js/app.js"></script>
-<script src="assets/js/compare.js"></script>
+<script src="assets/js/samsung.js"></script>
+<script>
+(function () {
+  'use strict';
+  const G = window.GOLENS;
+  const inr = window.Gfmt.inr;
+  const L = window.ACCESS_LABEL;
+  const MAX = 4;
+  let ids = (new URLSearchParams(location.search).get('ids') || 'x95,x95g,x57,x28')
+    .split(',').map(s => s.trim()).filter(id => G.byId(id)).slice(0, MAX);
+
+  const Y = '<span class="y">✓</span>', N = '<span class="nn">—</span>';
+  const doorLbl = { main: 'Main door', glass: 'Glass door', room: 'Interior', office: 'Office', apartment: 'Apartment' };
+
+  function row(label, get) {
+    return `<tr><th scope="row">${label}</th>${ids.map(id => `<td>${get(G.byId(id))}</td>`).join('')}</tr>`;
+  }
+  function rowGrp(t) { return `<tr class="grp"><td colspan="${ids.length + 1}">${t}</td></tr>`; }
+
+  function render() {
+    const t = document.getElementById('cmpTable');
+    if (!ids.length) { t.outerHTML = '<p style="padding:30px;color:var(--text-3)">Add a lock above to start comparing.</p>'; return; }
+    const head = `<thead><tr><th></th>${ids.map(id => { const p = G.byId(id); return `<th><img src="${p.image}" alt=""><br><a href="product.html?p=${id}" style="font-size:14px;font-weight:800;color:#000">${p.name}</a><br><span style="font-size:12px;font-weight:600;color:var(--text-3)">${p.line || ''}</span><br><button data-rm="${id}" style="margin-top:8px;font-size:11px;font-weight:800;color:#c0392b;background:none;border:none;cursor:pointer;padding:0">Remove</button></th>`; }).join('')}</tr></thead>`;
+    const body = '<tbody>' +
+      rowGrp('Price & buying') +
+      row('Price today', p => inr(p.price)) +
+      row('MRP', p => p.mrp ? inr(p.mrp) : N) +
+      row('Buying', p => p.soldOut ? 'Sold out' : `<a href="product.html?p=${p.id}" style="color:var(--blue);font-weight:800">View →</a>`) +
+      rowGrp('Ways to unlock') +
+      row('3D Face ID', p => (p.access || []).includes('face3d') ? Y : N) +
+      row('Fingerprint', p => (p.access || []).includes('fp') ? Y : N) +
+      row('PIN / passcode', p => (p.access || []).includes('pin') ? Y : N) +
+      row('RFID card', p => (p.access || []).includes('rfid') ? Y : N) +
+      row('App / remote', p => p.wifi ? Y : (p.bt ? 'Bluetooth' : N)) +
+      row('Mechanical key', p => (p.access || []).includes('key') ? Y : N) +
+      row('Total ways', p => (p.access || []).length || '—') +
+      rowGrp('Smart features') +
+      row('Wi-Fi built-in', p => p.wifi ? Y : N) +
+      row('Camera', p => p.camera ? Y : N) +
+      row('LCD display', p => p.lcd ? Y : N) +
+      row('Works with voice assistants', p => ['x57'].includes(p.id) ? Y : N) +
+      rowGrp('Door fit') +
+      row('Fits', p => (p.door || []).map(d => doorLbl[d] || d).join(', ') || N) +
+      row('Material', p => (p.material || []).map(m => ({ wood: 'Wood', metal: 'Metal', steel: 'Steel', glass: 'Glass' }[m] || m)).join(', ') || N) +
+      row('Family', p => ({ main: 'Main door lock', glass: 'Glass lock', room: 'Interior lock' }[p.family] || '—')) +
+      rowGrp('Assurance') +
+      row('Warranty', p => p.warranty + ' yr') +
+      row('Expert installation', p => 'Available') +
+      '</tbody>';
+    t.innerHTML = head + body;
+    history.replaceState(null, '', '?ids=' + ids.join(','));
+    t.querySelectorAll('[data-rm]').forEach(b => b.addEventListener('click', () => {
+      ids = ids.filter(x => x !== b.dataset.rm);
+      window.Gtrack('compare_remove', { item: b.dataset.rm });
+      render();
+    }));
+  }
+
+  /* picker */
+  const inp = document.getElementById('pickInput');
+  const list = document.getElementById('pickList');
+  function showPicks(q) {
+    q = (q || '').toLowerCase();
+    const found = G.locks().filter(p => !ids.includes(p.id))
+      .filter(p => !q || (p.name + ' ' + (p.line || '') + ' ' + p.subtitle + ' ' + (p.family || '')).toLowerCase().includes(q))
+      .slice(0, 6);
+    if (!found.length) { list.style.display = 'none'; return; }
+    list.innerHTML = found.map(p => `<button data-addp="${p.id}" style="display:flex;gap:12px;align-items:center;width:100%;text-align:left;padding:10px 14px;background:none;border:0;border-bottom:1px solid var(--grey-2);cursor:pointer;font:inherit"><img src="${p.image}" alt="" style="width:42px;height:42px;object-fit:contain;background:var(--grey-2);border-radius:8px"><span><strong style="font-size:14px">${p.name}</strong> <span style="font-size:12px;color:var(--text-3)">${p.line || ''} · ${inr(p.price)}</span></span></button>`).join('');
+    list.style.display = 'block';
+  }
+  inp.addEventListener('input', () => showPicks(inp.value));
+  inp.addEventListener('focus', () => showPicks(inp.value));
+  document.addEventListener('click', e => { if (!e.target.closest('#pickList') && e.target !== inp) list.style.display = 'none'; });
+  list.addEventListener('click', e => {
+    const b = e.target.closest('[data-addp]');
+    if (!b) return;
+    if (ids.length >= MAX) { window.Gtrack('compare_limit'); return; }
+    ids.push(b.dataset.addp);
+    inp.value = '';
+    list.style.display = 'none';
+    window.Gtrack('compare_add', { item: b.dataset.addp });
+    render();
+  });
+  render();
+  window.Gtrack('compare_view', { ids: ids.join(',') });
+})();
+</script>
 </body>
 </html>

@@ -6,76 +6,111 @@
 <title>Smart Locks — Main Door, Glass, Interior | Golens</title>
 <meta name="description" content="Browse every Golens smart lock. Filter by door type, face recognition, fingerprint, Wi-Fi, camera and price. Real catalogue, real prices, expert support.">
 <link rel="canonical" href="https://golens.in/collections/all-locks">
-<meta property="og:title" content="Smart Locks — Golens">
-<meta property="og:type" content="website">
-<meta name="theme-color" content="#f6f2e9">
+<meta name="theme-color" content="#ffffff">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdn.shopify.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/site.css">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 2 29 7v8c0 8-5.5 13.4-13 15C8.5 28.4 3 23 3 15V7z' fill='none' stroke='%23b9975a' stroke-width='2'/%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/samsung.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 2 29 7v8c0 8-5.5 13.4-13 15C8.5 28.4 3 23 3 15V7z' fill='none' stroke='%23034ea2' stroke-width='2.4'/%3E%3C/svg%3E">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
-<header id="siteHeader"></header>
+<div id="gsHeader"></div>
 
-<main id="main" class="chapter-light" style="background:var(--ivory-0)">
-
-  <section class="section-tight" style="padding-top:calc(76px + 3.5rem)">
-    <div class="shell">
-      <nav class="crumb" aria-label="Breadcrumb"><a href="index.html">Home</a> / <span>Smart Locks</span></nav>
-      <div class="section-head" style="max-width:820px">
-        <p class="eyebrow">The collection</p>
-        <h1 class="display d-1">What are you looking for?</h1>
-        <p class="lede">Every Golens door lock in one place. Filter by your door or by what you want the lock to do — or let us <a class="link-arrow" href="find-my-lock.html">recommend one →</a></p>
-      </div>
+<main id="main">
+  <section class="page-hero">
+    <div class="container">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> / <span>Smart Locks</span></nav>
+      <h1>What are you looking for?</h1>
+      <p>Every Golens door lock in one place — filter by your door or by what you want the lock to do. Or let us <a class="link-s" href="find-my-lock.html">recommend one →</a></p>
     </div>
   </section>
 
-  <div class="filter-bar" id="filterBar" role="toolbar" aria-label="Filter locks">
-    <div class="shell" style="display:flex;gap:.6rem;align-items:center;overflow-x:auto">
-      <button class="fchip" data-group="door" data-val="main" aria-pressed="false">Main door</button>
-      <button class="fchip" data-group="door" data-val="glass" aria-pressed="false">Glass door</button>
-      <button class="fchip" data-group="door" data-val="room" aria-pressed="false">Room / interior</button>
-      <button class="fchip" data-group="acc" data-val="face3d" aria-pressed="false">3D Face</button>
-      <button class="fchip" data-group="acc" data-val="face" aria-pressed="false">Face unlock</button>
-      <button class="fchip" data-group="acc" data-val="fp" aria-pressed="false">Fingerprint</button>
-      <button class="fchip" data-group="feat" data-val="wifi" aria-pressed="false">Wi-Fi + app</button>
-      <button class="fchip" data-group="feat" data-val="camera" aria-pressed="false">Camera</button>
-      <button class="fchip" data-group="price" data-val="u10" aria-pressed="false">Under ₹10k</button>
-      <button class="fchip" data-group="price" data-val="u20" aria-pressed="false">Under ₹20k</button>
-      <span class="filter-count" id="filterCount"></span>
+  <div class="fbar">
+    <div class="container" id="chipBar">
+      <button class="fchip-s" data-group="door" data-val="main">Main door</button>
+      <button class="fchip-s" data-group="door" data-val="glass">Glass door</button>
+      <button class="fchip-s" data-group="door" data-val="room">Room / interior</button>
+      <button class="fchip-s" data-group="acc" data-val="face3d">3D Face</button>
+      <button class="fchip-s" data-group="acc" data-val="fp">Fingerprint</button>
+      <button class="fchip-s" data-group="feat" data-val="wifi">Wi-Fi + app</button>
+      <button class="fchip-s" data-group="feat" data-val="camera">Camera</button>
+      <button class="fchip-s" data-group="price" data-val="u10">Under ₹10k</button>
+      <button class="fchip-s" data-group="price" data-val="u20">Under ₹20k</button>
+      <span class="fcount" id="fCount"></span>
     </div>
   </div>
 
-  <section class="section-tight" style="padding-top:2.5rem">
-    <div class="shell">
-      <div class="grid-products" id="lockGrid"></div>
-      <div style="display:flex;gap:.9rem;flex-wrap:wrap;margin-top:2.5rem;align-items:center;justify-content:space-between">
-        <p id="emptyMsg" style="display:none;color:var(--on-ivory-2)">No locks match that exact combination — try removing a filter, or <a class="link-arrow" href="find-my-lock.html">get a recommendation →</a></p>
-        <a class="btn btn-ghost" href="https://golens.in/collections/cabinet-locks" data-event="cta_click" data-event-params='{"cta":"locks_cabinet"}'>Cabinet &amp; drawer locks (Qidots) on golens.in →</a>
-      </div>
+  <section class="section-s container">
+    <div class="grid-4" id="lockGrid"></div>
+    <p id="emptyMsg" style="display:none;color:var(--text-3);padding:30px 0;text-align:center">No locks match that combination — try removing a filter, or <a class="link-s" href="find-my-lock.html">get a recommendation →</a></p>
+    <div style="display:flex;justify-content:center;margin-top:34px">
+      <a class="btn-s" style="border:1.5px solid #ddd" href="https://golens.in/collections/cabinet-locks" target="_blank" rel="noopener">Cabinet &amp; drawer locks (Qidots) on golens.in ↗</a>
     </div>
   </section>
 
-  <section class="section-tight chapter-ink" aria-label="Help choosing">
-    <div class="shell" style="display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center">
+  <section class="container" style="padding-bottom:60px">
+    <div class="support-strip">
       <div>
-        <h2 class="display d-2">Two doors, one question: which lock?</h2>
-        <p class="lede" style="margin-top:.6rem">Send us a photo of your door on WhatsApp and a Golens expert will confirm fit before you order.</p>
+        <h2>Which lock fits your door?</h2>
+        <p>Send a photo on WhatsApp — a Golens expert confirms fit before you order.</p>
       </div>
-      <div style="display:flex;gap:.8rem;flex-wrap:wrap">
-        <button class="btn btn-bronze" data-wa="Hi Golens! Here's a photo of my door — which lock fits?" data-wa-source="locks_page">Send a door photo</button>
-        <a class="btn btn-ghost" href="support.html#compatibility">Compatibility checker</a>
-      </div>
+      <a class="s-contact" href="tel:18001237255"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 4h4l1.5 4.5-2.2 1.7a12 12 0 0 0 5.5 5.5l1.7-2.2L20 15v4a2 2 0 0 1-2.1 2A16 16 0 0 1 3 6.1 2 2 0 0 1 5 4z"/></svg><span><strong>1800-123-7255</strong><span>Toll-free</span></span></a>
+      <button class="btn-s btn-blue" data-wa="Hi Golens! Here's a photo of my door — which lock fits?" data-wa-source="locks_page">Send a door photo</button>
     </div>
   </section>
 </main>
+<div id="gsFooter"></div>
 
-<footer id="siteFooter"></footer>
 <script src="assets/js/data.js"></script>
-<script src="assets/js/app.js"></script>
-<script src="assets/js/locks.js"></script>
+<script src="assets/js/samsung.js"></script>
+<script>
+(function () {
+  'use strict';
+  const G = window.GOLENS;
+  const grid = document.getElementById('lockGrid');
+  const state = { door: null, acc: null, feat: null, price: null };
+  const preset = {
+    main: ['door','main'], glass: ['door','glass'], room: ['door','room'],
+    face: ['acc','face3d'], face3d: ['acc','face3d'], fp: ['acc','fp'],
+    wifi: ['feat','wifi'], camera: ['feat','camera'], rfid: null, app: ['feat','wifi']
+  };
+  const q = new URLSearchParams(location.search).get('f');
+  if (q && preset[q]) { const pm = preset[q]; state[pm[0]] = pm[1]; }
+  const chips = document.querySelectorAll('.fchip-s');
+  chips.forEach(chip => {
+    if (state[chip.dataset.group] === chip.dataset.val) chip.setAttribute('aria-pressed', 'true');
+    chip.addEventListener('click', () => {
+      const g = chip.dataset.group, v = chip.dataset.val;
+      const on = chip.getAttribute('aria-pressed') === 'true';
+      state[g] = on ? null : v;
+      chips.forEach(c => { if (c.dataset.group === g) c.setAttribute('aria-pressed', 'false'); });
+      if (!on) chip.setAttribute('aria-pressed', 'true');
+      window.Gtrack('filter', { group: g, value: v, on: !on });
+      render();
+    });
+  });
+  function matches(p) {
+    if (state.door && !(p.door || []).includes(state.door)) return false;
+    if (state.acc === 'face3d' && !(p.access || []).includes('face3d')) return false;
+    if (state.acc === 'fp' && !(p.access || []).includes('fp')) return false;
+    if (state.feat === 'wifi' && !p.wifi) return false;
+    if (state.feat === 'camera' && !p.camera) return false;
+    if (state.price === 'u10' && p.price >= 10000) return false;
+    if (state.price === 'u20' && p.price >= 20000) return false;
+    return true;
+  }
+  function render() {
+    const list = G.locks().filter(matches)
+      .sort((a, b) => (b.badge === 'flagship' ? 1 : 0) - (a.badge === 'flagship' ? 1 : 0) || a.price - b.price);
+    grid.innerHTML = list.map(p => window.Gcard(p)).join('');
+    document.getElementById('fCount').textContent = list.length + ' LOCK' + (list.length === 1 ? '' : 'S');
+    document.getElementById('emptyMsg').style.display = list.length ? 'none' : 'block';
+  }
+  render();
+  window.Gtrack('category_view', { filters: JSON.stringify(state) });
+})();
+</script>
 </body>
 </html>

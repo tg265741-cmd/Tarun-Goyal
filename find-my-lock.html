@@ -6,54 +6,242 @@
 <title>Find My Lock — 60-Second Recommender | Golens</title>
 <meta name="description" content="Six questions. One honest recommendation from the real Golens catalogue — matched to your door, your access habits and your budget.">
 <link rel="canonical" href="https://golens.in/">
-<meta name="theme-color" content="#0b0e13">
+<meta name="theme-color" content="#ffffff">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdn.shopify.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/site.css">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 2 29 7v8c0 8-5.5 13.4-13 15C8.5 28.4 3 23 3 15V7z' fill='none' stroke='%23b9975a' stroke-width='2'/%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/samsung.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 2 29 7v8c0 8-5.5 13.4-13 15C8.5 28.4 3 23 3 15V7z' fill='none' stroke='%23034ea2' stroke-width='2.4'/%3E%3C/svg%3E">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
-<header id="siteHeader"></header>
+<div id="gsHeader"></div>
 
-<main id="main" class="chapter-ink">
-  <section class="section-tight" style="padding-top:calc(76px + 3rem)">
-    <div class="shell shell-narrow">
-      <div class="section-head" style="max-width:none;text-align:center;justify-items:center">
-        <p class="eyebrow" style="justify-content:center">Find my lock</p>
-        <h1 class="display d-1">Sixty seconds to <em class="accent" style="font-style:italic;color:var(--bronze-1)">your</em> lock.</h1>
-        <p class="lede" style="margin-inline:auto">Six honest questions. We score every lock in the real Golens catalogue against your answers — and show you why the winner won.</p>
-      </div>
-
-      <div class="finder-steps" id="finderSteps" style="justify-content:center"></div>
-
-      <div id="finderStage" style="margin-top:1.5rem"></div>
+<main id="main">
+  <section class="page-hero">
+    <div class="container" style="text-align:center;max-width:820px;margin-inline:auto">
+      <nav class="crumbs" style="justify-content:center" aria-label="Breadcrumb"><a href="index.html">Home</a> / <span>Find My Lock</span></nav>
+      <h1>Sixty seconds to <span style="color:var(--blue)">your</span> lock.</h1>
+      <p style="margin-inline:auto">Six honest questions. We score every lock in the real Golens catalogue against your answers — and show you why the winner won.</p>
+      <div class="wiz-steps" id="wizSteps" style="justify-content:center"></div>
     </div>
   </section>
 
-  <section class="section-tight" id="resultSection" hidden>
-    <div class="shell shell-narrow">
+  <section class="container" style="padding:clamp(20px,3vw,36px) 0 60px">
+    <div id="wizStage" style="max-width:760px;margin-inline:auto"></div>
+    <div id="resultSec" hidden style="max-width:980px;margin-inline:auto">
       <div id="resultMount"></div>
-    </div>
-  </section>
-
-  <section class="section-tight chapter-ink-deep" id="resetSection" hidden>
-    <div class="shell" style="text-align:center;display:grid;gap:1rem;justify-items:center">
-      <h2 class="display d-2">Prefer a human?</h2>
-      <p class="lede" style="margin-inline:auto">Our experts know every door type in India — send a photo and get a straight answer.</p>
-      <div style="display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center">
-        <button class="btn btn-bronze" data-wa="Hi Golens! I used Find My Lock but I'd like an expert to double-check my choice." data-wa-source="finder_result">WhatsApp an expert</button>
-        <button class="btn btn-ghost" id="restartBtn">Start over</button>
+      <div style="text-align:center;margin-top:44px;display:grid;gap:14px;justify-items:center">
+        <h2 class="sec-head" style="margin:0"><div class="kicker">Prefer a human?</div></h2>
+        <p style="color:var(--text-2);max-width:52ch">Our experts know every door type in India — send a photo and get a straight answer.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+          <button class="btn-s btn-blue" data-wa="Hi Golens! I used Find My Lock but I'd like an expert to double-check my choice." data-wa-source="finder_result">WhatsApp an expert</button>
+          <button class="btn-s" style="border:1.5px solid #ddd" id="restartBtn">Start over</button>
+        </div>
       </div>
     </div>
   </section>
 </main>
+<div id="gsFooter"></div>
 
-<footer id="siteFooter"></footer>
 <script src="assets/js/data.js"></script>
-<script src="assets/js/app.js"></script>
-<script src="assets/js/finder.js"></script>
+<script src="assets/js/samsung.js"></script>
+<script>
+(function () {
+  'use strict';
+  const G = window.GOLENS;
+  const inr = window.Gfmt.inr;
+  const stage = document.getElementById('wizStage');
+  const stepsEl = document.getElementById('wizSteps');
+  const answers = { door: null, material: null, access: [], priority: null, budget: null, install: null };
+  let step = 0;
+  window.Gtrack('find_my_lock_start');
+
+  const QS = [
+    { key: 'door', title: 'Which door is this for?', sub: 'The door decides the lock family first.', opts: [
+      { v: 'main', t: 'Main entrance', s: 'Home or apartment front door' },
+      { v: 'glass', t: 'Glass door', s: 'Cabin, office or shopfront glass' },
+      { v: 'room', t: 'Bedroom / interior', s: 'Rooms, studios, inner offices' },
+      { v: 'office', t: 'Office / commercial', s: 'Workplace entry doors' }] },
+    { key: 'material', title: 'What is the door made of?', sub: 'Material changes what can be fitted.', opts: [
+      { v: 'wood', t: 'Wood', s: 'Solid wood, flush, teak' },
+      { v: 'metal', t: 'Metal or steel', s: 'MS / steel shutters, aluminium' },
+      { v: 'glass', t: 'Glass', s: 'Tempered glass, 8–12 mm typical' },
+      { v: 'unsure', t: "I'm not sure", s: "We'll help you check" }] },
+    { key: 'access', title: 'How do you want to get in?', sub: 'Pick everything you like — the more you pick, the smarter the match.', multi: true, opts: [
+      { v: 'face', t: 'Face recognition', s: 'Walk up hands-free' },
+      { v: 'fp', t: 'Fingerprint', s: 'One touch, instant' },
+      { v: 'app', t: 'Phone app / remote', s: 'Wi-Fi control from anywhere' },
+      { v: 'camera', t: 'See visitors', s: 'Camera built into the lock' },
+      { v: 'simple', t: 'Keep it simple', s: 'PIN / card / key is enough' }] },
+    { key: 'priority', title: 'What matters most?', sub: 'This re-weights the scoring.', opts: [
+      { v: 'security', t: 'Maximum security', s: 'Camera, alerts, everything watching' },
+      { v: 'convenience', t: 'Convenience', s: 'Fast, hands-free daily entry' },
+      { v: 'value', t: 'Value', s: 'The most lock for the money' },
+      { v: 'design', t: 'Design statement', s: 'The lock should look premium' }] },
+    { key: 'budget', title: 'Comfortable budget?', sub: 'Honest ranges — we stay inside them.', opts: [
+      { v: '8', t: 'Under ₹8,000', s: 'Essential smart security' },
+      { v: '15', t: 'Under ₹15,000', s: 'Face ID enters range' },
+      { v: '25', t: 'Under ₹25,000', s: 'Flagship territory' },
+      { v: 'any', t: 'Best fit, any budget', s: 'Recommend what truly fits' }] },
+    { key: 'install', title: 'Installation plans?', sub: 'Every Golens lock can be expert-installed or fitted by any carpenter.', opts: [
+      { v: 'expert', t: 'Arrange expert fitting', s: 'Golens-arranged, from ₹1,200' },
+      { v: 'carpenter', t: 'My carpenter will fit', s: 'Template + hardware included' },
+      { v: 'unsure', t: 'Not sure yet', s: "We'll explain both" }] }
+  ];
+
+  function renderSteps() {
+    stepsEl.innerHTML = QS.map((q, i) => {
+      const done = answers[q.key] !== null && (Array.isArray(answers[q.key]) ? answers[q.key].length > 0 || i < step : true);
+      const cls = i === step ? 'now' : (i < step || done) ? 'done' : '';
+      return `${i ? '<span class="wline"></span>' : ''}<span class="wstep ${cls}"><span class="n">${i < step ? '✓' : i + 1}</span>${q.key}</span>`;
+    }).join('');
+  }
+
+  function renderQ() {
+    const q = QS[step];
+    renderSteps();
+    stage.innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin-bottom:6px">
+        <h2 style="font-size:clamp(1.4rem,2.6vw,2rem);font-weight:800;letter-spacing:-.015em">${q.title}</h2>
+        <span style="font-size:12px;font-weight:800;color:var(--text-3);white-space:nowrap">Q${step + 1} / ${QS.length}</span>
+      </div>
+      <p style="color:var(--text-2);font-size:14px;margin-bottom:18px">${q.sub}</p>
+      <div class="opts" role="group" aria-label="${q.title}">
+        ${q.opts.map(o => `<button class="optcard" data-val="${o.v}" aria-pressed="${q.multi && (answers[q.key] || []).includes(o.v)}"><strong>${o.t}</strong><span>${o.s}</span><span class="tick"></span></button>`).join('')}
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:22px">
+        ${step > 0 ? '<button class="btn-s" style="border:1.5px solid #ddd" id="qBack">← Back</button>' : '<span></span>'}
+        ${q.multi ? '<button class="btn-s btn-dark" id="qNext">Continue →</button>' : '<span></span>'}
+      </div>`;
+    stage.querySelectorAll('.optcard').forEach(b => b.addEventListener('click', () => {
+      const v = b.dataset.val;
+      if (q.multi) {
+        const arr = answers[q.key] || [];
+        const i = arr.indexOf(v);
+        if (i >= 0) arr.splice(i, 1); else arr.push(v);
+        answers[q.key] = arr;
+        b.setAttribute('aria-pressed', arr.includes(v));
+      } else {
+        answers[q.key] = v;
+        stage.querySelectorAll('.optcard').forEach(x => x.setAttribute('aria-pressed', 'false'));
+        b.setAttribute('aria-pressed', 'true');
+        setTimeout(next, 240);
+      }
+    }));
+    const back = stage.querySelector('#qBack');
+    if (back) back.addEventListener('click', () => { step--; renderQ(); });
+    const nx = stage.querySelector('#qNext');
+    if (nx) nx.addEventListener('click', next);
+  }
+
+  function next() {
+    const q = QS[step];
+    if (q.multi && !(answers[q.key] || []).length) answers[q.key] = ['simple'];
+    step++;
+    if (step >= QS.length) finish(); else renderQ();
+  }
+
+  /* scoring engine (hard gates + priority weights) */
+  function scoreLock(p, a) {
+    let s = 0; const why = [];
+    const acc = p.access || [];
+    if (a.door === 'glass') {
+      if (p.family !== 'glass') return null;
+      s += 30; why.push('Built specifically for glass doors');
+    } else {
+      if (p.family === 'glass') return null;
+      if ((p.door || []).includes(a.door)) { s += 26; why.push('Rated for this door type'); }
+      else if (a.door === 'office' && (p.door || []).includes('main')) { s += 14; why.push('Suitable for workplace doors'); }
+      else return null;
+    }
+    if (a.material === 'glass' && p.family === 'glass') s += 10;
+    if (a.material === 'metal' && (p.material || []).some(m => m === 'metal' || m === 'steel')) { s += 8; why.push('Rated for metal / steel doors'); }
+    if (a.material === 'wood' && (p.material || []).includes('wood')) { s += 8; why.push('Fits standard wooden doors'); }
+    const wants = a.access || [];
+    if (wants.includes('face')) {
+      if (acc.includes('face3d')) { s += 18; why.push('3D Face ID — hands-free entry'); }
+      else if (acc.some(x => x.startsWith('face'))) { s += 13; why.push('Face recognition unlock'); }
+      else return null;
+    }
+    if (wants.includes('fp')) { if (acc.includes('fp')) { s += 12; why.push('Fingerprint unlock'); } else return null; }
+    if (wants.includes('app')) { if (p.wifi) { s += 14; why.push('Wi-Fi + app: remote unlock & notifications'); } else if (p.bt) { s += 5; why.push('Bluetooth app control'); } else return null; }
+    if (wants.includes('camera')) { if (p.camera) { s += 16; why.push('Built-in camera to see visitors'); } else return null; }
+    if (wants.includes('simple')) { s += 4; }
+    if (a.priority === 'security') { if (p.camera) { s += 12; why.push('Camera adds awareness'); } if (acc.includes('face3d')) s += 6; if (p.wifi) s += 6; if (p.badge === 'advanced') s += 6; }
+    if (a.priority === 'convenience') { if (acc.includes('face3d')) s += 10; if (acc.includes('fp')) s += 5; if (p.lcd) s += 3; }
+    if (a.priority === 'value') { s += Math.max(0, 14 - p.price / 1600); if (p.mrp) s += 3; }
+    if (a.priority === 'design') { if (['x57', 'vintage', 'x95g', 'x28b', 'ultraedge'].includes(p.id)) { s += 9; why.push('A finish worth showing off'); } if (p.body && /alloy/i.test(p.body)) s += 4; }
+    const cap = a.budget === 'any' ? Infinity : +a.budget * 1000;
+    if (p.price > cap * 1.06) return null;
+    if (a.budget !== 'any') s += Math.max(0, 8 - (cap - p.price) / 900);
+    if (p.badge === 'flagship') s += 2;
+    if (p.soldOut) s -= 25;
+    return { score: s, why: why.slice(0, 4) };
+  }
+
+  function finish() {
+    window.Gtrack('find_my_lock_complete', { door: answers.door, priority: answers.priority, budget: answers.budget });
+    const ranked = G.locks().map(p => { const r = scoreLock(p, answers); return r ? { p, score: r.score, why: r.why } : null; })
+      .filter(Boolean).sort((x, y) => y.score - x.score);
+    renderSteps();
+    stage.innerHTML = '';
+    const sec = document.getElementById('resultSec');
+    sec.hidden = false;
+    const mount = document.getElementById('resultMount');
+    if (!ranked.length) {
+      mount.innerHTML = `
+        <div class="resultbox" style="grid-template-columns:1fr">
+          <div>
+            <span class="matchpill" style="background:#fef3c7;color:#b45309">EXPERT ROUTE</span>
+            <h2 style="font-size:clamp(1.4rem,2.6vw,2rem);font-weight:800;margin:12px 0 8px">Your door needs a human eye.</h2>
+            <p style="color:var(--text-2);max-width:54ch">Your combination is unusual — and we don't guess. Send a photo of your door and a Golens expert will confirm exactly what fits, usually the same day.</p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px">
+              <button class="btn-s btn-blue" data-wa="Hi Golens! Find My Lock couldn't auto-match my door — here's a photo." data-wa-source="finder_nomatch">Send a door photo</button>
+              <a class="btn-s" style="border:1.5px solid #ddd" href="locks.html">Browse the full range</a>
+            </div>
+          </div>
+        </div>`;
+      sec.scrollIntoView({ behavior: 'smooth' });
+      return;
+    }
+    const best = ranked[0], alts = ranked.slice(1, 3);
+    const pct = Math.min(97, Math.round(60 + best.score / 1.4));
+    mount.innerHTML = `
+      <div class="resultbox">
+        <a class="media" href="product.html?p=${best.p.id}"><img src="${best.p.image}" alt="${best.p.name}"></a>
+        <div>
+          <span class="matchpill">✓ ${pct}% MATCH</span>
+          <h2 style="font-size:clamp(1.5rem,2.8vw,2.2rem);font-weight:800;letter-spacing:-.02em;margin:10px 0 4px">Your best match: ${best.p.name}${best.p.line ? ' · ' + best.p.line : ''}</h2>
+          <p style="color:var(--text-2)">${best.p.subtitle}</p>
+          <ul class="whylist">${best.why.map(w => `<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4.5 12.5l5 5L20 7" stroke-linecap="round"/></svg>${w}</li>`).join('')}</ul>
+          <div class="spec3">
+            <div><strong>${inr(best.p.price)}</strong><span>Price today</span></div>
+            <div><strong>${best.p.warranty} yr</strong><span>Warranty</span></div>
+            <div><strong>${(best.p.access || []).length} ways</strong><span>To unlock</span></div>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <a class="btn-s btn-dark" href="product.html?p=${best.p.id}">Explore &amp; buy</a>
+            <a class="btn-s" style="border:1.5px solid #ddd" href="compare.html?ids=${[best.p.id].concat(alts.map(a => a.p.id)).join(',')}">Compare alternatives</a>
+            <button class="btn-s btn-blue" data-wa="Hi Golens! Find My Lock recommended the ${best.p.name} for my ${answers.door} door — can you double-check?" data-wa-source="finder_result">Ask an expert</button>
+          </div>
+        </div>
+      </div>
+      ${alts.length ? `
+      <div style="margin-top:34px">
+        <div class="sec-head"><div><div class="kicker">Runner-ups</div><h2>Also strong for you</h2></div></div>
+        <div class="grid-4">${alts.map(a => window.Gcard(a.p)).join('')}</div>
+      </div>` : ''}
+      <p style="font-size:12px;color:var(--text-3);margin-top:18px;max-width:72ch">Match percentage reflects how well this lock's published features fit your answers — guidance, not a guarantee. Final fit is always confirmed against your door (thickness, material, existing bore holes) before or after you order.</p>`;
+    window.Greveal(mount);
+    document.getElementById('restartBtn').addEventListener('click', () => location.reload());
+    sec.scrollIntoView({ behavior: rm() ? 'auto' : 'smooth' });
+    function rm() { return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches; }
+  }
+
+  renderQ();
+})();
+</script>
 </body>
 </html>

@@ -1,85 +1,52 @@
-# GOLENS — "Threshold" Experience
+# Golens — Official-Style Showcase Site
 
-A complete reconception of **golens.in** as an international-grade smart-security
-commerce experience. Business structure preserved; the experience reinvented.
+A fast, honest, Samsung.com-inspired e-commerce experience for **Golens** (GoLens Import & Export Pvt Ltd, Bikaner) — the smart-lock and security importer behind [golens.in](https://golens.in).
 
-**Live preview:** served from this repo (static site — open `index.html`).
+Built as a static site (HTML + CSS + vanilla JS, no build step) with a **single source of truth**: `assets/js/data.js` mirrors the real golens.in catalogue — real prices, real specifications, real product URLs and real Shopify CDN imagery. Nothing on this site is fabricated: no invented ratings, reviews, stock claims or delivery promises.
 
----
+## Pages
 
-## 1 · What this is
-
-| Layer | Approach |
+| Page | What it does |
 |---|---|
-| **Source of truth** | The live Shopify store golens.in, audited 2026-08-29 (homepage, all-locks collection ×5 pages, attendance/camera/dashcam/doorbell collections, sitemap pages & collections, product JSON for X95 Black/Gold + X28, policy pages). |
-| **Products & prices** | 36 real SKUs with real handles, prices, compare-at prices, access methods, warranty & door-fit data in `assets/js/data.js`. Every product links to its real golens.in product URL. **Nothing is fabricated.** |
-| **Imagery** | Real product photography from the Shopify CDN (untouched). Environment scenes (entrances, doors, install, travel) are AI-generated concepts that contain **no product hardware** — products are never misrepresented. |
-| **Checkout** | Cart & buy actions hand off to the official golens.in product pages to complete payment securely. Cart state persists in `localStorage`. |
+| `index.html` | Samsung-style home: auto hero carousel, benefits, category circles, feature-card carousels, KV banner, split promos, recommended grid, support strip |
+| `locks.html` | Full lock catalogue with sticky filter chips (door type, access, features, price) + deep-linkable `?f=` presets |
+| `product.html` | PDP: gallery, honest buy box, spec table, **interactive door-compatibility checker**, installation paths, FAQ (with schema), related locks, sticky mobile buy bar |
+| `find-my-lock.html` | 6-question recommender with a hard-gate scoring engine; borderline cases route to a human expert instead of guessing |
+| `compare.html` | Side-by-side comparison of up to 4 locks; "—" means the official listing doesn't state it |
+| `support.html` | Contact paths (toll-free 1800-123-7255, WhatsApp, care@golens.in), installation paths, warranty scope, FAQ |
+| `business.html` | B2B: offices, glass cabins, retail, hotels — with volume-quote CTA |
 
-## 2 · The design language — "Threshold"
+## Architecture
 
-Golens owns a moment: **the threshold**. The site is built around the door →
-authentication → welcome sequence.
+```
+assets/
+  css/samsung.css   # whole design system (white, Manrope, #034ea2 blue)
+  js/data.js        # catalogue: 36 SKUs, collections, store facts (authoritative)
+  js/samsung.js     # shared runtime: header/footer injection, mega menu, mobile nav,
+                    # search overlay (Ctrl+K), cart drawer (localStorage → golens.in checkout),
+                    # toast, product cards, scroll reveals, analytics (dataLayer)
+assets/img/         # lifestyle/concept photography (never misrepresents product geometry)
+```
 
-- **Chapters, not one background:** ink (cinematic dark) ↔ ivory (architectural
-  light) alternate — dark hero → light range → dark launch → dark scenarios →
-  light shop → light trust → dark security → light answers → dark conversion.
-- **Signature motif:** the arched doorway + the vertical light seam (hero door,
-  launch plate, compatibility door, result card).
-- **Type:** Fraunces (editorial display) + Archivo (UI/body) + ui-monospace for
-  technical chips.
-- **Motion:** weighted cubic-bezier(.16,1,.3,1) reveals; hero authentication
-  timeline (recognise → confirm → grant → open); scroll-scrubbed flagship
-  launch; product-transform-per-chapter; `prefers-reduced-motion` fully
-  honoured (sticky launch degrades to a readable stack).
-- **Colour system:** Ink `#0B0E13` · Ivory `#F6F2E9` · Bronze `#B9975A`
-  (restrained metal) · Signal green `#43C98D` (authentication states only).
+- Load order on every page: `data.js` → `samsung.js` → page script.
+- Pages mount the chrome with `<div id="gsHeader"></div>` / `<div id="gsFooter"></div>`.
+- Cart is local (`golens_cart_v1`); checkout hands off to up to 3 real golens.in product URLs.
+- Analytics events (`home_view`, `product_view`, `add_to_cart`, `filter`, `finder_*`, `compatibility_check`, …) push to `window.dataLayer`.
+- Accessibility: skip links, keyboard nav, focus states, `prefers-reduced-motion` support, ESC closes overlays.
+- SEO: Organization / Product / FAQ JSON-LD, canonicals, honest meta descriptions.
 
-## 3 · Pages
+## Data honesty rules
 
-| Page | Purpose |
-|---|---|
-| `index.html` | Cinematic hero (door unlocks on load), trust strip + ticker, shop-by-door portals, **7-chapter sticky flagship launch (X95)**, ways-in rail, 4 real-life scenarios, best-sellers, why-buy-direct, more security, honest reviews shell, B2B, FAQ + schema. |
-| `locks.html` | Collection with filter chips (door / capability / Wi-Fi / camera / price) over the live catalogue; URL presets `?f=main\|glass\|room\|face\|fp\|wifi\|camera`. |
-| `product.html?p=id` | Full PDP: gallery (swipe/zoom-hover), price + save pill, Buy/Add, WhatsApp expert, decision module ("is this the right lock?"), **interactive hotspots**, stories, spec table, install, **live compatibility checker with animated door**, FAQ + schema, related, mobile sticky buy bar. |
-| `find-my-lock.html` | **Real recommender**: 6 questions → weighted scoring over catalogue (hard gates for glass/face/fingerprint asks, priority re-weighting, budget ceiling, sold-out penalty). Verified to return different winners for different personas (glass→Armor Face, value→X3N/X39, max-security→Protector X57). |
-| `compare.html` | 2–4 locks, grouped for non-technical buyers (ways in / security / smart / fit / install / price). Accepts `?ids=`. |
-| `support.html` | Compatibility paths, installation story (both honest paths + real ₹1,200–1,500 range), warranty, 8 FAQs, real contact block (1800-123-7255, WhatsApp, care@golens.in). |
-| `business.html` | Builders / architects / hotels / offices + dealer & bulk links (real pages). |
+1. Prices, MRP, specs, warranty — only from `data.js` (mirrors golens.in).
+2. Unstated specs render as "—", never guessed.
+3. Compatibility checker and recommender give honest outcomes, including "expert confirmation recommended" and "expert route" when unsure.
+4. Lifestyle imagery is atmospheric; product imagery is the real Shopify CDN photography.
 
-## 4 · Shared systems
+## Run locally
 
-`assets/js/app.js` — injected header/mega-menu/mobile-nav/footer, cart drawer,
-search overlay (intent-aware: "face", "glass", "under 10000"…), toast, reveal
-engine (IntersectionObserver), icon sprite (custom 30-icon line set),
-`dataLayer`-ready analytics (`Gtrack`): product_view, add_to_cart, begin_checkout,
-whatsapp_click, search, filter, compare, find_my_lock_*, compatibility_check,
-hotspot_open, cta_click… all wired via `data-event` attributes (A/B-testable
-components).
-
-## 5 · Verified business facts used
-
-- Company: GoLens Import & Export Pvt Ltd, Bikaner · Toll-free 1800-123-7255 ·
-  care@golens.in / support@golens.in · WhatsApp +91 99829 87865 (10:30–18:00)
-- 2-year standard warranty (X32 lists 1 year) · Easy EMI · video-call support
-- Installation: expert paid from ₹1,200 (X95: ₹1,200–1,500, location-based) or
-  any carpenter; complimentary post-install on-site support
-- Collections preserved: main-door-lock-2, glass-door-lock, room-interior-door-locks,
-  cabinet-locks, 3d-face-lock, biometric-lock, all-locks, cameras, dash-cameras,
-  attendance-machines, doorbell, deals, become-a-dealer, buy-bulk-discounts…
-
-## 6 · Run it
-
-Static site — any static server:
+Any static server, e.g.:
 
 ```bash
 python3 -m http.server 8080
-# → http://localhost:8080
+# or: npx serve .
 ```
-
-## 7 · Known honest limits
-
-- Reviews module is a CMS-ready shell — no invented ratings.
-- The theme's leftover demo carousel (earbud data) on the live site was
-  deliberately **not** reproduced.
-- Cart checkout completes on golens.in (official store) — no payment is simulated.
