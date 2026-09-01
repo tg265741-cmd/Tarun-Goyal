@@ -505,3 +505,18 @@ html { scroll-behavior: smooth; }
 .btn-red { letter-spacing: .01em; }
 .btn-dark { letter-spacing: .01em; }
 .footer::before { background: #c8102e; }
+
+/* ============================================================
+   HERO CTAs — Samsung.com pattern (solid primary + outlined secondary)
+   Primary "Buy now"  → .btn-red   (solid brand accent, already defined)
+   Secondary "Learn more" → .btn-ghost below (border-only, transparent)
+   Dark slide secondary reuses existing .btn-outline-w.
+   ============================================================ */
+.btn-ghost { border-color: #111; color: #111; background: transparent; }
+.btn-ghost:hover { background: #111; color: #fff; }
+
+/* Mobile: hero CTAs stack full-width (desktop stays side-by-side via .hs-ctas flex) */
+@media (max-width: 640px) {
+  .hero-slide .hs-ctas { flex-direction: column; align-items: stretch; gap: 10px; }
+  .hero-slide .hs-ctas .btn-s { width: 100%; }
+}
