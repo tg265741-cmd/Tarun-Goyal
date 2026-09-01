@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdn.shopify.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/samsung.css?v=3">
+<link rel="stylesheet" href="assets/css/samsung.css?v=4">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 2 29 7v8c0 8-5.5 13.4-13 15C8.5 28.4 3 23 3 15V7z' fill='none' stroke='%23c8102e' stroke-width='2.4'/%3E%3C/svg%3E">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","name":"Golens","legalName":"GoLens Import & Export Pvt Ltd","url":"https://golens.in","email":"care@golens.in","telephone":"1800-123-7255","address":{"@type":"PostalAddress","addressLocality":"Bikaner","addressRegion":"Rajasthan","addressCountry":"IN"}}
@@ -90,7 +90,8 @@
     <div><div class="kicker">Golens Store</div><h2>Shop by category</h2></div>
     <a class="link-s" href="locks.html">View all products <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 12h15M13 6l6 6-6 6" stroke-linecap="round"/></svg></a>
   </div>
-  <div class="cat-row" id="catRow"></div>
+  <!-- DJI-style category cards: image bg + logo + label + Explore now -->
+  <div class="drow" id="catRow"></div>
 </section>
 
 <!-- FEATURED SMART LOCKS -->
@@ -99,11 +100,9 @@
     <div><div class="kicker">Best Sellers</div><h2>Smart locks people love</h2><p class="sub">Real prices from the official Golens store.</p></div>
     <a class="link-s" href="locks.html">See all <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 12h15M13 6l6 6-6 6" stroke-linecap="round"/></svg></a>
   </div>
-  <div class="rowcar">
-    <button class="rowcar-nav prev" data-car="lockRow" data-dir="-1" aria-label="Scroll left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 5l-7 7 7 7" stroke-linecap="round"/></svg></button>
-    <div class="rowcar-viewport" id="lockRow"></div>
-    <button class="rowcar-nav next" data-car="lockRow" data-dir="1" aria-label="Scroll right"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 5l7 7-7 7" stroke-linecap="round"/></svg></button>
-  </div>
+  <!-- DJI-style product cards: image bg + logo + headline + tagline + Learn/Buy links.
+       Mobile: horizontal swipe row · Desktop: fitting grid -->
+  <div class="drow" id="lockRow"></div>
 </section>
 
 <!-- KV BANNER -->
@@ -253,15 +252,49 @@
     { t: 'Doorbell', s: 'video + monitor', img: G.byId('db1').image, href: 'https://golens.in/collections/doorbell' },
     { t: 'Attendance', s: 'for offices', img: G.byId('am05e').image, href: 'https://golens.in/collections/attendance-machines' }
   ];
+  const logo = window.Gicon('logo');
   document.getElementById('catRow').innerHTML = cats.map((c, i) => `
-    <a class="cat-tile" href="${c.href}" data-rv style="--rvd:${i * .06}s">
-      <span class="circ"><img src="${c.img}" alt="${c.t}" loading="lazy"></span>
-      <strong>${c.t}</strong><span>${c.s}</span>
+    <a class="dcard dcard-cat" href="${c.href}" data-cat="${c.t}" data-rv style="--rvd:${i * .06}s" aria-label="${c.t} — ${c.s}">
+      <img src="${c.img}" alt="${c.t}" loading="lazy">
+      <span class="dscrim" aria-hidden="true"></span>
+      <span class="dlogo" aria-hidden="true">${logo}</span>
+      <div class="dbody">
+        <h3>${c.t}</h3>
+        <p class="dtag">${c.s}</p>
+        <span class="dlink">Explore now <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 12h15M13 6l6 6-6 6" stroke-linecap="round"/></svg></span>
+      </div>
     </a>`).join('');
+  document.getElementById('catRow').addEventListener('click', e => {
+    const c = e.target.closest('.dcard-cat');
+    if (c) window.Gtrack('category_card_click', { category: c.dataset.cat });
+  });
 
   /* rows */
   const card = window.Gcard;
-  document.getElementById('lockRow').innerHTML = '<div class="rowcar-track">' + ['x95','x95g','x57','x28','titan','x82','vintage','shieldface','x3n'].map(id => card(G.byId(id))).join('') + '</div>';
+  /* DJI-style product cards — existing products, prices and links preserved */
+  const tagline = p => (p.access || []).slice(0, 2).map(a => window.ACCESS_LABEL[a]).filter(Boolean).join(' · ') || p.subtitle;
+  document.getElementById('lockRow').innerHTML = ['x95','x95g','x57','x28','titan','x82','vintage','shieldface','x3n'].map((id, i) => {
+    const p = G.byId(id);
+    return `
+    <article class="dcard" data-pid="${p.id}" data-rv style="--rvd:${(i % 4) * .07}s">
+      <img src="${p.image}" alt="${p.name}${p.line ? ' ' + p.line : ''}" loading="lazy">
+      <span class="dscrim" aria-hidden="true"></span>
+      <span class="dlogo" aria-hidden="true">${logo}</span>
+      <div class="dbody">
+        <h3>${p.name}${p.line ? ` <span class="dline">${p.line}</span>` : ''}</h3>
+        <p class="dtag">${tagline(p)}</p>
+        <p class="dprice">${window.Gfmt.inr(p.price)}${p.mrp ? ` <s>${window.Gfmt.inr(p.mrp)}</s>` : ''}</p>
+        <div class="dlinks">
+          <a href="product.html?p=${p.id}" data-pid="${p.id}" data-cta="learn">Learn More</a>
+          <a href="${p.url}" target="_blank" rel="noopener" data-pid="${p.id}" data-cta="buy">Buy Now</a>
+        </div>
+      </div>
+    </article>`;
+  }).join('');
+  document.getElementById('lockRow').addEventListener('click', e => {
+    const a = e.target.closest('.dlinks a');
+    if (a) window.Gtrack('dcard_cta_click', { item: a.dataset.pid, cta: a.dataset.cta });
+  });
   document.getElementById('secRow').innerHTML = '<div class="rowcar-track">' + ['wc22k','db1','am05e','t10g2c','wc23k','am03e','wc15k'].map(id => card(G.byId(id))).join('') + '</div>';
   document.getElementById('recGrid').innerHTML = ['x37','doorsafe','x39','instalock'].map(id => card(G.byId(id))).join('');
 
