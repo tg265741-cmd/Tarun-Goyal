@@ -18,7 +18,7 @@
   window.Gwa = wa;
 
   const IC = {
-    logo: '<svg viewBox="0 0 32 32" fill="none"><path d="M16 2 29 7v8c0 8-5.5 13.4-13 15C8.5 28.4 3 23 3 15V7z" stroke="#c8102e" stroke-width="2"/><circle cx="18.5" cy="11.5" r="1.5" fill="#c8102e"/></svg>',
+    logo: '<img src="assets/img/logo.png" alt="Golens logo" style="height:32px;width:auto">',
     search: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5 21 21" stroke-linecap="round"/></svg>',
     close: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M5 5l14 14M19 5 5 19" stroke-linecap="round"/></svg>',
     menu: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"/></svg>',
