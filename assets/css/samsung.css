@@ -618,3 +618,29 @@ body.hero-dark .hdji-list::before { background: rgba(255,255,255,.28); }
 .mobnav .logo img { height: 32px; width: auto; }
 /* dark transparent navbar: invert the black wordmark so it stays visible */
 .dji-hero.hero-dark:not(.hdr-solid) .header .logo img { filter: brightness(0) invert(1); }
+
+/* ============================================================
+   MOBILE POLISH — hero video slide ko desktop jaisa dikhana
+   · landscape video ko poora frame dikhna (contain-fit, no brutal crop)
+   · sahi viewport height (svh — mobile browser chrome ke saath)
+   · readable copy (soft light wash), desktop-feel type scale
+   · touch-friendly pill, compact header logo
+   ============================================================ */
+@media (max-width: 768px) {
+  .hero-dji { height: calc(100svh + var(--hh)); min-height: 560px; }
+  @supports not (height: 100svh) { .hero-dji { height: calc(100vh + var(--hh)); } }
+  /* poora video frame dikhe (desktop view jaisa), peeche premium dark base */
+  .hdji-slide .vbg { object-fit: contain; background: #0c0c0e; }
+  /* copy block: soft light wash guarantees readability over any frame */
+  .hdji-copy { top: calc(var(--hh, 72px) + 2.5vh); background: linear-gradient(180deg, rgba(255,255,255,.72) 0%, rgba(255,255,255,.35) 55%, rgba(255,255,255,0) 92%); padding: 14px 18px 26px; }
+  .hdji-copy .hdji-title { font-size: clamp(2rem, 9vw, 2.7rem); }
+  .hdji-copy .hdji-sub { font-size: 1rem; }
+  .hdji-copy .eyebrow { font-size: 11.5px; }
+  .hdji-ctas { margin-top: 18px; gap: 12px; }
+  .hdji-ctas .pill { padding: .78rem 1.55rem; font-size: 14px; }
+  .header .logo img { height: 28px; }
+}
+@media (max-width: 400px) {
+  .hdji-ctas .pill { padding: .72rem 1.3rem; font-size: 13.5px; }
+}
+@media (prefers-reduced-motion: reduce) { .hdji-copy { background: none; } }
