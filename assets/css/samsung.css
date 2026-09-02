@@ -611,3 +611,10 @@ body.hero-dark .hdji-list::before { background: rgba(255,255,255,.28); }
 
 /* hero video background — covers like .bg, no chrome; PNG poster is the fallback */
 .hdji-slide .vbg { object-fit: cover; object-position: center; background: transparent; }
+
+/* user wordmark logo (assets/img/logo.png) — sized per context */
+.header .logo img { height: 34px; width: auto; display: block; }
+.footer .logo img { height: 46px; width: auto; display: block; margin-bottom: 10px; }
+.mobnav .logo img { height: 32px; width: auto; }
+/* dark transparent navbar: invert the black wordmark so it stays visible */
+.dji-hero.hero-dark:not(.hdr-solid) .header .logo img { filter: brightness(0) invert(1); }

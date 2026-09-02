@@ -60,7 +60,7 @@
     </div>
     <header class="header" id="sHeader">
       <div class="container">
-        <a class="logo" href="index.html" aria-label="Golens home">${IC.logo}<span>GOLENS<small>SMART SECURITY</small></span></a>
+        <a class="logo" href="index.html" aria-label="Golens home">${IC.logo}</a>
         <nav aria-label="Primary">
           <ul class="mainnav">
             <li data-dd>
@@ -106,7 +106,7 @@
     </header>
     <div class="mobnav" id="gsMobnav" role="dialog" aria-label="Menu">
       <div class="mobnav-head">
-        <span class="logo" style="font-size:1.2rem">${IC.logo}<span>GOLENS</span></span>
+        <span class="logo">${IC.logo}</span>
         <button class="hicon" id="gsMobClose" aria-label="Close menu">${IC.close}</button>
       </div>
       <details><summary>Smart Locks ${IC.plus}</summary><ul>
@@ -162,7 +162,7 @@
       <div class="container">
         <div class="footer-grid">
           <div class="footer-brand">
-            <span class="logo" style="font-size:1.2rem">${IC.logo}<span>GOLENS<small>SMART SECURITY</small></span></span>
+            <span class="logo">${IC.logo}</span>
             <p>Smart locks, cameras and security for homes and workplaces — imported, sold and supported by GoLens Import &amp; Export Pvt Ltd, Bikaner, Rajasthan.</p>
             <div class="footer-contact">
               <a href="tel:18001237255">${IC.phone} 1800-123-7255 (toll-free)</a>
