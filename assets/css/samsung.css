@@ -629,10 +629,18 @@ body.hero-dark .hdji-list::before { background: rgba(255,255,255,.28); }
 @media (max-width: 768px) {
   .hero-dji { height: calc(100svh + var(--hh)); min-height: 560px; }
   @supports not (height: 100svh) { .hero-dji { height: calc(100vh + var(--hh)); } }
-  /* poora video frame dikhe (desktop view jaisa), peeche premium dark base */
-  .hdji-slide .vbg { object-fit: contain; background: #0c0c0e; }
-  /* copy block: soft light wash guarantees readability over any frame */
-  .hdji-copy { top: calc(var(--hh, 72px) + 2.5vh); background: linear-gradient(180deg, rgba(255,255,255,.72) 0%, rgba(255,255,255,.35) 55%, rgba(255,255,255,0) 92%); padding: 14px 18px 26px; }
+  /* SMARTPHONE-FIRST: full-bleed cover — koi black bar nahi, screen bhar jaati hai */
+  .hdji-slide .vbg { object-fit: cover; object-position: center; }
+  /* copy: dark gradient scrim + white text — video ke kisi bhi frame par premium readable */
+  .hdji-copy { top: calc(var(--hh, 72px) + 2.5vh); background: linear-gradient(180deg, rgba(0,0,0,.52) 0%, rgba(0,0,0,.28) 48%, rgba(0,0,0,0) 88%); padding: 16px 18px 30px; }
+  .hdji-copy .eyebrow { color: rgba(255,255,255,.85); }
+  .hdji-copy .hdji-title { color: #fff; text-shadow: 0 2px 18px rgba(0,0,0,.45); }
+  .hdji-copy .hdji-sub { color: rgba(255,255,255,.94); text-shadow: 0 1px 10px rgba(0,0,0,.4); }
+  /* pills: white outline on dark scrim (DJI mobile pattern) */
+  .hdji-ctas .pill { border-color: rgba(255,255,255,.65); color: #fff; }
+  .hdji-ctas .pill:hover, .hdji-ctas .pill:focus-visible { background: #fff; color: #101114; }
+  .hdji-ctas .pill-buy { border-color: #fff; color: #fff; }
+  .hdji-ctas .pill-buy:hover, .hdji-ctas .pill-buy:focus-visible { background: var(--red); border-color: var(--red); color: #fff; }
   .hdji-copy .hdji-title { font-size: clamp(2rem, 9vw, 2.7rem); }
   .hdji-copy .hdji-sub { font-size: 1rem; }
   .hdji-copy .eyebrow { font-size: 11.5px; }
@@ -643,4 +651,4 @@ body.hero-dark .hdji-list::before { background: rgba(255,255,255,.28); }
 @media (max-width: 400px) {
   .hdji-ctas .pill { padding: .72rem 1.3rem; font-size: 13.5px; }
 }
-@media (prefers-reduced-motion: reduce) { .hdji-copy { background: none; } }
+@media (prefers-reduced-motion: reduce) { .hdji-copy { background: linear-gradient(180deg, rgba(0,0,0,.45), transparent 85%); } }
