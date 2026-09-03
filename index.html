@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdn.shopify.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/samsung.css?v=25432109876543210">
+<link rel="stylesheet" href="assets/css/samsung.css?v=265432109876543210">
 <link rel="icon" type="image/png" href="assets/img/logo.png">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","name":"Golens","legalName":"GoLens Import & Export Pvt Ltd","url":"https://golens.in","email":"care@golens.in","telephone":"1800-123-7255","address":{"@type":"PostalAddress","addressLocality":"Bikaner","addressRegion":"Rajasthan","addressCountry":"IN"}}
@@ -80,10 +80,10 @@
 <!-- SHOP BY PURPOSE — security for every part of your life -->
 <section class="section-s container" id="purposes">
   <div class="sec-head" data-rv>
-    <div><div class="kicker">Why do you need security?</div><h2>Security for every part of your life</h2>
-      <p class="sub">Pick your purpose — matched gear for your home, car, doorstep and office.</p></div>
+    <div><div class="kicker">Shop by purpose</div><h2>What do you want to protect?</h2>
+      <p class="sub">Start with your reason — we'll match the right security for your home, car, doorstep and office.</p></div>
   </div>
-  <div class="pgrid" id="purposeGrid"></div>
+  <div class="prows" id="purposeGrid"></div>
 </section>
 
 <!-- FEATURED SMART LOCKS -->
@@ -196,8 +196,8 @@
 </main>
 <div id="gsFooter"></div>
 
-<script src="assets/js/data.js?v=25432109876543210"></script>
-<script src="assets/js/samsung.js?v=25432109876543210"></script>
+<script src="assets/js/data.js?v=265432109876543210"></script>
+<script src="assets/js/samsung.js?v=265432109876543210"></script>
 <script>
 (function () {
   'use strict';
@@ -330,13 +330,13 @@
   ].map(f => `<span class="tr-i"><span class="tr-ic">${window.Gicon(f[0])}</span><span class="tr-t"><strong>${f[1]}</strong><small>${f[2]}</small></span></span>`).join('');
   document.getElementById('catGrid').after(rib);
 
-  /* = SHOP BY PURPOSE — Road Safety / Home Safety / ... (real counts & prices) = */
+  /* = SHOP BY PURPOSE — motive-first editorial panels (copy from real subtitles) = */
   const PURPOSES = [
-    { key: 'home',   tag: 'Home Safety',     t: 'Smart Door Locks',    blurb: 'Keyless entry for your main door',      d: p => (p.door || []).includes('main'), unit: 'locks',    img: 'x95',   href: 'locks.html?f=main' },
-    { key: 'road',   tag: 'Road Safety',     t: 'Dash Cams',           blurb: 'Front + rear recording for every drive', d: p => (p.url || '').includes('/dash-cameras/'), unit: 'models', img: 't10g2c', href: G.COLLECTIONS.dashcams.url },
-    { key: 'watch',  tag: '24\u00d77 Watch',    t: 'WiFi Security Cameras', blurb: 'Live view on your phone, from anywhere', d: p => /^wc/.test(p.id), unit: 'cameras',  img: 'wc23k', href: G.COLLECTIONS.cameras.url },
-    { key: 'door',   tag: 'Doorstep Safety', t: 'Video Doorbell',      blurb: 'Know who is at your door',               d: p => p.id === 'db1', unit: 'models',    img: 'db1',   href: G.COLLECTIONS.doorbell.url },
-    { key: 'office', tag: 'Office & Staff',  t: 'Attendance Machines', blurb: 'Reliable attendance for your team',      d: p => /^am/.test(p.id), unit: 'machines', img: 'am05e', href: G.COLLECTIONS.attendance.url }
+    { key: 'home',   tag: 'For your home',      t: 'Never lose a key again',      blurb: 'Unlock the main door with your face, fingerprint or phone — keys optional, forever. Real security for the whole family.', d: p => (p.door || []).includes('main'), unit: 'locks',    img: 'x95',   cta: 'Explore smart locks',   href: 'locks.html?f=main' },
+    { key: 'road',   tag: 'For your car',       t: 'Proof for every drive',       blurb: '4K front + 1080p rear recording — your witness in accidents, disputes and insurance claims.', d: p => (p.url || '').includes('/dash-cameras/'), unit: 'models',  img: 't10g2c', cta: 'Explore dash cams',     href: G.COLLECTIONS.dashcams.url },
+    { key: 'watch',  tag: '24\u00d7 peace of mind', t: 'Check home from anywhere', blurb: 'Live 1080p view on your phone with pan-tilt and two-way audio — kids, elders and home, always in sight.', d: p => /^wc/.test(p.id), unit: 'cameras', img: 'wc23k', cta: 'Explore cameras',       href: G.COLLECTIONS.cameras.url },
+    { key: 'door',   tag: 'For your doorstep',  t: "See who's at the door",       blurb: 'Video doorbell with an 8\u2033 indoor monitor — and it works even without internet.', d: p => p.id === 'db1', unit: 'models', img: 'db1', cta: 'Explore doorbells',      href: G.COLLECTIONS.doorbell.url },
+    { key: 'office', tag: 'For your office',    t: 'Attendance without arguments', blurb: 'Face, fingerprint & RFID attendance with cloud software — accurate records, zero buddy-punching.', d: p => /^am/.test(p.id), unit: 'machines', img: 'am05e', cta: 'Explore attendance machines', href: G.COLLECTIONS.attendance.url }
   ];
   const pstat = d => {
     const list = G.CATALOG.filter(d);
@@ -348,15 +348,20 @@
   document.getElementById('purposeGrid').innerHTML = PURPOSES.map((c, i) => {
     const s = pstat(c.d);
     const ext = /^https?:/.test(c.href);
-    const strip = s.off ? `<span class="offstrip">UP TO ${s.off}% OFF</span>` : '';
-    return `<a class="catx pur" href="${c.href}"${ext ? ' target="_blank" rel="noopener"' : ''} data-purpose="${c.key}" data-rv style="--rvd:${i * .06}s" aria-label="${c.tag} — ${c.t}, from ${window.Gfmt.inr(s.min)}${s.off ? `, up to ${s.off}% off` : ''}">
-      <span class="ptag">${c.tag}</span>
-      <span class="ph"><img src="${G.byId(c.img).image}" alt="${c.t}" loading="lazy">${strip}</span>
-      <span class="bx"><h3>${c.t}</h3><p class="blurb">${c.blurb}</p>
-        <span class="cnt">${s.n} ${c.unit}</span>
-        <span class="pr">From <strong>${window.Gfmt.inr(s.min)}</strong></span>
-        <span class="go">Shop now ${ext ? extArrow : arrow}</span></span>
-    </a>`;
+    const attrs = ext ? ' target="_blank" rel="noopener"' : '';
+    const chip = s.off ? `<span class="offchip">UP TO ${s.off}% OFF</span>` : '';
+    return `<div class="prow${i % 2 ? ' rev' : ''}" data-rv style="--rvd:${i * .07}s">
+      <a class="pr-media" href="${c.href}"${attrs} data-purpose="${c.key}" aria-label="${c.t} — from ${window.Gfmt.inr(s.min)}">
+        <img src="${G.byId(c.img).image}" alt="${c.t}" loading="lazy">${chip}
+      </a>
+      <div class="pr-copy">
+        <span class="ptag">${c.tag}</span>
+        <h3>${c.t}</h3>
+        <p class="motive">${c.blurb}</p>
+        <p class="pr-meta">${s.n} ${c.unit} \u00b7 from <strong>${window.Gfmt.inr(s.min)}</strong></p>
+        <a class="prcta" href="${c.href}"${attrs} data-purpose="${c.key}">${c.cta} ${ext ? extArrow : arrow}</a>
+      </div>
+    </div>`;
   }).join('');
   document.getElementById('purposeGrid').addEventListener('click', e => {
     const a = e.target.closest('[data-purpose]');
