@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdn.shopify.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/samsung.css?v=2432109876543210">
+<link rel="stylesheet" href="assets/css/samsung.css?v=25432109876543210">
 <link rel="icon" type="image/png" href="assets/img/logo.png">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","name":"Golens","legalName":"GoLens Import & Export Pvt Ltd","url":"https://golens.in","email":"care@golens.in","telephone":"1800-123-7255","address":{"@type":"PostalAddress","addressLocality":"Bikaner","addressRegion":"Rajasthan","addressCountry":"IN"}}
@@ -75,6 +75,15 @@
     <a class="link-s" href="locks.html">View all products <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 12h15M13 6l6 6-6 6" stroke-linecap="round"/></svg></a>
   </div>
   <div class="catx-grid" id="catGrid"></div>
+</section>
+
+<!-- SHOP BY PURPOSE — security for every part of your life -->
+<section class="section-s container" id="purposes">
+  <div class="sec-head" data-rv>
+    <div><div class="kicker">Why do you need security?</div><h2>Security for every part of your life</h2>
+      <p class="sub">Pick your purpose — matched gear for your home, car, doorstep and office.</p></div>
+  </div>
+  <div class="pgrid" id="purposeGrid"></div>
 </section>
 
 <!-- FEATURED SMART LOCKS -->
@@ -187,8 +196,8 @@
 </main>
 <div id="gsFooter"></div>
 
-<script src="assets/js/data.js?v=2432109876543210"></script>
-<script src="assets/js/samsung.js?v=2432109876543210"></script>
+<script src="assets/js/data.js?v=25432109876543210"></script>
+<script src="assets/js/samsung.js?v=25432109876543210"></script>
 <script>
 (function () {
   'use strict';
@@ -287,6 +296,7 @@
     return { n: list.length, min, off: deal ? Math.round((1 - deal.price / deal.mrp) * 100) : 0, deal };
   };
   const arrow = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 12h15M13 6l6 6-6 6" stroke-linecap="round"/></svg>';
+  const extArrow = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   document.getElementById('catMaxOff').textContent = Math.max(...CATS.map(c => stat(c.d).off)) + '%';
   document.getElementById('catGrid').innerHTML = CATS.map((c, i) => {
     const s = stat(c.d);
@@ -319,6 +329,39 @@
     ['tools', 'Expert installation', 'From ₹1,200, quoted for your city']
   ].map(f => `<span class="tr-i"><span class="tr-ic">${window.Gicon(f[0])}</span><span class="tr-t"><strong>${f[1]}</strong><small>${f[2]}</small></span></span>`).join('');
   document.getElementById('catGrid').after(rib);
+
+  /* = SHOP BY PURPOSE — Road Safety / Home Safety / ... (real counts & prices) = */
+  const PURPOSES = [
+    { key: 'home',   tag: 'Home Safety',     t: 'Smart Door Locks',    blurb: 'Keyless entry for your main door',      d: p => (p.door || []).includes('main'), unit: 'locks',    img: 'x95',   href: 'locks.html?f=main' },
+    { key: 'road',   tag: 'Road Safety',     t: 'Dash Cams',           blurb: 'Front + rear recording for every drive', d: p => (p.url || '').includes('/dash-cameras/'), unit: 'models', img: 't10g2c', href: G.COLLECTIONS.dashcams.url },
+    { key: 'watch',  tag: '24\u00d77 Watch',    t: 'WiFi Security Cameras', blurb: 'Live view on your phone, from anywhere', d: p => /^wc/.test(p.id), unit: 'cameras',  img: 'wc23k', href: G.COLLECTIONS.cameras.url },
+    { key: 'door',   tag: 'Doorstep Safety', t: 'Video Doorbell',      blurb: 'Know who is at your door',               d: p => p.id === 'db1', unit: 'models',    img: 'db1',   href: G.COLLECTIONS.doorbell.url },
+    { key: 'office', tag: 'Office & Staff',  t: 'Attendance Machines', blurb: 'Reliable attendance for your team',      d: p => /^am/.test(p.id), unit: 'machines', img: 'am05e', href: G.COLLECTIONS.attendance.url }
+  ];
+  const pstat = d => {
+    const list = G.CATALOG.filter(d);
+    const min = Math.min(...list.map(p => p.price));
+    const deals = list.filter(p => p.mrp);
+    const off = deals.length ? Math.max(...deals.map(p => Math.round((1 - p.price / p.mrp) * 100))) : 0;
+    return { n: list.length, min, off };
+  };
+  document.getElementById('purposeGrid').innerHTML = PURPOSES.map((c, i) => {
+    const s = pstat(c.d);
+    const ext = /^https?:/.test(c.href);
+    const strip = s.off ? `<span class="offstrip">UP TO ${s.off}% OFF</span>` : '';
+    return `<a class="catx pur" href="${c.href}"${ext ? ' target="_blank" rel="noopener"' : ''} data-purpose="${c.key}" data-rv style="--rvd:${i * .06}s" aria-label="${c.tag} — ${c.t}, from ${window.Gfmt.inr(s.min)}${s.off ? `, up to ${s.off}% off` : ''}">
+      <span class="ptag">${c.tag}</span>
+      <span class="ph"><img src="${G.byId(c.img).image}" alt="${c.t}" loading="lazy">${strip}</span>
+      <span class="bx"><h3>${c.t}</h3><p class="blurb">${c.blurb}</p>
+        <span class="cnt">${s.n} ${c.unit}</span>
+        <span class="pr">From <strong>${window.Gfmt.inr(s.min)}</strong></span>
+        <span class="go">Shop now ${ext ? extArrow : arrow}</span></span>
+    </a>`;
+  }).join('');
+  document.getElementById('purposeGrid').addEventListener('click', e => {
+    const a = e.target.closest('[data-purpose]');
+    if (a) window.Gtrack('purpose_card_click', { purpose: a.dataset.purpose });
+  });
   document.getElementById('catGrid').addEventListener('click', e => {
     const c = e.target.closest('.catx');
     if (c) window.Gtrack('category_card_click', { category: c.dataset.cat });
