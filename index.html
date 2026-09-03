@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdn.shopify.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/samsung.css?v=22109876543210">
+<link rel="stylesheet" href="assets/css/samsung.css?v=232109876543210">
 <link rel="icon" type="image/png" href="assets/img/logo.png">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","name":"Golens","legalName":"GoLens Import & Export Pvt Ltd","url":"https://golens.in","email":"care@golens.in","telephone":"1800-123-7255","address":{"@type":"PostalAddress","addressLocality":"Bikaner","addressRegion":"Rajasthan","addressCountry":"IN"}}
@@ -187,8 +187,8 @@
 </main>
 <div id="gsFooter"></div>
 
-<script src="assets/js/data.js?v=22109876543210"></script>
-<script src="assets/js/samsung.js?v=22109876543210"></script>
+<script src="assets/js/data.js?v=232109876543210"></script>
+<script src="assets/js/samsung.js?v=232109876543210"></script>
 <script>
 (function () {
   'use strict';
@@ -282,29 +282,42 @@
   const stat = d => {
     const list = G.locks().filter(p => typeof d === 'function' ? d(p) : inDoor(p, d));
     const min = Math.min(...list.map(p => p.price));
-    const off = Math.max(...list.filter(p => p.mrp).map(p => Math.round((1 - p.price / p.mrp) * 100)));
-    return { n: list.length, min, off };
+    const deals = list.filter(p => p.mrp);
+    const deal = deals.sort((a, b) => (1 - a.price / a.mrp) < (1 - b.price / b.mrp) ? 1 : -1)[0];
+    return { n: list.length, min, off: deal ? Math.round((1 - deal.price / deal.mrp) * 100) : 0, deal };
   };
   const arrow = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 12h15M13 6l6 6-6 6" stroke-linecap="round"/></svg>';
   document.getElementById('catMaxOff').textContent = Math.max(...CATS.map(c => stat(c.d).off)) + '%';
   document.getElementById('catGrid').innerHTML = CATS.map((c, i) => {
     const s = stat(c.d);
+    const off = s.off ? `<span class="offb">UP TO ${s.off}% OFF</span>` : '';
     const card = c.feat
-      ? `<a class="catx feat" href="${HREFS[c.key]}" data-cat="${c.key}" data-rv aria-label="${c.t} — from ${window.Gfmt.inr(s.min)}">
-          <span class="tagb">Best Sellers</span><span class="saveb">SAVE ${s.off}%</span>
+      ? `<a class="catx feat" href="${HREFS[c.key]}" data-cat="${c.key}" data-rv aria-label="${c.t} — up to ${s.off}% off, from ${window.Gfmt.inr(s.min)}">
+          <span class="tagb">Best Sellers</span>${off}
           <span class="ph"><img src="${c.img}" alt="${c.t}" loading="lazy"></span>
           <span class="bx"><h3>${c.t}</h3><p class="blurb">${c.blurb}</p>
-            <span class="pr">From <strong>${window.Gfmt.inr(s.min)}</strong></span>
+            <span class="pr">From <strong>${window.Gfmt.inr(s.min)}</strong>${s.deal ? `<span class="topdeal">Top save: ${s.deal.name} <s>${window.Gfmt.inr(s.deal.mrp)}</s> → <strong class="dp">${window.Gfmt.inr(s.deal.price)}</strong> (−${s.off}%)</span>` : ''}</span>
             <span class="ctab">Shop now ${arrow}</span></span>
         </a>`
-      : `<a class="catx" href="${HREFS[c.key]}" data-cat="${c.key}" data-rv style="--rvd:${i * .06}s" aria-label="${c.t} — from ${window.Gfmt.inr(s.min)}">
-          <span class="ph"><img src="${c.img}" alt="${c.t}" loading="lazy"></span>
+      : `<a class="catx" href="${HREFS[c.key]}" data-cat="${c.key}" data-rv style="--rvd:${i * .06}s" aria-label="${c.t} — up to ${s.off}% off, from ${window.Gfmt.inr(s.min)}">
+          <span class="ph"><img src="${c.img}" alt="${c.t}" loading="lazy">${off}</span>
           <span class="bx"><h3>${c.t}</h3><span class="cnt">${s.n} lock${s.n === 1 ? '' : 's'}</span>
             <span class="pr">From <strong>${window.Gfmt.inr(s.min)}</strong></span>
             <span class="go">Shop now ${arrow}</span></span>
         </a>`;
     return card;
   }).join('');
+  /* brand-value trust ribbon — sab facts real (catalogue + golens.in policies) */
+  const rib = document.createElement('div');
+  rib.className = 'trust-ribbon';
+  rib.setAttribute('data-rv', '');
+  rib.innerHTML = [
+    ['shield', 'Importer-direct pricing', 'No middle layers — real MRPs, real discounts'],
+    ['emi', 'Easy EMI', 'Upgrade today, pay at your pace'],
+    ['check', '2-year warranty', 'Claims handled directly by Golens'],
+    ['tools', 'Expert installation', 'From ₹1,200, quoted for your city']
+  ].map(f => `<span class="tr-i"><span class="tr-ic">${window.Gicon(f[0])}</span><span class="tr-t"><strong>${f[1]}</strong><small>${f[2]}</small></span></span>`).join('');
+  document.getElementById('catGrid').after(rib);
   document.getElementById('catGrid').addEventListener('click', e => {
     const c = e.target.closest('.catx');
     if (c) window.Gtrack('category_card_click', { category: c.dataset.cat });
