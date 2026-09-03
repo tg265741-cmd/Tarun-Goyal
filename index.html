@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdn.shopify.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/samsung.css?v=2109876543210">
+<link rel="stylesheet" href="assets/css/samsung.css?v=22109876543210">
 <link rel="icon" type="image/png" href="assets/img/logo.png">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","name":"Golens","legalName":"GoLens Import & Export Pvt Ltd","url":"https://golens.in","email":"care@golens.in","telephone":"1800-123-7255","address":{"@type":"PostalAddress","addressLocality":"Bikaner","addressRegion":"Rajasthan","addressCountry":"IN"}}
@@ -67,13 +67,14 @@
   </div>
 </div>
 
-<!-- SHOP BY CATEGORY -->
-<section class="section-s container">
+<!-- SHOP BY CATEGORY — premium bento (brand value + honest sales cues) -->
+<section class="section-s container" id="categories">
   <div class="sec-head" data-rv>
-    <div><div class="kicker">Golens Store</div><h2>Shop by category</h2></div>
+    <div><div class="kicker">Golens Store</div><h2>Shop by category</h2>
+      <p class="sub">Up to <strong id="catMaxOff">79%</strong> off real MRPs · Easy EMI · 2-year warranty · Expert installation</p></div>
     <a class="link-s" href="locks.html">View all products <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 12h15M13 6l6 6-6 6" stroke-linecap="round"/></svg></a>
   </div>
-  <div class="cat-row" id="catRow"></div>
+  <div class="catx-grid" id="catGrid"></div>
 </section>
 
 <!-- FEATURED SMART LOCKS -->
@@ -186,8 +187,8 @@
 </main>
 <div id="gsFooter"></div>
 
-<script src="assets/js/data.js?v=2109876543210"></script>
-<script src="assets/js/samsung.js?v=2109876543210"></script>
+<script src="assets/js/data.js?v=22109876543210"></script>
+<script src="assets/js/samsung.js?v=22109876543210"></script>
 <script>
 (function () {
   'use strict';
@@ -266,20 +267,48 @@
 
   go(0); restart();
 
-  /* categories */
-  const cats = [
-    { t: 'Main Door', s: 'from ₹6,890', img: G.byId('x95').image, href: 'locks.html?f=main' },
-    { t: 'Glass Door', s: 'from ₹7,590', img: G.byId('armorface').image, href: 'locks.html?f=glass' },
-    { t: 'Interior', s: 'from ₹6,890', img: G.byId('x39').image, href: 'locks.html?f=room' },
-    { t: 'Cameras', s: 'from ₹2,590', img: G.byId('wc22k').image, href: 'https://golens.in/collections/cameras' },
-    { t: 'Doorbell', s: 'video + monitor', img: G.byId('db1').image, href: 'https://golens.in/collections/doorbell' },
-    { t: 'Attendance', s: 'for offices', img: G.byId('am05e').image, href: 'https://golens.in/collections/attendance-machines' }
+  /* = CATEGORY BENTO — prices/counts/discounts computed live from the real catalogue = */
+  const inDoor = (p, d) => (p.door || []).includes(d);
+  const CATS = [
+    { key: 'main', t: 'Main Door Locks', d: 'main', img: G.byId('x95').image, feat: true,
+      blurb: 'Flagship face-recognition locks with built-in camera & Wi-Fi' },
+    { key: 'face', t: 'Face Recognition', d: p => (p.access || []).includes('face3d'), img: G.byId('x95g').image },
+    { key: 'glass', t: 'Glass Door Locks', d: 'glass', img: G.byId('armorface').image },
+    { key: 'room', t: 'Interior & Rooms', d: 'room', img: G.byId('x39').image },
+    { key: 'fp', t: 'Fingerprint Locks', d: p => (p.access || []).includes('fp'), img: G.byId('titan').image },
+    { key: 'camera', t: 'Locks with Camera', d: p => !!p.camera, img: G.byId('x28').image }
   ];
-  document.getElementById('catRow').innerHTML = cats.map((c, i) => `
-    <a class="cat-tile" href="${c.href}" data-rv style="--rvd:${i * .06}s">
-      <span class="circ"><img src="${c.img}" alt="${c.t}" loading="lazy"></span>
-      <strong>${c.t}</strong><span>${c.s}</span>
-    </a>`).join('');
+  const HREFS = { main: 'locks.html?f=main', face: 'locks.html?f=face', glass: 'locks.html?f=glass', room: 'locks.html?f=room', fp: 'locks.html?f=fp', camera: 'locks.html?f=camera' };
+  const stat = d => {
+    const list = G.locks().filter(p => typeof d === 'function' ? d(p) : inDoor(p, d));
+    const min = Math.min(...list.map(p => p.price));
+    const off = Math.max(...list.filter(p => p.mrp).map(p => Math.round((1 - p.price / p.mrp) * 100)));
+    return { n: list.length, min, off };
+  };
+  const arrow = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 12h15M13 6l6 6-6 6" stroke-linecap="round"/></svg>';
+  document.getElementById('catMaxOff').textContent = Math.max(...CATS.map(c => stat(c.d).off)) + '%';
+  document.getElementById('catGrid').innerHTML = CATS.map((c, i) => {
+    const s = stat(c.d);
+    const card = c.feat
+      ? `<a class="catx feat" href="${HREFS[c.key]}" data-cat="${c.key}" data-rv aria-label="${c.t} — from ${window.Gfmt.inr(s.min)}">
+          <span class="tagb">Best Sellers</span><span class="saveb">SAVE ${s.off}%</span>
+          <span class="ph"><img src="${c.img}" alt="${c.t}" loading="lazy"></span>
+          <span class="bx"><h3>${c.t}</h3><p class="blurb">${c.blurb}</p>
+            <span class="pr">From <strong>${window.Gfmt.inr(s.min)}</strong></span>
+            <span class="ctab">Shop now ${arrow}</span></span>
+        </a>`
+      : `<a class="catx" href="${HREFS[c.key]}" data-cat="${c.key}" data-rv style="--rvd:${i * .06}s" aria-label="${c.t} — from ${window.Gfmt.inr(s.min)}">
+          <span class="ph"><img src="${c.img}" alt="${c.t}" loading="lazy"></span>
+          <span class="bx"><h3>${c.t}</h3><span class="cnt">${s.n} lock${s.n === 1 ? '' : 's'}</span>
+            <span class="pr">From <strong>${window.Gfmt.inr(s.min)}</strong></span>
+            <span class="go">Shop now ${arrow}</span></span>
+        </a>`;
+    return card;
+  }).join('');
+  document.getElementById('catGrid').addEventListener('click', e => {
+    const c = e.target.closest('.catx');
+    if (c) window.Gtrack('category_card_click', { category: c.dataset.cat });
+  });
 
   /* rows */
   const card = window.Gcard;

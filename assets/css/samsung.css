@@ -652,3 +652,45 @@ body.hero-dark .hdji-list::before { background: rgba(255,255,255,.28); }
   .hdji-ctas .pill { padding: .72rem 1.3rem; font-size: 13.5px; }
 }
 @media (prefers-reduced-motion: reduce) { .hdji-copy { background: linear-gradient(180deg, rgba(0,0,0,.45), transparent 85%); } }
+
+/* ============================================================
+   CATEGORY BENTO — premium grid (brand value + sales cues)
+   Featured "Best Sellers" tile + 5 category tiles; all prices,
+   counts and SAVE % computed live from the real catalogue.
+   ============================================================ */
+.catx-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.catx { position: relative; display: flex; flex-direction: column; background: #fff; border: 1px solid var(--grey-3); border-radius: var(--radius); overflow: hidden; text-decoration: none; color: inherit; transition: transform .45s var(--ease), box-shadow .45s var(--ease), border-color .3s; }
+.catx:hover, .catx:focus-visible { transform: translateY(-5px); border-color: #f0c6cd; box-shadow: 0 26px 48px -24px rgba(16,16,20,.35); }
+.catx .ph { display: block; background: #f7f8fa; aspect-ratio: 1 / 1; position: relative; overflow: hidden; }
+.catx .ph img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 9%; transition: transform .8s var(--ease); }
+.catx:hover .ph img, .catx:focus-visible .ph img { transform: scale(1.06); }
+.catx .bx { display: grid; gap: 3px; padding: 14px 16px 16px; align-content: start; }
+.catx .bx h3 { font-size: 15.5px; font-weight: 800; letter-spacing: -.01em; }
+.catx .cnt { font-size: 11.5px; color: var(--text-3); font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
+.catx .pr { font-size: 12px; color: var(--text-3); margin-top: 2px; }
+.catx .pr strong { font-size: 16px; font-weight: 800; color: var(--red); margin-left: .2rem; }
+.catx .go { display: inline-flex; align-items: center; gap: .35rem; font-size: 12.5px; font-weight: 800; color: var(--red); margin-top: 7px; }
+.catx .go svg { width: 14px; height: 14px; transition: transform .35s var(--ease); }
+.catx:hover .go svg, .catx:focus-visible .go svg { transform: translateX(5px); }
+/* featured tile — 2×2, sale cues (tag + real SAVE pill) + solid CTA */
+.catx.feat { grid-column: span 2; grid-row: span 2; border-color: var(--grey-4); }
+.catx.feat .ph { aspect-ratio: auto; flex: 1; min-height: 260px; }
+.catx.feat .ph img { padding: 6%; }
+.catx.feat .bx { padding: 18px 20px 20px; gap: 6px; }
+.catx.feat .bx h3 { font-size: 21px; }
+.catx.feat .blurb { font-size: 13px; color: var(--text-2); max-width: 40ch; }
+.catx.feat .pr strong { font-size: 21px; }
+.catx.feat .ctab { display: inline-flex; align-items: center; justify-content: center; gap: .45rem; margin-top: 10px; padding: .68rem 1.5rem; background: var(--red); color: #fff; border-radius: 999px; font-size: 13.5px; font-weight: 800; width: fit-content; transition: background .3s, transform .3s var(--ease); }
+.catx.feat .ctab svg { width: 14px; height: 14px; }
+.catx.feat:hover .ctab { background: var(--navy); transform: translateY(-1px); }
+.tagb { position: absolute; top: 12px; left: 12px; z-index: 2; background: #101114; color: #fff; font-size: 10.5px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; padding: .32rem .65rem; border-radius: 5px; }
+.saveb { position: absolute; top: 12px; right: 12px; z-index: 2; background: var(--red); color: #fff; font-size: 10.5px; font-weight: 800; letter-spacing: .08em; padding: .32rem .65rem; border-radius: 99px; }
+@media (max-width: 1024px) { .catx-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 640px) {
+  .catx-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .catx.feat { grid-column: 1 / -1; grid-row: auto; }
+  .catx.feat .ph { min-height: 200px; }
+  .catx .bx h3 { font-size: 14px; }
+  .catx .pr strong { font-size: 14.5px; }
+}
+@media (prefers-reduced-motion: reduce) { .catx, .catx .ph img, .catx .go svg { transition: none !important; } .catx:hover { transform: none; } }
