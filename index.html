@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdn.shopify.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/samsung.css?v=232109876543210">
+<link rel="stylesheet" href="assets/css/samsung.css?v=2432109876543210">
 <link rel="icon" type="image/png" href="assets/img/logo.png">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","name":"Golens","legalName":"GoLens Import & Export Pvt Ltd","url":"https://golens.in","email":"care@golens.in","telephone":"1800-123-7255","address":{"@type":"PostalAddress","addressLocality":"Bikaner","addressRegion":"Rajasthan","addressCountry":"IN"}}
@@ -187,8 +187,8 @@
 </main>
 <div id="gsFooter"></div>
 
-<script src="assets/js/data.js?v=232109876543210"></script>
-<script src="assets/js/samsung.js?v=232109876543210"></script>
+<script src="assets/js/data.js?v=2432109876543210"></script>
+<script src="assets/js/samsung.js?v=2432109876543210"></script>
 <script>
 (function () {
   'use strict';
@@ -290,17 +290,18 @@
   document.getElementById('catMaxOff').textContent = Math.max(...CATS.map(c => stat(c.d).off)) + '%';
   document.getElementById('catGrid').innerHTML = CATS.map((c, i) => {
     const s = stat(c.d);
-    const off = s.off ? `<span class="offb">UP TO ${s.off}% OFF</span>` : '';
+    const band = c.feat && s.off ? `<span class="offband">UP TO ${s.off}% OFF</span>` : '';
+    const strip = !c.feat && s.off ? `<span class="offstrip">UP TO ${s.off}% OFF</span>` : '';
     const card = c.feat
       ? `<a class="catx feat" href="${HREFS[c.key]}" data-cat="${c.key}" data-rv aria-label="${c.t} — up to ${s.off}% off, from ${window.Gfmt.inr(s.min)}">
-          <span class="tagb">Best Sellers</span>${off}
+          <span class="tagb">Best Sellers</span>${band}
           <span class="ph"><img src="${c.img}" alt="${c.t}" loading="lazy"></span>
           <span class="bx"><h3>${c.t}</h3><p class="blurb">${c.blurb}</p>
             <span class="pr">From <strong>${window.Gfmt.inr(s.min)}</strong>${s.deal ? `<span class="topdeal">Top save: ${s.deal.name} <s>${window.Gfmt.inr(s.deal.mrp)}</s> → <strong class="dp">${window.Gfmt.inr(s.deal.price)}</strong> (−${s.off}%)</span>` : ''}</span>
             <span class="ctab">Shop now ${arrow}</span></span>
         </a>`
       : `<a class="catx" href="${HREFS[c.key]}" data-cat="${c.key}" data-rv style="--rvd:${i * .06}s" aria-label="${c.t} — up to ${s.off}% off, from ${window.Gfmt.inr(s.min)}">
-          <span class="ph"><img src="${c.img}" alt="${c.t}" loading="lazy">${off}</span>
+          <span class="ph"><img src="${c.img}" alt="${c.t}" loading="lazy">${strip}</span>
           <span class="bx"><h3>${c.t}</h3><span class="cnt">${s.n} lock${s.n === 1 ? '' : 's'}</span>
             <span class="pr">From <strong>${window.Gfmt.inr(s.min)}</strong></span>
             <span class="go">Shop now ${arrow}</span></span>
