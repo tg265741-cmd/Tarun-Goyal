@@ -655,49 +655,45 @@ body.hero-dark .hdji-list::before { background: rgba(255,255,255,.28); }
 @media (prefers-reduced-motion: reduce) { .hdji-copy { background: linear-gradient(180deg, rgba(0,0,0,.45), transparent 85%); } }
 
 /* ============================================================
-   CATEGORY BENTO — premium grid (brand value + sales cues)
-   Featured "Best Sellers" tile + 5 category tiles; all prices,
-   counts and SAVE % computed live from the real catalogue.
+   CATEGORY IMAGE TILES — full-bleed product shots + gradient label
+   (Amazon/Flipkart-style tiles; sale badge: featured permanent,
+   others hover-only; all numbers live-computed from real data)
    ============================================================ */
-.catx-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
-.catx { position: relative; display: flex; flex-direction: column; background: #fff; border: 1px solid var(--grey-3); border-radius: var(--radius); overflow: hidden; text-decoration: none; color: inherit; transition: transform .45s var(--ease), box-shadow .45s var(--ease), border-color .3s; }
-.catx:hover, .catx:focus-visible { transform: translateY(-5px); border-color: #d9dce1; box-shadow: 0 26px 48px -24px rgba(16,16,20,.35); }
-.catx .ph { display: block; background: #f7f8fa; aspect-ratio: 1 / 1; position: relative; overflow: hidden; }
-.catx .ph img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 9%; transition: transform .8s var(--ease); }
-.catx:hover .ph img, .catx:focus-visible .ph img { transform: scale(1.06); }
-.catx .bx { display: grid; gap: 3px; padding: 14px 16px 16px; align-content: start; }
-.catx .bx h3 { font-size: 15.5px; font-weight: 800; letter-spacing: -.01em; }
-.catx .cnt { font-size: 11.5px; color: var(--text-3); font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
-.catx .pr { font-size: 12px; color: var(--text-3); margin-top: 2px; }
-.catx .pr strong { font-size: 16px; font-weight: 800; color: var(--red); margin-left: .2rem; }
-.catx .go { display: inline-flex; align-items: center; gap: .35rem; font-size: 12.5px; font-weight: 800; color: #101114; margin-top: 7px; }
-.catx .go svg { width: 14px; height: 14px; transition: transform .35s var(--ease); }
-.catx:hover .go svg, .catx:focus-visible .go svg { transform: translateX(5px); }
-/* featured tile — 2×2, sale cues (tag + real SAVE pill) + solid CTA */
-.catx.feat { grid-column: span 2; grid-row: span 2; border-color: var(--grey-4); }
-.catx.feat .ph { aspect-ratio: auto; flex: 1; min-height: 260px; }
-.catx.feat .ph img { padding: 6%; }
-.catx.feat .bx { padding: 18px 20px 20px; gap: 6px; }
-.catx.feat .bx h3 { font-size: 21px; }
-.catx.feat .blurb { font-size: 13px; color: var(--text-2); max-width: 40ch; }
-.catx.feat .pr strong { font-size: 21px; }
-.catx.feat .ctab { display: inline-flex; align-items: center; justify-content: center; gap: .45rem; margin-top: 10px; padding: .68rem 1.5rem; background: #101114; color: #fff; border-radius: 999px; font-size: 13.5px; font-weight: 800; width: fit-content; transition: background .3s, transform .3s var(--ease); }
-.catx.feat .ctab svg { width: 14px; height: 14px; }
-.catx.feat:hover .ctab { background: #26282d; transform: translateY(-1px); }
-.tagb { position: absolute; top: 12px; left: 12px; z-index: 2; background: #101114; color: #fff; font-size: 10.5px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; padding: .32rem .65rem; border-radius: 5px; }
-@media (max-width: 1024px) { .catx-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.catgrid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.itile { position: relative; display: block; border-radius: var(--radius); overflow: hidden; background: #f7f8fa; aspect-ratio: 4 / 5; text-decoration: none; box-shadow: 0 1px 2px rgba(16,17,20,.05); transition: transform .45s var(--ease), box-shadow .45s var(--ease); }
+.itile:hover, .itile:focus-visible { transform: translateY(-5px); box-shadow: 0 26px 48px -24px rgba(16,17,20,.4); }
+.itile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease); }
+.itile:hover img, .itile:focus-visible img { transform: scale(1.06); }
+.itile .tagb { position: absolute; top: 12px; left: 12px; z-index: 3; background: #101114; color: #fff; font-size: 10.5px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; padding: .32rem .65rem; border-radius: 5px; }
+.ioff { position: absolute; top: 12px; right: 12px; z-index: 3; background: var(--red); color: #fff; font-size: 10.5px; font-weight: 800; letter-spacing: .08em; padding: .34rem .7rem; border-radius: 99px; box-shadow: 0 6px 16px -6px rgba(200,16,46,.55); }
+.ioff.hov { opacity: 0; transform: translateY(-6px); transition: opacity .35s var(--ease), transform .35s var(--ease); }
+.itile:hover .ioff.hov, .itile:focus-visible .ioff.hov, .itile:focus .ioff.hov { opacity: 1; transform: none; }
+.ilab { position: absolute; inset: auto 0 0 0; z-index: 2; display: grid; gap: 2px; padding: 38px 16px 15px; background: linear-gradient(180deg, transparent 0%, rgba(10,11,13,.5) 38%, rgba(10,11,13,.82) 100%); }
+.ilab strong { color: #fff; font-size: 16.5px; font-weight: 800; letter-spacing: -.01em; line-height: 1.15; }
+.ilab .imeta { color: rgba(255,255,255,.88); font-size: 12.5px; font-weight: 600; }
+.ilab .imeta b { color: #fff; font-weight: 800; }
+.itile.feat { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; }
+.itile.feat .ilab { padding: 46px 20px 18px; gap: 4px; }
+.itile.feat .ilab strong { font-size: 25px; }
+.itile.feat .itop { color: rgba(255,255,255,.78); font-size: 11.5px; font-weight: 600; }
+.itile.feat .itop s { opacity: .75; }
+.itile.feat .itop b { color: #fff; }
+.itile.feat .icta { display: inline-flex; align-items: center; gap: .4rem; margin-top: 9px; width: fit-content; background: #fff; color: #101114; padding: .55rem 1.2rem; border-radius: 999px; font-size: 13px; font-weight: 800; transition: background .3s, color .3s, transform .3s var(--ease); }
+.itile.feat .icta svg { width: 14px; height: 14px; }
+.itile.feat:hover .icta { background: #101114; color: #fff; transform: translateY(-1px); }
+@media (max-width: 1024px) { .catgrid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 640px) {
-  .catx-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-  .catx.feat { grid-column: 1 / -1; grid-row: auto; }
-  .catx.feat .ph { min-height: 200px; }
-  .catx .bx h3 { font-size: 14px; }
-  .catx .pr strong { font-size: 14.5px; }
+  .catgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .itile { aspect-ratio: 4 / 5; }
+  .itile.feat { grid-column: 1 / -1; grid-row: auto; aspect-ratio: 4 / 3; }
+  .itile.feat .ilab strong { font-size: 19px; }
+  .itile .ilab strong { font-size: 13.5px; }
+  .itile .ilab .imeta { font-size: 11px; }
+  .itile.feat .itop { display: none; }
 }
-@media (prefers-reduced-motion: reduce) { .catx, .catx .ph img, .catx .go svg { transition: none !important; } .catx:hover { transform: none; } }
+@media (prefers-reduced-motion: reduce) { .itile, .itile img, .ioff.hov, .icta { transition: none !important; } .itile:hover { transform: none; } }
 
-/* ---- CATEGORY BENTO v2: sale badges on EVERY tile + trust ribbon ---- */
-.catx .ph { position: relative; }
-.catx.feat .pr .mrps { font-size: 13px; color: var(--text-3); font-weight: 500; margin-left: .55rem; }
+/* brand-value trust ribbon (unchanged) */
 .trust-ribbon { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 18px; padding: 16px 20px; background: #fff; border: 1px solid var(--grey-3); border-radius: var(--radius); }
 .trust-ribbon .tr-i { display: flex; align-items: center; gap: .8rem; }
 .trust-ribbon .tr-ic { width: 40px; height: 40px; flex: none; border-radius: 12px; background: #f0f1f4; color: #101114; display: grid; place-items: center; }
@@ -706,26 +702,6 @@ body.hero-dark .hdji-list::before { background: rgba(255,255,255,.28); }
 .trust-ribbon .tr-t small { display: block; font-size: 11.5px; color: var(--text-3); line-height: 1.35; margin-top: 1px; }
 @media (max-width: 900px) { .trust-ribbon { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 560px) { .trust-ribbon { grid-template-columns: 1fr; gap: 10px; padding: 14px 16px; } }
-.catx.feat .topdeal { display: block; font-size: 12px; color: var(--text-2); font-weight: 600; margin-top: 4px; }
-.catx.feat .topdeal s { color: var(--text-3); }
-.catx.feat .topdeal .dp { color: var(--red); font-size: 13px; }
-
-/* ---- CATEGORY v3: SALE-FIRST bold (Flipkart-sale energy, premium finish) ---- */
-/* featured: bada red gradient band image area ke upar */
-.catx.feat .offband { position: absolute; inset: 0 0 auto 0; z-index: 2; height: 64px; display: flex; align-items: center; justify-content: center; background: linear-gradient(90deg, var(--red), #e0243e); color: #fff; font-size: 26px; font-weight: 900; letter-spacing: .03em; text-shadow: 0 2px 10px rgba(0,0,0,.18); }
-.catx.feat .ph img { padding: 80px 7% 7%; }
-.catx.feat .tagb { top: 76px; z-index: 3; }
-/* standard: red strip image ke niche, full width */
-.catx .offstrip { position: absolute; inset: auto 0 0 0; z-index: 2; background: linear-gradient(90deg, var(--red), #e0243e); color: #fff; font-size: 13px; font-weight: 900; letter-spacing: .05em; text-align: center; padding: 7px 4px; }
-.catx .pr { font-size: 12.5px; }
-.catx .pr strong { font-size: 18px; }
-@media (max-width: 640px) {
-  .catx.feat .offband { height: 52px; font-size: 20px; }
-  .catx.feat .ph img { padding: 64px 9% 8%; }
-  .catx.feat .tagb { top: 64px; }
-  .catx .offstrip { font-size: 11.5px; padding: 6px 3px; }
-  .catx .pr strong { font-size: 15px; }
-}
 
 /* ---- SHOP BY PURPOSE — dark editorial motive panels ---- */
 #purposes { background: #101114; border-radius: 22px; padding: 46px 40px 30px; }
