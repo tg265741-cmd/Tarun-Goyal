@@ -366,10 +366,10 @@
     if (p.camera) chips.push('Camera');
     if (p.wifi) chips.push('Wi-Fi');
     const tag = p.soldOut ? '<span class="tag grey">Sold out</span>'
+      : off >= 10 ? `<span class="tag red">${off}% OFF</span>`
       : p.badge === 'flagship' ? '<span class="tag red">Flagship</span>'
       : p.badge === 'new' ? '<span class="tag red">New</span>'
-      : p.badge === 'advanced' ? '<span class="tag">Most Advanced</span>'
-      : off >= 70 ? `<span class="tag green">${off}% OFF</span>` : '';
+      : p.badge === 'advanced' ? '<span class="tag">Most Advanced</span>`' : '';
     return `<article class="fcard">
       <a class="ph" href="product.html?p=${p.id}" aria-label="${p.name}">${tag}<img src="${p.image}" alt="${p.name}${p.line ? ' ' + p.line : ''}" loading="lazy"></a>
       <div class="body">

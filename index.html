@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdn.shopify.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/samsung.css?v=354321098765432109876543210">
+<link rel="stylesheet" href="assets/css/samsung.css?v=3654321098765432109876543210">
 <link rel="icon" type="image/png" href="assets/img/logo.png">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","name":"Golens","legalName":"GoLens Import & Export Pvt Ltd","url":"https://golens.in","email":"care@golens.in","telephone":"1800-123-7255","address":{"@type":"PostalAddress","addressLocality":"Bikaner","addressRegion":"Rajasthan","addressCountry":"IN"}}
@@ -22,6 +22,13 @@
 <div id="gsHeader"></div>
 
 <main id="main">
+  <div class="offerbar" role="note" aria-label="Current offers">
+    <span><b>UP TO <span id="obMaxOff">85</span>% OFF</b> real MRPs</span><i>·</i>
+    <span>Easy <b>EMI</b></span><i>·</i>
+    <span><b>2-year warranty</b></span><i>·</i>
+    <span>Expert installation from <b>₹1,200</b></span><i>·</i>
+    <span><b>Free expert consultation</b></span>
+  </div>
 
 <!-- ============================================================
      HERO — DJI-style full-bleed cinematic carousel
@@ -44,6 +51,7 @@
           <p class="hdji-sub">Every angle of your drive, in one view</p>
           <div class="hdji-ctas">
             <a class="pill" href="https://golens.in/collections/dash-cameras">Learn More <svg class="par" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 5l7 7-7 7" stroke-linecap="round"/></svg></a>
+          <a class="pill pill-buy" href="https://golens.in/collections/dash-cameras">Buy Now <svg class="par" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           </div>
         </div>
       </div>
@@ -203,8 +211,8 @@
 </main>
 <div id="gsFooter"></div>
 
-<script src="assets/js/data.js?v=354321098765432109876543210"></script>
-<script src="assets/js/samsung.js?v=354321098765432109876543210"></script>
+<script src="assets/js/data.js?v=3654321098765432109876543210"></script>
+<script src="assets/js/samsung.js?v=3654321098765432109876543210"></script>
 <script>
 (function () {
   'use strict';
@@ -293,6 +301,8 @@
     .sort((a, b) => b.save - a.save)
     .slice(0, 4);
   document.getElementById('catMaxOff').textContent = (DEALS.length ? Math.max(...DEALS.map(d => d.off)) : 0) + '%';
+  const obMax = Math.max(...G.CATALOG.filter(p => p.mrp && p.mrp > p.price).map(p => Math.round((1 - p.price / p.mrp) * 100)));
+  document.getElementById('obMaxOff').textContent = obMax;
   document.getElementById('catGrid').innerHTML = DEALS.map((d, i) => {
     const p = d.p;
     return `<div class="dcard" data-deal="${p.id}" data-rv style="--rvd:${i * .06}s">

@@ -751,3 +751,11 @@ body.hero-dark .hdji-list::before { background: rgba(255,255,255,.28); }
   .ts-num { font-size: 48px; }
   .ts-num.sm { font-size: 38px; }
 }
+
+/* ---- boAt-style sales touches (honest data only) ---- */
+.offerbar { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; background: #101114; color: rgba(255,255,255,.85); font-size: 12.5px; font-weight: 600; letter-spacing: .02em; padding: 9px 16px; }
+.offerbar b { color: #ff5c72; font-weight: 800; }
+.offerbar i { font-style: normal; color: rgba(255,255,255,.25); }
+@media (max-width: 640px) { .offerbar { gap: 8px; font-size: 11.5px; padding: 8px 12px; } .offerbar i:nth-of-type(n+3) { display: none; } }
+.hdji-slide[data-theme="dark"] .hdji-ctas .pill-buy { color: #ff5c72; border-color: rgba(255,92,114,.65); }
+.hdji-slide[data-theme="dark"] .hdji-ctas .pill-buy:hover, .hdji-slide[data-theme="dark"] .hdji-ctas .pill-buy:focus-visible { background: #ff5c72; color: #fff; }
