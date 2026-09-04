@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdn.shopify.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/samsung.css?v=321098765432109876543210">
+<link rel="stylesheet" href="assets/css/samsung.css?v=3321098765432109876543210">
 <link rel="icon" type="image/png" href="assets/img/logo.png">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","name":"Golens","legalName":"GoLens Import & Export Pvt Ltd","url":"https://golens.in","email":"care@golens.in","telephone":"1800-123-7255","address":{"@type":"PostalAddress","addressLocality":"Bikaner","addressRegion":"Rajasthan","addressCountry":"IN"}}
@@ -72,11 +72,11 @@
 <!-- SHOP BY CATEGORY — premium bento (brand value + honest sales cues) -->
 <section class="section-s container" id="categories">
   <div class="sec-head" data-rv>
-    <div><div class="kicker">Golens Store</div><h2>Shop by category</h2>
+    <div><div class="kicker">Real deals, real MRPs</div><h2>Today&rsquo;s Top Savers</h2>
       <p class="sub">Up to <strong id="catMaxOff">79%</strong> off real MRPs · Easy EMI · 2-year warranty · Expert installation</p></div>
     <a class="link-s" href="locks.html">View all products <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 12h15M13 6l6 6-6 6" stroke-linecap="round"/></svg></a>
   </div>
-  <div class="catgrid" id="catGrid"></div>
+  <div class="grid-4" id="catGrid"></div>
 </section>
 
 <!-- SHOP BY PURPOSE — security for every part of your life -->
@@ -203,8 +203,8 @@
 </main>
 <div id="gsFooter"></div>
 
-<script src="assets/js/data.js?v=321098765432109876543210"></script>
-<script src="assets/js/samsung.js?v=321098765432109876543210"></script>
+<script src="assets/js/data.js?v=3321098765432109876543210"></script>
+<script src="assets/js/samsung.js?v=3321098765432109876543210"></script>
 <script>
 (function () {
   'use strict';
@@ -285,40 +285,32 @@
 
   /* = CATEGORY BENTO — prices/counts/discounts computed live from the real catalogue = */
   const inDoor = (p, d) => (p.door || []).includes(d);
-  const CATS = [
-    { key: 'main', t: 'Main Door Locks', d: 'main', img: G.byId('x95').image, feat: true,
-      blurb: 'Flagship face-recognition locks with built-in camera & Wi-Fi' },
-    { key: 'face', t: 'Face Recognition', d: p => (p.access || []).includes('face3d'), img: G.byId('x95g').image },
-    { key: 'glass', t: 'Glass Door Locks', d: 'glass', img: G.byId('armorface').image },
-    { key: 'room', t: 'Interior & Rooms', d: 'room', img: G.byId('x39').image },
-    { key: 'fp', t: 'Fingerprint Locks', d: p => (p.access || []).includes('fp'), img: G.byId('titan').image },
-    { key: 'camera', t: 'Locks with Camera', d: p => !!p.camera, img: G.byId('x28').image }
-  ];
-  const HREFS = { main: 'locks.html?f=main', face: 'locks.html?f=face', glass: 'locks.html?f=glass', room: 'locks.html?f=room', fp: 'locks.html?f=fp', camera: 'locks.html?f=camera' };
-  const stat = d => {
-    const list = G.locks().filter(p => typeof d === 'function' ? d(p) : inDoor(p, d));
-    const min = Math.min(...list.map(p => p.price));
-    const deals = list.filter(p => p.mrp);
-    const deal = deals.sort((a, b) => (1 - a.price / a.mrp) < (1 - b.price / b.mrp) ? 1 : -1)[0];
-    return { n: list.length, min, off: deal ? Math.round((1 - deal.price / deal.mrp) * 100) : 0, deal };
-  };
   const arrow = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 12h15M13 6l6 6-6 6" stroke-linecap="round"/></svg>';
   const extArrow = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-  document.getElementById('catMaxOff').textContent = Math.max(...CATS.map(c => stat(c.d).off)) + '%';
-  document.getElementById('catGrid').innerHTML = CATS.map((c, i) => {
-    const s = stat(c.d);
-    const feat = !!c.feat;
-    return `<a class="itile${feat ? ' feat' : ''}" href="${HREFS[c.key]}" data-cat="${c.key}" data-rv style="--rvd:${i * .06}s" aria-label="${c.t} — from ${window.Gfmt.inr(s.min)}${s.off ? `, up to ${s.off}% off` : ''}">
-      <img src="${c.img}" alt="${c.t}" loading="lazy">
-      ${feat ? '<span class="tagb">Best Sellers</span>' : ''}
-      ${s.off ? `<span class="ioff${feat ? '' : ' hov'}">UP TO ${s.off}% OFF</span>` : ''}
-      <span class="ilab">
-        <strong>${c.t}</strong>
-        <span class="imeta">From <b>${window.Gfmt.inr(s.min)}</b> · ${s.n} lock${s.n === 1 ? '' : 's'}</span>
-        ${feat && s.deal ? `<span class="itop">Top save: ${s.deal.name} <s>${window.Gfmt.inr(s.deal.mrp)}</s> → <b>${window.Gfmt.inr(s.deal.price)}</b></span>` : ''}
-        ${feat ? `<span class="icta">Shop now ${arrow}</span>` : ''}
-      </span>
-    </a>`;
+  /* = TODAY'S TOP SAVERS — biggest honest deals, live from real MRPs = */
+  const DEALS = G.CATALOG.filter(p => p.mrp && p.mrp > p.price && !p.soldOut)
+    .map(p => ({ p, off: Math.round((1 - p.price / p.mrp) * 100), save: p.mrp - p.price }))
+    .sort((a, b) => b.save - a.save)
+    .slice(0, 4);
+  document.getElementById('catMaxOff').textContent = (DEALS.length ? Math.max(...DEALS.map(d => d.off)) : 0) + '%';
+  document.getElementById('catGrid').innerHTML = DEALS.map((d, i) => {
+    const p = d.p;
+    return `<div class="dcard" data-deal="${p.id}" data-rv style="--rvd:${i * .06}s">
+      <a class="dph" href="product.html?p=${p.id}" aria-label="${p.name} — ${d.off}% off, save ${window.Gfmt.inr(d.save)}">
+        <img src="${p.image}" alt="${p.name}" loading="lazy">
+        <span class="doff">SAVE ${d.off}%</span>
+      </a>
+      <div class="dbx">
+        <a class="dnm" href="product.html?p=${p.id}">${p.name}</a>
+        <p class="dsub">${p.subtitle || ''}</p>
+        <p class="dpr"><b>${window.Gfmt.inr(p.price)}</b><s>${window.Gfmt.inr(p.mrp)}</s></p>
+        <p class="dsave">You save ${window.Gfmt.inr(d.save)}</p>
+        <div class="dact">
+          <a class="btn-s btn-dark" href="product.html?p=${p.id}">View deal</a>
+          <button class="btn-s btn-dark" data-add="${p.id}">Add to cart</button>
+        </div>
+      </div>
+    </div>`;
   }).join('');
   /* brand-value trust ribbon — sab facts real (catalogue + golens.in policies) */
   const rib = document.createElement('div');
@@ -370,8 +362,8 @@
     if (a) window.Gtrack('purpose_card_click', { purpose: a.dataset.purpose });
   });
   document.getElementById('catGrid').addEventListener('click', e => {
-    const c = e.target.closest('.itile');
-    if (c) window.Gtrack('category_card_click', { category: c.dataset.cat });
+    const c = e.target.closest('[data-deal]');
+    if (c) window.Gtrack('deal_card_click', { deal: c.dataset.deal });
   });
 
   /* rows */
