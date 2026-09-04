@@ -206,7 +206,6 @@
             <li><a href="https://golens.in/pages/contact">Contact</a></li>
           </ul></div>
         </div>
-        <div class="fword" aria-hidden="true">GOLENS</div>
         <div class="footer-bottom">
           <span>Copyright © ${new Date().getFullYear()} GoLens Import &amp; Export Pvt Ltd. All rights reserved.</span>
           <span style="display:flex;gap:1.2rem"><a href="https://golens.in/pages/privacy-policy">Privacy</a><a href="https://golens.in/pages/tearms-and-conditions">Terms</a><a href="https://golens.in/pages/shipping-policy">Shipping</a></span>

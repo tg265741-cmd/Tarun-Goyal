@@ -278,7 +278,6 @@ ul { list-style: none; }
 .footer-contact { display: grid; gap: 8px; margin-top: 14px; }
 .footer-contact a, .footer-contact span { font-size: 13px; color: rgba(255,255,255,.72); display: flex; gap: .5rem; align-items: center; }
 .footer-contact svg { width: 14px; height: 14px; color: #ff5c72; }
-.fword { font-size: clamp(72px, 15.5vw, 230px); font-weight: 800; letter-spacing: .04em; line-height: .82; text-align: center; color: transparent; -webkit-text-stroke: 1.5px rgba(255,255,255,.13); user-select: none; margin: clamp(6px, 2vw, 18px) 0 clamp(10px, 2vw, 22px); white-space: nowrap; }
 .footer-bottom { border-top: 1px solid rgba(255,255,255,.09); padding: 18px 0; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; font-size: 12px; color: rgba(255,255,255,.45); }
 .footer-bottom a { font-size: 12px; color: rgba(255,255,255,.45); }
 .footer-bottom a:hover { color: #ff5c72; }
