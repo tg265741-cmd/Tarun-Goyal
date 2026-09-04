@@ -160,6 +160,14 @@
     fmount.outerHTML = `
     <footer class="footer">
       <div class="container">
+        <div class="fcta" data-rv>
+          <div class="fcta-t"><strong>Not sure which lock fits your door?</strong><span>Talk to a Golens expert — free consultation, honest advice, no pushy sales.</span></div>
+          <div class="fcta-b">
+            <a class="fbtn wa" href="${wa('Hi Golens! I need help choosing a lock.')}" target="_blank" rel="noopener">${IC.wa} WhatsApp us</a>
+            <a class="fbtn" href="tel:18001237255">${IC.phone} 1800-123-7255</a>
+            <a class="fbtn ghost" href="find-my-lock.html">Find my lock ${IC.arrow}</a>
+          </div>
+        </div>
         <div class="footer-grid">
           <div class="footer-brand">
             <span class="logo">${IC.logo}</span>
@@ -198,6 +206,7 @@
             <li><a href="https://golens.in/pages/contact">Contact</a></li>
           </ul></div>
         </div>
+        <div class="fword" aria-hidden="true">GOLENS</div>
         <div class="footer-bottom">
           <span>Copyright © ${new Date().getFullYear()} GoLens Import &amp; Export Pvt Ltd. All rights reserved.</span>
           <span style="display:flex;gap:1.2rem"><a href="https://golens.in/pages/privacy-policy">Privacy</a><a href="https://golens.in/pages/tearms-and-conditions">Terms</a><a href="https://golens.in/pages/shipping-policy">Shipping</a></span>
