@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdn.shopify.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/samsung.css?v=298765432109876543210">
+<link rel="stylesheet" href="assets/css/samsung.css?v=3098765432109876543210">
 <link rel="icon" type="image/png" href="assets/img/logo.png">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","name":"Golens","legalName":"GoLens Import & Export Pvt Ltd","url":"https://golens.in","email":"care@golens.in","telephone":"1800-123-7255","address":{"@type":"PostalAddress","addressLocality":"Bikaner","addressRegion":"Rajasthan","addressCountry":"IN"}}
@@ -198,8 +198,8 @@
 </main>
 <div id="gsFooter"></div>
 
-<script src="assets/js/data.js?v=298765432109876543210"></script>
-<script src="assets/js/samsung.js?v=298765432109876543210"></script>
+<script src="assets/js/data.js?v=3098765432109876543210"></script>
+<script src="assets/js/samsung.js?v=3098765432109876543210"></script>
 <script>
 (function () {
   'use strict';
@@ -334,11 +334,11 @@
 
   /* = SHOP BY PURPOSE — motive-first editorial panels (copy from real subtitles) = */
   const PURPOSES = [
-    { key: 'home',   tag: 'For your home',      t: 'Never lose a key again', hl: 'lose a key',      blurb: 'Unlock the main door with your face, fingerprint or phone — keys optional, forever. Real security for the whole family.', d: p => (p.door || []).includes('main'), unit: 'locks',    img: 'x95',   cta: 'Explore smart locks',   href: 'locks.html?f=main' },
+    { key: 'home',   tag: 'For your home',      t: 'Never lose a key again', hl: 'Never',      blurb: 'Unlock the main door with your face, fingerprint or phone — keys optional, forever. Real security for the whole family.', d: p => (p.door || []).includes('main'), unit: 'locks',    img: 'x95',   cta: 'Explore smart locks',   href: 'locks.html?f=main' },
     { key: 'road',   tag: 'For your car',       t: 'Proof for every drive', hl: 'Proof',       blurb: '4K front + 1080p rear recording — your witness in accidents, disputes and insurance claims.', d: p => (p.url || '').includes('/dash-cameras/'), unit: 'models',  img: 't10g2c', cta: 'Explore dash cams',     href: G.COLLECTIONS.dashcams.url },
-    { key: 'watch',  tag: '24\u00d7 peace of mind', t: 'Check home from anywhere', hl: 'from anywhere', blurb: 'Live 1080p view on your phone with pan-tilt and two-way audio — kids, elders and home, always in sight.', d: p => /^wc/.test(p.id), unit: 'cameras', img: 'wc23k', cta: 'Explore cameras',       href: G.COLLECTIONS.cameras.url },
-    { key: 'door',   tag: 'For your doorstep',  t: "See who's at the door", hl: "who's at the door",       blurb: 'Video doorbell with an 8\u2033 indoor monitor — and it works even without internet.', d: p => p.id === 'db1', unit: 'models', img: 'db1', cta: 'Explore doorbells',      href: G.COLLECTIONS.doorbell.url },
-    { key: 'office', tag: 'For your office',    t: 'Attendance without arguments', hl: 'without arguments', blurb: 'Face, fingerprint & RFID attendance with cloud software — accurate records, zero buddy-punching.', d: p => /^am/.test(p.id), unit: 'machines', img: 'am05e', cta: 'Explore attendance machines', href: G.COLLECTIONS.attendance.url }
+    { key: 'watch',  tag: '24\u00d7 peace of mind', t: 'Check home from anywhere', hl: 'Check', blurb: 'Live 1080p view on your phone with pan-tilt and two-way audio — kids, elders and home, always in sight.', d: p => /^wc/.test(p.id), unit: 'cameras', img: 'wc23k', cta: 'Explore cameras',       href: G.COLLECTIONS.cameras.url },
+    { key: 'door',   tag: 'For your doorstep',  t: "See who's at the door", hl: "See",       blurb: 'Video doorbell with an 8\u2033 indoor monitor — and it works even without internet.', d: p => p.id === 'db1', unit: 'models', img: 'db1', cta: 'Explore doorbells',      href: G.COLLECTIONS.doorbell.url },
+    { key: 'office', tag: 'For your office',    t: 'Attendance without arguments', hl: 'Attendance', blurb: 'Face, fingerprint & RFID attendance with cloud software — accurate records, zero buddy-punching.', d: p => /^am/.test(p.id), unit: 'machines', img: 'am05e', cta: 'Explore attendance machines', href: G.COLLECTIONS.attendance.url }
   ];
   const pstat = d => {
     const list = G.CATALOG.filter(d);
