@@ -22,7 +22,7 @@
   <div class="container pdp-wrap">
     <!-- GALLERY -->
     <div class="pdp-gallery">
-      <nav class="crumbs" aria-label="Breadcrumb" style="margin-bottom:12px"><a href="index.html">Home</a> / <a href="locks.html">Smart Locks</a> / <span id="crumbName">…</span></nav>
+      <nav class="crumbs" aria-label="Breadcrumb" style="margin-bottom:12px"><a href="index.html">Home</a> / <a href="locks.html" id="crumbCat">Smart Locks</a> / <span id="crumbName">…</span></nav>
       <div class="pdp-main" id="pdpMain"><img id="pdpImg" src="" alt="" fetchpriority="high"></div>
       <div class="pdp-thumbs" id="pdpThumbs" role="tablist" aria-label="Product images"></div>
     </div>
@@ -37,15 +37,27 @@
         <div class="save" id="pdpSave"></div>
         <div class="emi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/></svg> Easy EMI available at checkout · Inclusive of taxes</div>
       </div>
-      <div class="pdp-ctas">
+      <div class="pdp-ctas" id="pdpCtaBox">
         <button class="btn-s btn-dark" id="buyNow">Buy now</button>
         <button class="btn-s" style="border:1.5px solid #ddd" id="addCart">Add to cart</button>
       </div>
-      <p style="font-size:12px;color:var(--text-3)">Checkout completes securely on <strong style="color:#000">golens.in</strong> — the official Golens store.</p>
+      <p style="font-size:12px;color:var(--text-3)">Checkout completes securely on <strong style="color:#000">golens.in</strong> or <strong style="color:#000">Amazon.in</strong> — official Golens channels.</p>
       <div class="bestfor" id="pdpBest"></div>
       <div class="trust-mini" id="trustMini"></div>
     </div>
   </div>
+
+  <!-- CUSTOM A+ FEATURE GRAPHICS & COVERAGE ARCHITECTURE (FOR DASHCAMS) -->
+  <section class="container section-s" id="pdpGraphicsSec" style="display:none">
+    <div class="sec-head" data-rv>
+      <div>
+        <div class="kicker">Visual Feature Breakdown · Custom A+ Graphics</div>
+        <h2 id="pdpGraphicsTitle">Feature Graphics &amp; Optical Coverage</h2>
+      </div>
+      <a class="link-s" href="dashcams.html#graphics">View all 5 models' graphics →</a>
+    </div>
+    <div id="pdpGraphicsBoard"></div>
+  </section>
 
   <!-- WAYS IN + SPECS -->
   <section class="container section-s">
@@ -156,14 +168,75 @@
   window.Gtrack('product_view', { item: P.id });
 
   /* breadcrumbs + info */
+  const crumbCat = document.getElementById('crumbCat');
+  if (crumbCat && P.category === 'dashcam') {
+    crumbCat.textContent = 'Car Dash Cameras';
+    crumbCat.href = 'dashcams.html';
+  }
   document.getElementById('crumbName').textContent = P.name;
-  document.getElementById('pdpKind').textContent = P.category === 'lock' ? (P.family === 'glass' ? 'Smart Glass Lock' : P.family === 'room' ? 'Interior Smart Lock' : 'Main Door Smart Lock') : 'Golens Security';
+  document.getElementById('pdpKind').textContent = P.category === 'dashcam' ? ('Golens Car Dash Camera · ' + (P.sku || '')) : P.category === 'lock' ? (P.family === 'glass' ? 'Smart Glass Lock' : P.family === 'room' ? 'Interior Smart Lock' : 'Main Door Smart Lock') : 'Golens Security';
   document.getElementById('pdpTitle').textContent = `${P.name}${P.line ? ' · ' + P.line : ''}`;
   document.getElementById('pdpSub').textContent = P.subtitle;
-  document.getElementById('pdpBest').innerHTML = `<strong>Best for:</strong> ${P.bestFor || 'Modern homes and workplaces'}`;
+  document.getElementById('pdpBest').innerHTML = `<strong>Best for:</strong> ${P.bestFor || 'Modern homes, vehicles and workplaces'}`;
   document.getElementById('pdpPrice').innerHTML = inr(P.price) + (P.mrp ? `<s>${inr(P.mrp)}</s>` : '');
   document.getElementById('pdpSave').textContent = P.mrp ? `SAVE ${inr(P.mrp - P.price)} (${Math.round((1 - P.price / P.mrp) * 100)}%)` : '';
   if (P.soldOut) document.getElementById('pdpSave').textContent = 'Currently sold out — check availability on golens.in';
+
+  if (P.amazonUrl) {
+    const amzBtn = document.createElement('a');
+    amzBtn.className = 'btn-s';
+    amzBtn.style.cssText = 'background:#ff9900;color:#111;font-weight:800;border:0';
+    amzBtn.href = P.amazonUrl;
+    amzBtn.target = '_blank';
+    amzBtn.rel = 'noopener';
+    amzBtn.textContent = 'Buy on Amazon.in ↗';
+    document.getElementById('pdpCtaBox').appendChild(amzBtn);
+  }
+
+  /* Render Dashcam Feature Graphics & Vector Diagram on PDP */
+  if (P.category === 'dashcam' && P.graphics && P.graphics.length) {
+    const gSec = document.getElementById('pdpGraphicsSec');
+    const gBoard = document.getElementById('pdpGraphicsBoard');
+    gSec.style.display = 'block';
+    document.getElementById('pdpGraphicsTitle').textContent = (P.sku || P.name) + ' — A+ Feature Graphics & Coverage';
+    const svgMarkup = window.GOLENS_SVG_DIAGRAM ? window.GOLENS_SVG_DIAGRAM(P.channels, P.id) : '';
+    const bannerPath = P.bannerGraphic || 'assets/img/graphics/t9b3g-banner.jpg';
+    const gcards = P.graphics.map(g => `
+      <div class="g-dc-gcard">
+        <div class="g-dc-gcard__media">
+          <img src="${g.img}" alt="${g.title}" loading="lazy">
+          <span class="g-dc-gcard__pill">${g.kicker}</span>
+          <span class="g-dc-gcard__metric">${g.metric}</span>
+        </div>
+        <div class="g-dc-gcard__body">
+          <h4>${g.title}</h4>
+          <p>${g.desc}</p>
+          <div style="margin-top:auto;padding-top:10px">
+            <a href="${g.img}" download="${P.id}-${g.kicker.toLowerCase().replace(/[^a-z0-9]+/g, '-')}.jpg" class="btn-s" style="padding:6px 12px;font-size:11.5px;background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.2)">⬇ Download Graphic</a>
+          </div>
+        </div>
+      </div>`).join('');
+    const featList = (P.features || []).map(f => `<li style="margin-bottom:6px">${f}</li>`).join('');
+    gBoard.innerHTML = `
+      <div class="g-dc-board">
+        <div class="g-dc-board__top">
+          <div class="g-dc-banner-card">
+            <img src="${bannerPath}" alt="${P.name} A+ Graphic Banner">
+            <div class="g-dc-banner-actions">
+              <span><b>${P.sku} A+ Hero Banner Graphic</b> · 1600×900 HD</span>
+              <a href="${bannerPath}" download="${P.id}-aplus-banner.jpg" class="btn-s btn-red" style="padding:7px 14px;font-size:12px">⬇ Download HD Banner (JPG)</a>
+            </div>
+          </div>
+          <div class="g-dc-svg-box">
+            <h4><span style="color:#fff">Optical Coverage Architecture</span><span style="font-size:11.5px;color:#ff5c72;font-weight:800">${P.channels}-Channel Layout</span></h4>
+            ${svgMarkup}
+            <p style="font-size:12.5px;color:#9aa5b8;line-height:1.5;margin:0"><b>${P.sku} Optics:</b> ${P.videoResolution} (${P.fov}) · ${P.display}</p>
+          </div>
+        </div>
+        <div class="g-dc-graphic-grid">${gcards}</div>
+        ${featList ? `<div style="margin-top:24px;padding:20px 24px;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1)"><h4 style="font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#ff5c72;margin:0 0 10px">Key Highlights (${P.sku})</h4><ul style="margin:0;padding-left:18px;color:#d0d7e6;font-size:13.5px;line-height:1.6">${featList}</ul></div>` : ''}
+      </div>`;
+  }
 
   const buy = () => { if (!P.soldOut) window.Gcart.add(P.id); window.open(P.url, '_blank', 'noopener'); };
   document.getElementById('buyNow').addEventListener('click', buy);
@@ -221,22 +294,27 @@
 
   /* specs */
   const acc = () => (P.access || []).map(a => window.ACCESS_LABEL[a]).filter(Boolean);
-  const rows = [
-    ['Price', inr(P.price) + (P.mrp ? ` (MRP ${inr(P.mrp)})` : '')],
-    ['Ways to unlock', acc().join(' · ') || 'App + live view'],
-    ['Wi-Fi', P.wifi ? (P.id === 'x95' || P.id === 'x95g' ? 'Built-in — no extra gateway' : 'Yes') : (P.category === 'lock' ? 'No' : '—')],
-    ['Bluetooth', P.bt ? 'Yes' : (P.category === 'lock' ? 'No' : '—')],
-    ['Camera', P.camera ? 'Integrated visitor camera' : 'Not built in'],
-    ['Display', P.lcd ? 'LCD on lock' : '—'],
-    ['Fingerprints', P.fingerprints || '—'],
-    ['User capacity', P.users || 'Multiple users'],
-    ['Battery', P.battery || 'Batteries included with lock'],
-    ['Emergency access', 'Mechanical key' + (P.battery && P.battery.toLowerCase().includes('power-bank') ? ' + USB power bank' : '')],
-    ['Body', P.body || '—'],
-    ['Door suitability', (P.door || []).map(d => ({ main: 'Main door', glass: 'Glass door', room: 'Interior door', office: 'Office', apartment: 'Apartment' }[d] || d)).join(', ') || '—'],
-    ['Warranty', `${P.warranty} year${P.warranty > 1 ? 's' : ''} standard Golens warranty`],
-    ['In the box', P.id === 'x95' ? 'Lock front panel, back panel with motorised mortise, 2 mechanical keys, 2 RFID cards, USB charging cable, fitting screws & bolts, user manual' : 'Lock set, mechanical keys, fitting hardware, user manual (see live listing)']
-  ];
+  let rows;
+  if (P.category === 'dashcam' && P.specs) {
+    rows = [['Price (Incl. Taxes)', inr(P.price) + (P.mrp ? ` (MRP ${inr(P.mrp)})` : '')]].concat(Object.entries(P.specs));
+  } else {
+    rows = [
+      ['Price', inr(P.price) + (P.mrp ? ` (MRP ${inr(P.mrp)})` : '')],
+      ['Ways to unlock', acc().join(' · ') || 'App + live view'],
+      ['Wi-Fi', P.wifi ? (P.id === 'x95' || P.id === 'x95g' ? 'Built-in — no extra gateway' : 'Yes') : (P.category === 'lock' ? 'No' : '—')],
+      ['Bluetooth', P.bt ? 'Yes' : (P.category === 'lock' ? 'No' : '—')],
+      ['Camera', P.camera ? 'Integrated visitor camera' : 'Not built in'],
+      ['Display', P.lcd ? 'LCD on lock' : '—'],
+      ['Fingerprints', P.fingerprints || '—'],
+      ['User capacity', P.users || 'Multiple users'],
+      ['Battery', P.battery || 'Batteries included with lock'],
+      ['Emergency access', 'Mechanical key' + (P.battery && P.battery.toLowerCase().includes('power-bank') ? ' + USB power bank' : '')],
+      ['Body', P.body || '—'],
+      ['Door suitability', (P.door || []).map(d => ({ main: 'Main door', glass: 'Glass door', room: 'Interior door', office: 'Office', apartment: 'Apartment' }[d] || d)).join(', ') || '—'],
+      ['Warranty', `${P.warranty} year${P.warranty > 1 ? 's' : ''} standard Golens warranty`],
+      ['In the box', P.id === 'x95' ? 'Lock front panel, back panel with motorised mortise, 2 mechanical keys, 2 RFID cards, USB charging cable, fitting screws & bolts, user manual' : 'Lock set, mechanical keys, fitting hardware, user manual (see live listing)']
+    ];
+  }
   document.getElementById('specTable').innerHTML = '<tbody>' + rows.map(r => `<tr><th scope="row">${r[0]}</th><td>${r[1]}</td></tr>`).join('') + '</tbody>';
 
   /* compatibility */
@@ -298,8 +376,13 @@
   thick.addEventListener('input', upd);
   upd();
 
-  /* FAQ */
-  const faqs = [
+  /* FAQ & Related */
+  const faqs = P.category === 'dashcam' ? [
+    ['Does this dashcam fit all Indian cars & SUVs?', `Yes — the ${P.name} operates on standard 12V–24V car power (Type-C / car charger included) and mounts cleanly on any hatchback, sedan, or SUV windshield.`],
+    ['How does 24H Parking Monitor work?', 'When parked, the built-in 3-Axis G-Sensor detects vibrations/impacts and locks emergency clips. For continuous 24-hour time-lapse surveillance while the engine is off, pair with a 3-lead Type-C OBD/fuse hardwire kit.'],
+    ['How do I view & download recorded videos on my phone?', P.has4G ? 'Insert a 4G SIM card for remote live viewing from anywhere via the mobile app, or connect locally via built-in Wi-Fi to download clips with zero mobile data usage.' : 'Connect your iOS or Android phone directly to the dashcam’s built-in Wi-Fi network using the companion app to preview live video and download clips instantly.'],
+    ['What MicroSD card is recommended?', `Use a genuine Class 10 / U3 High-Endurance MicroSD card (${P.specs && P.specs['Max MicroSD Card'] ? P.specs['Max MicroSD Card'] : 'up to 128GB / 256GB'}). Seamless loop recording automatically overwrites the oldest unlocked clips when full.`]
+  ] : [
     ['What if the battery dies?', 'You get low-battery alerts on the lock and (on Wi-Fi models) in the app. Even if it empties, two backups remain: momentary power from a power bank over USB (on models listing it), and the mechanical key. Being locked out is designed out.'],
     ['Does face recognition work at night?', 'Yes — on models with 3D face recognition the mapping is built to work in low light. Check this model\u2019s listing for the exact sensor; our team can demo it on a video call.'],
     ['Can I still use a normal key?', 'Yes — every Golens lock keeps a mechanical key as the final backup.'],
@@ -312,8 +395,38 @@
   fld.textContent = JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map(f => ({ '@type': 'Question', name: f[0], acceptedAnswer: { '@type': 'Answer', text: f[1] } })) });
   document.head.appendChild(fld);
 
+  if (P.category === 'dashcam') {
+    const compatSec = document.getElementById('compat');
+    if (compatSec) compatSec.style.display = 'none';
+    const instSec = document.getElementById('install');
+    if (instSec) {
+      instSec.querySelector('h2').textContent = 'Clean Windshield Installation in 15 Minutes';
+      instSec.querySelector('.split-promo').innerHTML = `
+        <div class="promo-card lightblue">
+          <span class="kicker">Option A · Plug &amp; Play (Included in Box)</span>
+          <h3>12V–24V Car Socket / Type-C Power</h3>
+          <ol class="steps-s">
+            <li><strong>Mount behind rearview mirror</strong> — electrostatic film + 3M heat-resistant mount keeps your windshield clean.</li>
+            <li><strong>Tuck cable along headliner &amp; A-pillar</strong> — pry tool included for hidden factory-style routing.</li>
+            <li><strong>Auto start/stop with ignition</strong> — powers on and records automatically every time you start your car.</li>
+          </ol>
+        </div>
+        <div class="promo-card lightgrey">
+          <span class="kicker">Option B · 24H Parking Mode</span>
+          <h3>Hardwire Kit / OBD Power</h3>
+          <ol class="steps-s">
+            <li><strong>24×7 Time-Lapse &amp; Impact Guard</strong> — enables continuous surveillance while parked with engine off.</li>
+            <li><strong>Low-voltage battery protection</strong> — automatically cuts power if car battery drops below safe threshold.</li>
+            <li><strong>Video-call support</strong> — Golens specialists guide your local car accessories technician live.</li>
+          </ol>
+        </div>`;
+    }
+  }
+
   /* related */
-  const rel = P.family === 'glass' ? ['armorface', 'doorsafe', 'x37'] : P.family === 'room' ? ['aura', 'x39', 'instalock'] : ['x95', 'x57', 'titan', 'x28'].filter(id => id !== P.id).concat(['x3n']).slice(0, 4);
+  const rel = P.category === 'dashcam'
+    ? ['t3b1v', 't4b2v', 't8b2c', 't10g2c', 't9b3g'].filter(id => id !== P.id).slice(0, 4)
+    : P.family === 'glass' ? ['armorface', 'doorsafe', 'x37'] : P.family === 'room' ? ['aura', 'x39', 'instalock'] : ['x95', 'x57', 'titan', 'x28'].filter(id => id !== P.id).concat(['x3n']).slice(0, 4);
   document.getElementById('relGrid').innerHTML = rel.map(id => window.Gcard(G.byId(id))).join('');
 
   /* sticky bar */
