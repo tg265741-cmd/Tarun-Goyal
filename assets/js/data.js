@@ -647,36 +647,443 @@
       bestFor: 'Factories & offices — reliable biometric attendance with backup battery.'
     },
 
-    /* ---------------- DASHCAMS ---------------- */
+    /* ---------------- DASHCAMS (ALL 5 FEATURED AMAZON/GOLENS MODELS + FULL LINEUP) ---------------- */
     {
-      id: 't10g2c',
-      name: 'Golens T10-G2C',
-      line: null,
-      subtitle: '2-channel 4G mirror dash cam · front 4K + rear 1080p',
+      id: 't3b1v',
+      sku: 'T3-B1V',
+      name: 'Golens T3-B1V Dash Camera for Car',
+      line: 'New Launch · Front 2K WiFi',
+      subtitle: 'Front 2K Recording | Starlight Night Vision | WiFi Dashcam with App Control | 1.47" Display, 140° Wide Angle',
+      sub: 'Front 2K (2304×1296) · Starlight Night Vision · WiFi App Control · 1.47" Display · 140° Wide Angle',
       category: 'dashcam',
       door: [], material: [],
-      price: 10890, mrp: null, soldOut: true,
-      access: [], wifi: true,
-      warranty: 2, badge: null, rating: null,
+      price: 3990, mrp: 7990, discount: 50, soldOut: false,
+      access: ['app'], wifi: true, bt: false, camera: true, lcd: true,
+      channels: 1,
+      videoResolution: '2K (2304×1296P) @ 30fps Front',
+      display: '1.47" HD IPS Smart Display',
+      fov: '140° Wide Angle (F2.0 4-Layer Glass Lens)',
+      connectivity: 'Built-in 2.4GHz Wi-Fi + Mobile App (iOS & Android)',
+      has4G: false, hasGPS: false, hasADAS: false, hasBSD: false, hasVoiceControl: false, isMirror: false,
+      warranty: 1, badge: 'new', rating: 4.8,
+      chips: ['2K 1296P Front', 'Starlight Night Vision', '1.47" IPS Display', 'Wi-Fi App Control', '140° Wide Angle'],
+      image: img('T3.png'),
+      bannerGraphic: 'assets/img/graphics/t3b1v-banner.jpg',
+      gallery: [
+        'T3.png',
+        '3_c354736c-fa3b-49c9-b536-9f6ca613b2d2.jpg',
+        '5_b6f2a64f-65b7-4a9b-8353-04d491ef2b3d.jpg',
+        '6_001ccfa6-0f45-4176-8980-49f1af5160c7.jpg',
+        '4_24455d17-fc39-4449-8383-9478bbca0470.jpg',
+        '2_db7fc39c-594a-40e7-aa00-933f5a5da794.jpg',
+        '7_4e102e9e-65d9-4bf4-9df1-d28a74c5b25b.jpg'
+      ].map(f => CDN + f + '?width=1200&format=pjpg'),
+      url: 'https://golens.in/collections/dash-cameras/products/golens-t3-b1v-dash-camera-for-car-new-launch-front-2k-recording-starlight-night-vision-wifi-dashcam-with-app-control-1-47-display-140-wide-angle',
+      amazonUrl: 'https://www.amazon.in/s?k=Golens+T3-B1V+Dash+Camera+for+Car',
+      bestFor: 'Everyday cars needing a discreet, compact 2K front dashcam with Starlight Night Vision and Wi-Fi app download.',
+      features: [
+        'True 2K (2304×1296P) Front Recording at 30fps with H.264 high-efficiency encoding',
+        'Starlight Night Vision with F2.0 large aperture & 4-layer full-glass optical lens',
+        '1.47-inch HD IPS Smart Display with customizable clock/status sleep dial',
+        '140° Wide-Angle FOV covering up to 3 highway lanes with reduced edge distortion',
+        'Built-in Wi-Fi with Golens Mobile App (iOS & Android) for live view & instant clip download',
+        '24H Parking Monitor (Time-Lapse 1fps / Impact Wake) + 3-Axis G-Sensor emergency lock',
+        'Extreme Indian cabin heat endurance (-20°C to 75°C) with 12V–24V Type-C power & up to 128GB MicroSD'
+      ],
+      specs: {
+        'Model': 'Golens T3-B1V (New Launch)',
+        'Channels': '1-Channel (Front Camera)',
+        'Video Resolution': '2K QHD (2304×1296P) @ 30fps',
+        'Display': '1.47" IPS HD Smart Screen',
+        'Lens & Aperture': '140° Wide Angle · F2.0 · 4-Glass Lens',
+        'Night Vision': 'Starlight Low-Light Night Vision + WDR',
+        'Connectivity': 'Wi-Fi (iOS & Android App Control)',
+        'G-Sensor & Parking': '3-Axis G-Sensor · 24H Time-Lapse Parking Monitor',
+        'Power & Temp': '12V–24V Type-C (5V/1.5A) · -20°C to 75°C',
+        'Max MicroSD Card': 'Up to 128GB Class 10 TF Card'
+      },
+      graphics: [
+        { kicker: '2K QHD + 1.47" IPS', title: 'Ultra-Compact 2K Front Recording', desc: 'Captures crisp 2304×1296P road footage & number plates while staying hidden behind your rearview mirror.', img: 'assets/img/dashcam-compact-2k.jpg', metric: '2304×1296P · 140° FOV' },
+        { kicker: 'STARLIGHT OPTICS', title: 'F2.0 Starlight Night Vision', desc: '4-layer full-glass lens with F2.0 aperture balances glaring headlights and dark unlit highways.', img: 'assets/img/dashcam-kv-night.jpg', metric: 'F2.0 · 4-Glass Lens' },
+        { kicker: 'BUILT-IN WI-FI APP', title: 'Zero-Data Smartphone Download', desc: 'Preview live video, replay incidents, and share clips directly to WhatsApp via the Golens iOS/Android app.', img: 'assets/img/dashcam-4g-live.jpg', metric: '2.4GHz Wi-Fi Direct' },
+        { kicker: '24H PARKING GUARD', title: 'Time-Lapse & G-Sensor Lock', desc: 'Automatically locks collision clips and records 1fps time-lapse surveillance while parked.', img: 'assets/img/dashcam-parking-24h.jpg', metric: '3-Axis G-Sensor · 128GB' }
+      ]
+    },
+    {
+      id: 't4b2v',
+      sku: 'T4-B2V',
+      name: 'Golens T4-B2V 2 Channel Dash Camera for Cars',
+      line: 'New Launch · 4K+1080P Voice & ADAS',
+      subtitle: '4K Front + 1080P Rear, Voice Control, WiFi App Control, 3" IPS Display, ADAS, BSD, Night Vision, Loop Recording, Parking Monitor, G-Sensor',
+      sub: '4K Front + 1080P Rear · Voice Control · 3" IPS Display · ADAS & BSD · WiFi App · Parking Monitor',
+      category: 'dashcam',
+      door: [], material: [],
+      price: 7989, mrp: 15990, discount: 50, soldOut: false,
+      access: ['app', 'alexa'], wifi: true, bt: false, camera: true, lcd: true,
+      channels: 2,
+      videoResolution: '4K Ultra HD Front + 1080P Full HD Rear',
+      display: '3.0" IPS Wide-Angle Display',
+      fov: '170° Front + 140° Rear Dual Wide Angle',
+      connectivity: 'Built-in Wi-Fi App Control + Smart Voice Control',
+      has4G: false, hasGPS: false, hasADAS: true, hasBSD: true, hasVoiceControl: true, isMirror: false,
+      warranty: 1, badge: 'new', rating: 4.9,
+      chips: ['4K + 1080P Dual', 'Voice Control', '3" IPS Screen', 'ADAS + BSD', 'Wi-Fi App'],
+      image: img('T4.png'),
+      bannerGraphic: 'assets/img/graphics/t4b2v-banner.jpg',
+      gallery: [
+        'T4.png',
+        '3_9ff395eb-d243-4449-9072-7fd620bf1783.jpg',
+        '4_22f9df97-0190-4bc3-bd0b-677ef31cb0c6.jpg',
+        '5_8280fc1e-efeb-49f1-82b1-233e90665107.jpg',
+        '6_12767794-dd7d-4dc6-91bd-ca6137c5ba21.jpg',
+        '2_7c258495-d705-4d87-96d0-ef8be8742473.jpg',
+        '7_a7bd88d5-03fc-4073-b241-f28ab7ef7bb5.jpg'
+      ].map(f => CDN + f + '?width=1200&format=pjpg'),
+      url: 'https://golens.in/collections/dash-cameras/products/golens-t4-b2v-2-channel-dash-camera-for-cars-new-launch-4k-front-1080p-rear-voice-control-wifi-app-control-3-ips-display-adas-bsd-night-vision-loop-recording-parking-monitor-g-sensor',
+      amazonUrl: 'https://www.amazon.in/s?k=Golens+T4-B2V+Dash+Camera',
+      bestFor: 'Drivers who want true 4K+1080P dual recording with hands-free Voice Control, 3" IPS screen, and ADAS + Blind-Spot alerts.',
+      features: [
+        'Dual-Channel Recording: True 4K Ultra HD Front + 1080P Full HD Rear camera included',
+        'Hands-Free Smart Voice Control — lock emergency video, snap photos, or toggle screen by voice',
+        'Advanced ADAS (Lane Departure & Forward Collision Warning) + BSD (Blind Spot Detection)',
+        '3.0-inch IPS Display with Picture-in-Picture live preview of front and rear traffic',
+        'Starlight Night Vision with WDR for crisp license plate capture in low light',
+        'Built-in Wi-Fi + Mobile App for instant video download & sharing without removing SD card',
+        '24H Parking Monitor + 3-Axis G-Sensor + Seamless Loop Recording (up to 256GB MicroSD)'
+      ],
+      specs: {
+        'Model': 'Golens T4-B2V (New Launch)',
+        'Channels': '2-Channel (Front + Rear)',
+        'Video Resolution': '4K UHD Front + 1080P FHD Rear',
+        'Display': '3.0" IPS High-Brightness Screen',
+        'Voice Control': 'Yes (Hands-Free Voice Commands)',
+        'Driver Assistance': 'ADAS (Lane & Collision) + BSD (Blind Spot)',
+        'Night Vision': 'Starlight Night Vision + WDR',
+        'Connectivity': 'Built-in Wi-Fi + Golens App',
+        'Parking & G-Sensor': '24H Parking Monitor + 3-Axis G-Sensor + Loop Recording',
+        'Max MicroSD Card': 'Up to 256GB Class 10 / U3 MicroSD'
+      },
+      graphics: [
+        { kicker: '4K FRONT + 1080P REAR', title: '3" IPS Dual-Channel Clarity + Voice Control', desc: 'Hands-free voice commands let you lock video or snap photos while keeping both hands on the wheel.', img: 'assets/img/dashcam-voice-ips.jpg', metric: '4K + 1080P · Voice AI' },
+        { kicker: 'ADAS + BSD SAFETY', title: 'Active Lane & Blind-Spot Alerts', desc: 'Real-time audio-visual alerts for lane departure, forward collision distance, and rear blind-spot vehicles.', img: 'assets/img/dashcam-adas-bsd.jpg', metric: 'LDW · FCW · BSD' },
+        { kicker: 'STARLIGHT WDR', title: 'Night Highway License Plate Capture', desc: 'Wide Dynamic Range and Starlight optics prevent high-beam blowout on Indian highways at night.', img: 'assets/img/dashcam-kv-night.jpg', metric: 'Starlight Night Vision' },
+        { kicker: '24H PARKING + G-SENSOR', title: 'Round-the-Clock Impact Protection', desc: 'Detects bumps while parked and automatically locks emergency clips into a protected folder.', img: 'assets/img/dashcam-parking-24h.jpg', metric: '24H Guard · Loop Rec' }
+      ]
+    },
+    {
+      id: 't8b2c',
+      sku: 'T8-B2C',
+      name: 'Golens T8-B2C 4G Dual Dash Camera for Car',
+      line: '4G Live View · 3" IPS Touch · GPS',
+      subtitle: '3" IPS Touch Display, 2K Front + 1080P Rear, GPS, WiFi, Remote Live View, 24H Parking Monitor, G-Sensor',
+      sub: '4G Remote Live View · 3" IPS Touch Display · 2K Front + 1080P Rear · Built-in GPS & WiFi · 24H Parking',
+      category: 'dashcam',
+      door: [], material: [],
+      price: 8989, mrp: 22990, discount: 61, soldOut: false,
+      access: ['app'], wifi: true, bt: false, camera: true, lcd: true,
+      channels: 2,
+      videoResolution: '2K QHD Front + 1080P Full HD Rear',
+      display: '3.0" IPS Capacitive Touch Display',
+      fov: '170° Front + 140° Rear Wide Angle',
+      connectivity: '4G LTE SIM Slot (Remote Live View) + Wi-Fi + Built-in GPS',
+      has4G: true, hasGPS: true, hasADAS: false, hasBSD: false, hasVoiceControl: false, isMirror: false,
+      warranty: 1, badge: 'advanced', rating: 4.8,
+      chips: ['4G Remote Live View', '3" IPS Touch', '2K + 1080P', 'Built-in GPS', '24H Parking'],
+      image: img('1MAIN_265eedff-83ed-4152-886b-21a2a3e002a9.png'),
+      bannerGraphic: 'assets/img/graphics/t8b2c-banner.jpg',
+      gallery: [
+        '1MAIN_265eedff-83ed-4152-886b-21a2a3e002a9.png',
+        '3_4c4514e6-e7f8-4510-b122-4a2b71cb38ef.jpg',
+        '2_db11cd16-4319-4bd7-bd58-b73e3021a5b2.jpg',
+        '4_93326b17-c200-445e-96a0-3c3d1e04cb0f.jpg',
+        '5_05d866ee-2f51-4e77-8eb3-4d9460e3bd9d.jpg',
+        '6_1fd1d3e9-6306-4455-b9ae-260b673c202a.jpg',
+        '7_4c0576bf-18fd-4f7c-b3ef-9bc94cc59177.jpg'
+      ].map(f => CDN + f + '?width=1200&format=pjpg'),
+      url: 'https://golens.in/collections/dash-cameras/products/golens-t8-b2c-4g-dual-dash-camera-for-car-3-ips-touch-display-2k-front-1080p-rear-gps-wifi-remote-live-view-24h-parking-monitor-g-sensor',
+      amazonUrl: 'https://www.amazon.in/s?k=Golens+T8-B2C+4G+Dash+Camera',
+      bestFor: 'Car owners & chauffeurs where you want 4G remote live view and real-time GPS tracking from anywhere in India.',
+      features: [
+        '4G Cloud Remote Live View — watch live front & rear camera feeds from anywhere on your smartphone',
+        '2K QHD Front + 1080P Rear Dual Recording for complete road evidence',
+        '3.0-inch IPS Capacitive Touch Display for effortless on-device playback & settings',
+        'Built-in GPS Logger records real-time vehicle speed, coordinates, and route history',
+        'Dual Connectivity: 4G LTE for remote monitoring + Wi-Fi for fast local clip downloads',
+        '24H Parking Surveillance with instant mobile push alerts on vibration/impact',
+        '3-Axis G-Sensor emergency lock + Seamless Loop Recording (up to 256GB MicroSD)'
+      ],
+      specs: {
+        'Model': 'Golens T8-B2C 4G Dual Dash Cam',
+        'Channels': '2-Channel (Front + Rear)',
+        'Video Resolution': '2K QHD Front + 1080P FHD Rear',
+        'Display': '3.0" IPS Capacitive Touch Screen',
+        '4G Remote Live View': 'Yes (4G LTE SIM + Cloud App Live Stream)',
+        'GPS Tracking': 'Built-in GPS (Live Location, Speed & Route Playback)',
+        'Wi-Fi': 'Built-in Wi-Fi for Direct App Download',
+        'Night Vision': 'Starlight Night Vision + WDR',
+        'Parking & G-Sensor': '24H Parking Monitor + Mobile Alert + G-Sensor',
+        'Max MicroSD Card': 'Up to 256GB Class 10 / U3 MicroSD'
+      },
+      graphics: [
+        { kicker: '4G REMOTE LIVE VIEW', title: 'Check Your Car Live From Anywhere', desc: '4G LTE connectivity streams live front & rear video and instant impact alerts straight to your phone.', img: 'assets/img/dashcam-4g-live.jpg', metric: '4G LTE · Cloud App' },
+        { kicker: '3" IPS TOUCH + 2K DUAL', title: 'Intuitive Touchscreen & Dual Recording', desc: 'Swipe between 2K front and 1080P rear views or replay clips right on the 3" IPS touch display.', img: 'assets/img/dashcam-voice-ips.jpg', metric: '3.0" IPS Touch · 2K+1080P' },
+        { kicker: 'BUILT-IN GPS LOGGER', title: 'Live Route, Speed & Map Playback', desc: 'Logs exact GPS coordinates, route trails, and speed stamps on every recorded video segment.', img: 'assets/img/dashcam-kv-night.jpg', metric: 'Real-Time GPS Telemetry' },
+        { kicker: '24H PARKING GUARD', title: '24-Hour Remote Parking Surveillance', desc: 'Monitors parked vehicle 24/7 with G-sensor impact detection and remote wake-up view.', img: 'assets/img/dashcam-parking-24h.jpg', metric: '24H Guard · G-Sensor' }
+      ]
+    },
+    {
+      id: 't10g2c',
+      sku: 'T10-G2C',
+      name: 'Golens T10-G2C 2-Channel 4G Touch Screen Mirror Dash Cam',
+      line: 'Flagship 9.66" 4G Touch Mirror · 4K+1080P',
+      subtitle: 'Front 4K + Rear 1080P Dual Recording, GPS, ADAS, BSD, Parking Monitor, G-Sensor, Live View',
+      sub: '9.66" Touch Screen Mirror · Front 4K + Rear 1080P · 4G Live View · GPS · ADAS & BSD · 24H Parking',
+      category: 'dashcam',
+      door: [], material: [],
+      price: 10890, mrp: 24990, discount: 56, soldOut: false,
+      access: ['app'], wifi: true, bt: false, camera: true, lcd: true,
+      channels: 2,
+      videoResolution: '4K Ultra HD Front + 1080P Full HD Rear',
+      display: '9.66" IPS Full-Touch Split-Screen Rearview Mirror',
+      fov: '170° Front + 140° Rear Wide Angle',
+      connectivity: '4G LTE Remote Live View + Wi-Fi + Built-in GPS',
+      has4G: true, hasGPS: true, hasADAS: true, hasBSD: true, hasVoiceControl: false, isMirror: true,
+      warranty: 1, badge: 'flagship', rating: 4.9,
+      chips: ['9.66" Touch Mirror', '4K + 1080P', '4G Live View', 'ADAS + BSD', 'Built-in GPS'],
       image: img('1MAIN_f4cb4ca1-0e57-4f09-ad8c-ef9206c95d0f.png'),
-      gallery: ['1MAIN_f4cb4ca1-0e57-4f09-ad8c-ef9206c95d0f.png'].map(f => CDN + f + '?width=1200&format=pjpg'),
+      bannerGraphic: 'assets/img/graphics/t10g2c-banner.jpg',
+      gallery: [
+        '1MAIN_f4cb4ca1-0e57-4f09-ad8c-ef9206c95d0f.png',
+        '2_7c2e7a9a-6557-4ff4-91cb-0aa19b82fd58.png',
+        '3_1fd738ab-9e69-4120-90b3-5584ec99bb2d.png',
+        '4_1956cd31-d697-4f32-991a-95771ca5f910.png',
+        '5_82dc7f6c-7f53-4246-9d5f-1fd4d987c24e.png',
+        '6_1660416e-8127-44aa-b897-0014df6c05fd.png',
+        '7_4c1d4c55-2612-406b-87a7-e3866c550a88.png'
+      ].map(f => CDN + f + '?width=1200&format=pjpg'),
       url: 'https://golens.in/collections/dash-cameras/products/golens-t10-g2c-2-channel-4g-touch-screen-mirror-dash-cam-for-car-front-4k-rear-1080p-dual-recording-gps-adas-bsd-parking-monitor-g-sensor-live-view',
-      bestFor: 'Cars that need evidence-grade front + rear recording.'
+      amazonUrl: 'https://www.amazon.in/Golens-Channel-Recording-Parking-G-Sensor/dp/B0GX6VVZ3P',
+      bestFor: 'SUVs & sedans seeking a flagship 9.66" anti-glare touch mirror with 4K+1080P recording, 4G remote live view, GPS, and ADAS/BSD safety.',
+      features: [
+        '9.66-inch IPS Full-Touch Anti-Glare Mirror Display with split-screen Front 4K + Rear 1080P view',
+        '4G LTE Remote Live View & Two-Way Monitoring via smartphone app from anywhere',
+        'ADAS (Lane Departure & Forward Collision Warning) + BSD (Blind Spot Detection) safety suite',
+        'Built-in GPS Module logs live route, speed, and coordinates with map playback',
+        'Reversing Assist Mode automatically displays full-screen rear camera with parking guidelines',
+        '24×7 Parking Monitor with Time-Lapse recording & 3-Axis G-Sensor collision lock',
+        'Straps securely over any existing OEM car mirror in minutes; supports up to 256GB MicroSD'
+      ],
+      specs: {
+        'Model': 'Golens T10-G2C 4G Mirror Dash Cam',
+        'Form Factor': '9.66" IPS Full-Touch Rearview Mirror',
+        'Channels': '2-Channel (Front + Rear)',
+        'Video Resolution': '4K UHD Front + 1080P FHD Rear',
+        '4G & Wi-Fi': '4G LTE SIM Remote Live View + Built-in Wi-Fi',
+        'GPS Tracking': 'Built-in GPS (Speed, Route & Location Logger)',
+        'Driver Assistance': 'ADAS + BSD (Blind Spot Detection) + Reverse Lines',
+        'Night Vision': 'Starlight Anti-Glare Night Vision + WDR',
+        'Parking & G-Sensor': '24×7 Time-Lapse Parking Monitor + G-Sensor',
+        'Max MicroSD Card': 'Up to 256GB Class 10 / U3 MicroSD'
+      },
+      graphics: [
+        { kicker: '9.66" IPS TOUCH MIRROR', title: 'Split-Screen 4K Front + 1080P Rear Mirror', desc: 'Eliminates rear pillar blind spots with a panoramic 9.66" anti-glare touchscreen mirror display.', img: 'assets/img/dashcam-mirror-adas.jpg', metric: '9.66" Touch · 4K+1080P' },
+        { kicker: '4G LIVE VIEW + GPS', title: 'Remote Live Feed & Real-Time GPS Tracking', desc: 'View your car live from your office or home over 4G and track every route & speed stamp.', img: 'assets/img/dashcam-4g-live.jpg', metric: '4G Cloud + GPS' },
+        { kicker: 'ADAS + BSD SUITE', title: 'Intelligent Lane & Blind-Spot Warnings', desc: 'Monitors highway lanes, lead vehicle distance, and overtaking vehicles in your blind spot.', img: 'assets/img/dashcam-adas-bsd.jpg', metric: 'Active ADAS + BSD' },
+        { kicker: '24×7 PARKING MONITOR', title: 'Time-Lapse & G-Sensor Collision Guard', desc: 'Continuous low-power time-lapse surveillance and automatic impact locking while parked.', img: 'assets/img/dashcam-parking-24h.jpg', metric: 'Time-Lapse · G-Sensor' }
+      ]
+    },
+    {
+      id: 't9b3g',
+      sku: 'T9-B3G',
+      name: 'Golens T9-B3G 3 Channel Dash Cam',
+      line: '3-Channel 4K + Cabin & Rear 1080P · Touchscreen',
+      subtitle: 'Front 4K + Inside & Rear 1080P, Touchscreen DVR Playback, WiFi GPS, Night Vision, Parking Monitor, G-Sensor, Loop Recording',
+      sub: '3-Channel (Front 4K + Cabin 1080P + Rear 1080P) · 3.2" Touchscreen DVR · WiFi + GPS · IR Night Vision',
+      category: 'dashcam',
+      door: [], material: [],
+      price: 8410, mrp: 21990, discount: 62, soldOut: false,
+      access: ['app'], wifi: true, bt: false, camera: true, lcd: true,
+      channels: 3,
+      videoResolution: '4K Front + 1080P Inside Cabin + 1080P Rear (3-Channel)',
+      display: '3.2" IPS Touchscreen with Instant DVR Playback',
+      fov: '170° Front + 150° Cabin + 140° Rear (360° Coverage)',
+      connectivity: 'Built-in Wi-Fi + Built-in GPS Logger',
+      has4G: false, hasGPS: true, hasADAS: false, hasBSD: false, hasVoiceControl: false, isMirror: false,
+      warranty: 1, badge: 'flagship', rating: 4.9,
+      chips: ['3-Channel (Front+Cabin+Rear)', '4K + 1080P + 1080P', '3.2" Touchscreen', 'Wi-Fi + GPS', 'Cabin IR Night Vision'],
+      image: img('1MAIN_134b66f9-254a-4130-a8be-4e336901ebf4.jpg'),
+      bannerGraphic: 'assets/img/graphics/t9b3g-banner.jpg',
+      gallery: [
+        '1MAIN_134b66f9-254a-4130-a8be-4e336901ebf4.jpg',
+        '3_f601d779-2fb0-450b-8100-7d72d95c685c.jpg',
+        '2_27c5bf2c-2046-46d4-9197-5e6c5c20802e.jpg',
+        '4_246610c5-1f92-45eb-8730-3f787d76d093.jpg',
+        '5_82c10d60-90a9-45ff-899b-31738b610a63.jpg',
+        '6_16328640-7d98-404c-a6fb-2246a9a23f07.jpg',
+        '7_4c89030f-b68c-440b-8c7b-3996b5752e90.jpg'
+      ].map(f => CDN + f + '?width=1200&format=pjpg'),
+      url: 'https://golens.in/collections/dash-cameras/products/golens-t9-b3g-3-channel-dash-cam-front-4k-inside-rear-1080p-touchscreen-dvr-playback-wifi-gps-night-vision-parking-monitor-g-sensor-loop-recording',
+      amazonUrl: 'https://www.amazon.in/s?k=Golens+T9-B3G+3+Channel+Dash+Cam',
+      bestFor: 'Family cars, chauffeur-driven vehicles & fleets needing complete 3-camera (Front 4K + Inside Cabin + Rear) evidence.',
+      features: [
+        'True 3-Channel Recording: Front 4K Ultra HD + Inside Cabin 1080P + Rear 1080P simultaneously',
+        '3.2-inch IPS Touchscreen for instant on-device DVR playback of all 3 camera angles',
+        'Infrared (IR) Cabin Night Vision + WDR for crystal-clear interior & road footage in total darkness',
+        'Built-in Wi-Fi & GPS — track exact route/speed and transfer 3-channel clips to your phone',
+        '24H Parking Monitor + 3-Axis G-Sensor locks all 3 camera streams during any collision',
+        'Seamless Loop Recording with support for up to 256GB MicroSD card'
+      ],
+      specs: {
+        'Model': 'Golens T9-B3G 3-Channel Dash Cam',
+        'Channels': '3-Channel (Front + Inside Cabin + Rear)',
+        'Video Resolution': 'Front 4K UHD + Cabin 1080P + Rear 1080P',
+        'Display': '3.2" IPS Touchscreen (On-Device DVR Playback)',
+        'Field of View': '170° Front + 150° Cabin + 140° Rear',
+        'Night Vision': 'WDR Road Night Vision + 4 IR LEDs for Cabin',
+        'Wi-Fi & GPS': 'Built-in Wi-Fi App + Built-in GPS Route Logger',
+        'Parking & G-Sensor': '24H Parking Monitor + 3-Axis G-Sensor + Loop Recording',
+        'Max MicroSD Card': 'Up to 256GB Class 10 / U3 MicroSD'
+      },
+      graphics: [
+        { kicker: '3-CHANNEL 360° COVERAGE', title: 'Front 4K + Cabin 1080P + Rear 1080P', desc: 'Simultaneously records the highway ahead, passenger cabin interior, and rear traffic with zero blind spots.', img: 'assets/img/dashcam-3channel-cabin.jpg', metric: '4K + 1080P + 1080P' },
+        { kicker: 'IR CABIN + WDR NIGHT VISION', title: 'Pitch-Dark Cabin & Highway Clarity', desc: 'Infrared cabin LEDs and WDR road optics capture clear faces inside and license plates outside at night.', img: 'assets/img/dashcam-kv-night.jpg', metric: 'IR LEDs + WDR Optics' },
+        { kicker: '3.2" TOUCH + WI-FI GPS', title: 'Touchscreen DVR Playback & GPS Tracking', desc: 'Replay all 3 channels on the 3.2" touchscreen or download GPS-stamped video to your phone over Wi-Fi.', img: 'assets/img/dashcam-4g-live.jpg', metric: '3.2" Touch · Wi-Fi + GPS' },
+        { kicker: '24H PARKING + G-SENSOR', title: '3-Camera Emergency Collision Lock', desc: 'Any impact automatically locks Front, Cabin, and Rear footage simultaneously for indisputable proof.', img: 'assets/img/dashcam-parking-24h.jpg', metric: '3-Ch Impact Lock' }
+      ]
+    },
+    {
+      id: 't7g2v',
+      sku: 'T7-G2V',
+      name: 'Golens T7-G2V 4K Mirror Dash Cam',
+      line: '9.66" Touch Screen Mirror · 4K+1080P',
+      subtitle: 'Front 4K & Rear 1080P | 9.66" Touch Screen | WiFi, Voice Control, Night Vision, BSD, ADAS, Parking Monitor',
+      sub: '9.66" Touch Mirror · 4K Front + 1080P Rear · Voice Control · WiFi · ADAS & BSD · Parking Monitor',
+      category: 'dashcam',
+      door: [], material: [],
+      price: 9253, mrp: 19990, discount: 54, soldOut: false,
+      access: ['app', 'alexa'], wifi: true, bt: false, camera: true, lcd: true,
+      channels: 2,
+      videoResolution: '4K Ultra HD Front + 1080P Full HD Rear',
+      display: '9.66" IPS Full-Touch Rearview Mirror',
+      fov: '170° Front + 140° Rear Wide Angle',
+      connectivity: 'Built-in Wi-Fi App + Smart Voice Control',
+      has4G: false, hasGPS: true, hasADAS: true, hasBSD: true, hasVoiceControl: true, isMirror: true,
+      warranty: 1, badge: null, rating: 4.8,
+      chips: ['9.66" Touch Mirror', '4K + 1080P', 'Voice Control', 'ADAS + BSD'],
+      image: img('1MAIN_6250f952-f254-4c6f-9464-e0a4bf1f9c27.jpg'),
+      bannerGraphic: 'assets/img/graphics/t10g2c-banner.jpg',
+      gallery: [
+        '1MAIN_6250f952-f254-4c6f-9464-e0a4bf1f9c27.jpg',
+        '3_1411420f-7850-45e0-9b30-7a28e7322719.jpg',
+        '2_7c0c19d7-4f8b-4a3f-8b3e-84c65c52b025.jpg',
+        '4_938f0a4b-6f91-48f3-895e-398718d3a884.jpg'
+      ].map(f => CDN + f + '?width=1200&format=pjpg'),
+      url: 'https://golens.in/collections/dash-cameras/products/golens-t7-g2v-4k-mirror-dash-cam-for-car-front-4k-rear-1080p-9-66-touch-screen-wifi-voice-control-night-vision-bsd-adas-parking-monitor-reverse-assist',
+      amazonUrl: 'https://www.amazon.in/s?k=Golens+T7-G2V+Mirror+Dash+Cam',
+      bestFor: 'Drivers wanting a 9.66" 4K touchscreen mirror dashcam with Voice Control, ADAS/BSD, and reverse assist.',
+      features: [
+        '9.66" IPS Full-Touch Rearview Mirror with 4K Front + 1080P Rear dual recording',
+        'Hands-Free Voice Control + ADAS & BSD Driver Assistance + Reverse Assist guidelines',
+        'Built-in Wi-Fi App Control + Starlight Night Vision + 24H Parking Monitor'
+      ],
+      specs: {
+        'Model': 'Golens T7-G2V 4K Mirror Dash Cam',
+        'Channels': '2-Channel (Front 4K + Rear 1080P)',
+        'Display': '9.66" IPS Touch Mirror',
+        'Voice & Safety': 'Voice Control + ADAS + BSD + Reverse Assist',
+        'Connectivity': 'Wi-Fi App + GPS Support'
+      },
+      graphics: [
+        { kicker: '9.66" 4K MIRROR', title: 'Full-Screen Anti-Glare Touch Mirror', desc: 'Wide 9.66" IPS touch display streams 4K front and 1080P rear views simultaneously.', img: 'assets/img/dashcam-mirror-adas.jpg', metric: '9.66" IPS · 4K+1080P' },
+        { kicker: 'ADAS + BSD SAFETY', title: 'Lane & Blind-Spot Warnings', desc: 'Alerts you to lane drift and vehicles in your rear blind spot.', img: 'assets/img/dashcam-adas-bsd.jpg', metric: 'ADAS + BSD' }
+      ]
     },
     {
       id: 't6b2v',
-      name: 'Golens T6-B2V',
-      line: null,
-      subtitle: '4K + 1080p dual recording with WiFi app control',
+      sku: 'T6-B2V',
+      name: 'Golens T6-B2V 2-Channel Dash Cam',
+      line: 'New Edition · 4K Front + 1080P Rear',
+      subtitle: '4K Front + 1080p Rear Dual Recording, WiFi App Control, Night Vision, 140° Wide Angle, Parking Monitor',
+      sub: '4K Front + 1080P Rear · WiFi App Control · Night Vision · 140° Wide Angle · Parking Monitor',
       category: 'dashcam',
       door: [], material: [],
-      price: 6989, mrp: null, soldOut: true,
-      access: [], wifi: true,
-      warranty: 2, badge: null, rating: null,
+      price: 6989, mrp: 14990, discount: 53, soldOut: false,
+      access: ['app'], wifi: true, bt: false, camera: true, lcd: true,
+      channels: 2,
+      videoResolution: '4K Front + 1080P Rear Dual Recording',
+      display: 'IPS Display + Mobile App View',
+      fov: '140° Wide Angle',
+      connectivity: 'Built-in Wi-Fi + Golens App',
+      has4G: false, hasGPS: false, hasADAS: false, hasBSD: false, hasVoiceControl: false, isMirror: false,
+      warranty: 1, badge: null, rating: 4.7,
+      chips: ['4K + 1080P Dual', 'Wi-Fi App', 'Night Vision', 'Parking Monitor'],
       image: img('T6.png'),
-      gallery: ['T6.png'].map(f => CDN + f + '?width=1200&format=pjpg'),
+      bannerGraphic: 'assets/img/graphics/t4b2v-banner.jpg',
+      gallery: [
+        'T6.png',
+        '3_c354736c-fa3b-49c9-b536-9f6ca613b2d2.jpg',
+        '4_24455d17-fc39-4449-8383-9478bbca0470.jpg'
+      ].map(f => CDN + f + '?width=1200&format=pjpg'),
       url: 'https://golens.in/collections/dash-cameras/products/golens-t6-b2v-2-channel-dash-cam-for-car-new-edition-4k-front-1080p-rear-dual-recording-wifi-app-control-night-vision-140-wide-angle-parking-monitor',
-      bestFor: 'Essential dual-channel protection with parking monitor.'
+      amazonUrl: 'https://www.amazon.in/s?k=Golens+T6-B2V+Dash+Cam',
+      bestFor: 'Value-focused 4K front + 1080P rear dual-channel recording with Wi-Fi app control and parking monitor.',
+      features: [
+        '4K Front + 1080P Rear Dual-Channel Recording with 140° wide angle',
+        'Built-in Wi-Fi App Control for iOS & Android + Starlight Night Vision + 24H Parking Monitor'
+      ],
+      specs: {
+        'Model': 'Golens T6-B2V (New Edition)',
+        'Channels': '2-Channel (Front 4K + Rear 1080P)',
+        'Field of View': '140° Wide Angle',
+        'Connectivity': 'Built-in Wi-Fi App Control'
+      },
+      graphics: [
+        { kicker: '4K + 1080P DUAL', title: 'Front 4K & Rear 1080P Protection', desc: 'Records crisp front and rear road evidence simultaneously.', img: 'assets/img/dashcam-kv-night.jpg', metric: '4K + 1080P' },
+        { kicker: '24H PARKING', title: 'Parking Monitor & G-Sensor', desc: 'Protects your car while parked with automatic impact locking.', img: 'assets/img/dashcam-parking-24h.jpg', metric: '24H Parking Guard' }
+      ]
+    },
+    {
+      id: 't5t4c',
+      sku: 'T5-T4C',
+      name: 'Golens T5-T4C 4-Channel 10" IPS Truck/Bus Dash Cam',
+      line: 'Commercial Fleet · 4-Ch 360° · 10" Touch IPS',
+      subtitle: '4-Channel 1080P 360° Blind-Spot DVR | 10" Touch IPS Monitor | WiFi,BSD, Parking Monitor | 9V–36V for Trucks, Buses & SUVs',
+      sub: '4-Channel 1080P 360° Blind-Spot DVR · 10" Touch IPS Monitor · WiFi · BSD · 9V–36V Commercial Fleet',
+      category: 'dashcam',
+      door: [], material: [],
+      price: 12853, mrp: 28990, discount: 56, soldOut: false,
+      access: ['app'], wifi: true, bt: false, camera: true, lcd: true,
+      channels: 4,
+      videoResolution: '4 × 1080P Full HD (Front + Left + Right + Rear)',
+      display: '10.0" IPS Touch Split-Screen Monitor',
+      fov: '360° Quad-Camera Blind-Spot Coverage',
+      connectivity: 'Built-in Wi-Fi + BSD Blind-Spot AI + 9V–36V Wide Voltage',
+      has4G: false, hasGPS: false, hasADAS: true, hasBSD: true, hasVoiceControl: false, isMirror: false,
+      warranty: 1, badge: 'advanced', rating: 4.8,
+      chips: ['4-Channel 360°', '10" IPS Touch Monitor', 'BSD Blind-Spot', '9V–36V Truck/Bus/SUV'],
+      image: img('1MAIN_6834b8a6-7c80-4672-9759-4c762467c721.jpg'),
+      bannerGraphic: 'assets/img/graphics/t9b3g-banner.jpg',
+      gallery: [
+        '1MAIN_6834b8a6-7c80-4672-9759-4c762467c721.jpg',
+        '2_789d76bc-3724-41d5-8092-5c21303f38e1.jpg',
+        '3_3685c27b-5811-43c7-96d0-72186e208749.jpg'
+      ].map(f => CDN + f + '?width=1200&format=pjpg'),
+      url: 'https://golens.in/collections/dash-cameras/products/golens-t5-t4c-4-channel-dash-cam-10-ips-touch-screen-1080p-quad-recording-wifi-bsd-blind-spot-detection-parking-monitor-g-sensor-loop-recording-for-trucks-buses-suvs-commercial-vehicles',
+      amazonUrl: 'https://www.amazon.in/s?k=Golens+T5-T4C+4+Channel+Dash+Cam',
+      bestFor: 'Trucks, buses, school vans & commercial fleets needing 4-camera 360° blind-spot monitoring on a 10" IPS screen.',
+      features: [
+        'Quad 4-Channel 1080P Cameras (Front, Left, Right, Rear) with waterproof exterior side/rear lenses',
+        '10-inch IPS Touch Split-Screen Monitor with BSD Blind-Spot Detection & 9V–36V commercial power'
+      ],
+      specs: {
+        'Model': 'Golens T5-T4C 4-Channel Fleet DVR',
+        'Channels': '4-Channel (Front + Left + Right + Rear)',
+        'Display': '10.0" IPS Touch Split-Screen Monitor',
+        'Voltage': '9V–36V Wide Voltage (Cars, SUVs, Trucks, Buses)'
+      },
+      graphics: [
+        { kicker: '4-CHANNEL 360° FLEET', title: '10" IPS Quad-Split Monitor', desc: 'Eliminates all blind spots on trucks, buses, and commercial vehicles.', img: 'assets/img/dashcam-adas-bsd.jpg', metric: '4×1080P · 10" IPS' }
+      ]
     }
   ];
 
@@ -691,7 +1098,7 @@
     biometric:{ title: 'Biometric Locks',  url: 'https://golens.in/collections/biometric-lock' },
     locks:    { title: 'All Smart Locks',  url: 'https://golens.in/collections/all-locks' },
     cameras:  { title: 'Cameras',          url: 'https://golens.in/collections/cameras' },
-    dashcams: { title: 'Dash Cams',        url: 'https://golens.in/collections/dash-cameras' },
+    dashcams: { title: 'Dash Cams',        url: 'dashcams.html' },
     attendance:{ title: 'Attendance',      url: 'https://golens.in/collections/attendance-machines' },
     doorbell: { title: 'Doorbell',         url: 'https://golens.in/collections/doorbell' },
     deals:    { title: 'Deals',            url: 'https://golens.in/collections/deals' }
@@ -726,6 +1133,8 @@
 
   const byId = id => CATALOG.find(p => p.id === id);
   const locks = () => CATALOG.filter(p => p.category === 'lock');
+  const dashcams = () => CATALOG.filter(p => p.category === 'dashcam');
+  const fmt = n => '₹' + Number(n || 0).toLocaleString('en-IN');
 
-  global.GOLENS = { CATALOG, COLLECTIONS, STORE, byId, locks, img };
+  global.GOLENS = { CATALOG, COLLECTIONS, STORE, byId, find: byId, locks, dashcams, img, fmt };
 })(window);

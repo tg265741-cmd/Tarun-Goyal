@@ -22,10 +22,14 @@
   <section class="page-hero">
     <div class="container">
       <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> / <span>Compare</span></nav>
-      <h1>Compare locks, honestly.</h1>
-      <p>Pick up to 4 locks. Every cell below is what the official listing says — nothing more. <a class="link-s" href="find-my-lock.html">Not sure? Get a recommendation →</a></p>
-      <div style="margin-top:22px;max-width:520px;position:relative">
-        <input type="search" id="pickInput" placeholder="Search a lock to add — try “x95”, “titan”, “glass”…" aria-label="Add a lock to compare"
+      <h1>Compare Golens models, honestly.</h1>
+      <p>Pick up to 5 models — Smart Locks or Car Dash Cameras. Every cell below is what the official listing says. <a class="link-s" href="dashcams.html#compare5">View 5-Model Dashcam Matrix →</a></p>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:16px">
+        <a class="btn-s btn-red" href="compare.html?ids=t3b1v,t4b2v,t8b2c,t10g2c,t9b3g">Compare All 5 Dash Cameras (T3 · T4 · T8 · T10 · T9)</a>
+        <a class="btn-s" style="border:1.5px solid #ddd" href="compare.html?ids=x95,x95g,x57,x28">Compare Flagship Smart Locks</a>
+      </div>
+      <div style="margin-top:18px;max-width:520px;position:relative">
+        <input type="search" id="pickInput" placeholder="Search a dashcam or lock to add — try “T10”, “T9”, “T4”, “x95”…" aria-label="Add a product to compare"
           style="width:100%;padding:.9rem 1rem;border:1.5px solid var(--grey-4);border-radius:12px;font:inherit;background:#fff">
         <div id="pickList" style="position:absolute;top:calc(100% + 6px);left:0;right:0;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 18px 40px -18px rgba(0,0,0,.25);z-index:80;display:none;overflow:hidden"></div>
       </div>
@@ -49,8 +53,8 @@
   const G = window.GOLENS;
   const inr = window.Gfmt.inr;
   const L = window.ACCESS_LABEL;
-  const MAX = 4;
-  let ids = (new URLSearchParams(location.search).get('ids') || 'x95,x95g,x57,x28')
+  const MAX = 5;
+  let ids = (new URLSearchParams(location.search).get('ids') || 't3b1v,t4b2v,t8b2c,t10g2c,t9b3g')
     .split(',').map(s => s.trim()).filter(id => G.byId(id)).slice(0, MAX);
 
   const Y = '<span class="y">✓</span>', N = '<span class="nn">—</span>';
@@ -63,34 +67,55 @@
 
   function render() {
     const t = document.getElementById('cmpTable');
-    if (!ids.length) { t.outerHTML = '<p style="padding:30px;color:var(--text-3)">Add a lock above to start comparing.</p>'; return; }
-    const head = `<thead><tr><th></th>${ids.map(id => { const p = G.byId(id); return `<th><img src="${p.image}" alt=""><br><a href="product.html?p=${id}" style="font-size:14px;font-weight:800;color:#000">${p.name}</a><br><span style="font-size:12px;font-weight:600;color:var(--text-3)">${p.line || ''}</span><br><button data-rm="${id}" style="margin-top:8px;font-size:11px;font-weight:800;color:#c0392b;background:none;border:none;cursor:pointer;padding:0">Remove</button></th>`; }).join('')}</tr></thead>`;
-    const body = '<tbody>' +
-      rowGrp('Price & buying') +
-      row('Price today', p => inr(p.price)) +
-      row('MRP', p => p.mrp ? inr(p.mrp) : N) +
-      row('Buying', p => p.soldOut ? 'Sold out' : `<a href="product.html?p=${p.id}" style="color:var(--red);font-weight:800">View →</a>`) +
-      rowGrp('Ways to unlock') +
-      row('3D Face ID', p => (p.access || []).includes('face3d') ? Y : N) +
-      row('Fingerprint', p => (p.access || []).includes('fp') ? Y : N) +
-      row('PIN / passcode', p => (p.access || []).includes('pin') ? Y : N) +
-      row('RFID card', p => (p.access || []).includes('rfid') ? Y : N) +
-      row('App / remote', p => p.wifi ? Y : (p.bt ? 'Bluetooth' : N)) +
-      row('Mechanical key', p => (p.access || []).includes('key') ? Y : N) +
-      row('Total ways', p => (p.access || []).length || '—') +
-      rowGrp('Smart features') +
-      row('Wi-Fi built-in', p => p.wifi ? Y : N) +
-      row('Camera', p => p.camera ? Y : N) +
-      row('LCD display', p => p.lcd ? Y : N) +
-      row('Works with voice assistants', p => ['x57'].includes(p.id) ? Y : N) +
-      rowGrp('Door fit') +
-      row('Fits', p => (p.door || []).map(d => doorLbl[d] || d).join(', ') || N) +
-      row('Material', p => (p.material || []).map(m => ({ wood: 'Wood', metal: 'Metal', steel: 'Steel', glass: 'Glass' }[m] || m)).join(', ') || N) +
-      row('Family', p => ({ main: 'Main door lock', glass: 'Glass lock', room: 'Interior lock' }[p.family] || '—')) +
-      rowGrp('Assurance') +
-      row('Warranty', p => p.warranty + ' yr') +
-      row('Expert installation', p => 'Available') +
-      '</tbody>';
+    if (!ids.length) { t.outerHTML = '<p style="padding:30px;color:var(--text-3)">Add a model above to start comparing.</p>'; return; }
+    const isDash = ids.some(id => G.byId(id) && G.byId(id).category === 'dashcam');
+    const head = `<thead><tr><th></th>${ids.map(id => { const p = G.byId(id); return `<th><img src="${p.image}" alt=""><br><a href="product.html?p=${id}" style="font-size:14px;font-weight:800;color:#000">${p.sku || p.name}</a><br><span style="font-size:12px;font-weight:600;color:var(--text-3)">${p.line || ''}</span><br><button data-rm="${id}" style="margin-top:8px;font-size:11px;font-weight:800;color:#c0392b;background:none;border:none;cursor:pointer;padding:0">Remove</button></th>`; }).join('')}</tr></thead>`;
+    const body = isDash
+      ? '<tbody>' +
+        rowGrp('Price & Availability') +
+        row('Price today', p => `<strong style="color:var(--red)">${inr(p.price)}</strong>`) +
+        row('MRP', p => p.mrp ? inr(p.mrp) : N) +
+        row('Buy / Details', p => `<a href="product.html?p=${p.id}" style="color:var(--red);font-weight:800">View Details →</a>` + (p.amazonUrl ? ` · <a href="${p.amazonUrl}" target="_blank" rel="noopener" style="font-weight:800;color:#d47a00">Amazon ↗</a>` : '')) +
+        rowGrp('Camera & Display') +
+        row('Recording Channels', p => p.channels ? `${p.channels}-Channel` : N) +
+        row('Video Resolution', p => p.videoResolution || N) +
+        row('Display Screen', p => p.display || N) +
+        row('Field of View (FOV)', p => p.fov || N) +
+        rowGrp('Connectivity & AI Safety') +
+        row('4G Remote Live View', p => p.has4G ? Y + ' 4G LTE Live App' : N) +
+        row('Wi-Fi App Control', p => p.wifi ? Y + ' iOS & Android' : N) +
+        row('Built-in GPS Logger', p => p.hasGPS ? Y : N) +
+        row('ADAS + BSD Safety', p => p.hasADAS ? Y + ' Lane & Blind-Spot' : N) +
+        row('Hands-Free Voice Control', p => p.hasVoiceControl ? Y : N) +
+        row('Night Vision', p => p.id === 't9b3g' ? Y + ' WDR + Cabin IR' : Y + ' Starlight WDR') +
+        row('24H Parking & G-Sensor', p => Y + ' 24H Guard + G-Sensor') +
+        '</tbody>'
+      : '<tbody>' +
+        rowGrp('Price & buying') +
+        row('Price today', p => inr(p.price)) +
+        row('MRP', p => p.mrp ? inr(p.mrp) : N) +
+        row('Buying', p => p.soldOut ? 'Sold out' : `<a href="product.html?p=${p.id}" style="color:var(--red);font-weight:800">View →</a>`) +
+        rowGrp('Ways to unlock') +
+        row('3D Face ID', p => (p.access || []).includes('face3d') ? Y : N) +
+        row('Fingerprint', p => (p.access || []).includes('fp') ? Y : N) +
+        row('PIN / passcode', p => (p.access || []).includes('pin') ? Y : N) +
+        row('RFID card', p => (p.access || []).includes('rfid') ? Y : N) +
+        row('App / remote', p => p.wifi ? Y : (p.bt ? 'Bluetooth' : N)) +
+        row('Mechanical key', p => (p.access || []).includes('key') ? Y : N) +
+        row('Total ways', p => (p.access || []).length || '—') +
+        rowGrp('Smart features') +
+        row('Wi-Fi built-in', p => p.wifi ? Y : N) +
+        row('Camera', p => p.camera ? Y : N) +
+        row('LCD display', p => p.lcd ? Y : N) +
+        row('Works with voice assistants', p => ['x57'].includes(p.id) ? Y : N) +
+        rowGrp('Door fit') +
+        row('Fits', p => (p.door || []).map(d => doorLbl[d] || d).join(', ') || N) +
+        row('Material', p => (p.material || []).map(m => ({ wood: 'Wood', metal: 'Metal', steel: 'Steel', glass: 'Glass' }[m] || m)).join(', ') || N) +
+        row('Family', p => ({ main: 'Main door lock', glass: 'Glass lock', room: 'Interior lock' }[p.family] || '—')) +
+        rowGrp('Assurance') +
+        row('Warranty', p => p.warranty + ' yr') +
+        row('Expert installation', p => 'Available') +
+        '</tbody>';
     t.innerHTML = head + body;
     history.replaceState(null, '', '?ids=' + ids.join(','));
     t.querySelectorAll('[data-rm]').forEach(b => b.addEventListener('click', () => {
@@ -105,9 +130,9 @@
   const list = document.getElementById('pickList');
   function showPicks(q) {
     q = (q || '').toLowerCase();
-    const found = G.locks().filter(p => !ids.includes(p.id))
-      .filter(p => !q || (p.name + ' ' + (p.line || '') + ' ' + p.subtitle + ' ' + (p.family || '')).toLowerCase().includes(q))
-      .slice(0, 6);
+    const found = G.CATALOG.filter(p => !ids.includes(p.id))
+      .filter(p => !q || (p.name + ' ' + (p.sku || '') + ' ' + (p.line || '') + ' ' + p.subtitle + ' ' + (p.family || '')).toLowerCase().includes(q))
+      .slice(0, 8);
     if (!found.length) { list.style.display = 'none'; return; }
     list.innerHTML = found.map(p => `<button data-addp="${p.id}" style="display:flex;gap:12px;align-items:center;width:100%;text-align:left;padding:10px 14px;background:none;border:0;border-bottom:1px solid var(--grey-2);cursor:pointer;font:inherit"><img src="${p.image}" alt="" style="width:42px;height:42px;object-fit:contain;background:var(--grey-2);border-radius:8px"><span><strong style="font-size:14px">${p.name}</strong> <span style="font-size:12px;color:var(--text-3)">${p.line || ''} · ${inr(p.price)}</span></span></button>`).join('');
     list.style.display = 'block';

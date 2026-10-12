@@ -47,10 +47,10 @@
         <div class="hcol">
           <p class="eyebrow">Golens Dash Cameras</p>
           <h1 class="hdji-title">T9 3-Channel Dashcam</h1>
-          <p class="hdji-sub">Every angle of your drive, in one view</p>
+          <p class="hdji-sub">T3-B1V 2K · T4-B2V 4K Voice/ADAS · T8-B2C 4G · T10-G2C Mirror · T9-B3G 3-Channel</p>
           <div class="hdji-ctas">
-            <a class="pill" href="https://golens.in/collections/dash-cameras">Learn More <svg class="par" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 5l7 7-7 7" stroke-linecap="round"/></svg></a>
-          <a class="pill pill-buy" href="https://golens.in/collections/dash-cameras">Buy Now <svg class="par" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a class="pill" href="dashcams.html">Explore All 5 Models <svg class="par" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 5l7 7-7 7" stroke-linecap="round"/></svg></a>
+            <a class="pill pill-buy" href="dashcams.html#graphics">View Feature Graphics <svg class="par" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           </div>
         </div>
       </div>
@@ -105,6 +105,42 @@
     <button class="rowcar-nav prev" data-car="lockRow" data-dir="-1" aria-label="Scroll left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 5l-7 7 7 7" stroke-linecap="round"/></svg></button>
     <div class="rowcar-viewport" id="lockRow"></div>
     <button class="rowcar-nav next" data-car="lockRow" data-dir="1" aria-label="Scroll right"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 5l7 7-7 7" stroke-linecap="round"/></svg></button>
+  </div>
+</section>
+
+<!-- GOLENS CAR DASH CAMERAS — ALL 5 MODELS & CUSTOM A+ GRAPHICS -->
+<section class="section-s container" id="dashcams">
+  <div class="sec-head" data-rv>
+    <div>
+      <div class="kicker">New Automotive Lineup · Amazon.in &amp; Golens.in</div>
+      <h2>Golens Car Dash Cameras</h2>
+      <p class="sub">All 5 featured models — <b>T3-B1V (2K Front WiFi)</b>, <b>T4-B2V (4K+1080P Voice/ADAS)</b>, <b>T8-B2C (4G Dual Live View)</b>, <b>T10-G2C (9.66″ 4G Touch Mirror)</b> &amp; <b>T9-B3G (3-Channel 4K+Cabin+Rear)</b> — plus fleet models.</p>
+    </div>
+    <a class="link-s" href="dashcams.html">All 8 models &amp; graphics <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 12h15M13 6l6 6-6 6" stroke-linecap="round"/></svg></a>
+  </div>
+  <div class="rowcar">
+    <button class="rowcar-nav prev" data-car="dashRow" data-dir="-1" aria-label="Scroll left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 5l-7 7 7 7" stroke-linecap="round"/></svg></button>
+    <div class="rowcar-viewport" id="dashRow"></div>
+    <button class="rowcar-nav next" data-car="dashRow" data-dir="1" aria-label="Scroll right"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 5l7 7-7 7" stroke-linecap="round"/></svg></button>
+  </div>
+
+  <!-- Interactive Model Feature Graphics Switcher on Homepage -->
+  <div style="margin-top:36px" data-rv>
+    <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px">
+      <div>
+        <div class="kicker">Custom A+ Feature Graphics &amp; Optical Coverage Diagrams</div>
+        <h3 style="font-size:clamp(20px,2.5vw,28px);font-weight:800;letter-spacing:-.02em;margin:4px 0 0">Inspect Graphics for All 5 Dash Camera Models</h3>
+      </div>
+      <a class="btn-s btn-dark" href="dashcams.html#graphics">Open Full Graphics Studio (All 5 Stacked) →</a>
+    </div>
+    <div class="g-dc-tabs" id="homeDashTabs">
+      <button class="g-dc-tab is-active" data-hmodel="t3b1v"><span class="dot"></span> 1. T3-B1V · Front 2K WiFi (₹3,990)</button>
+      <button class="g-dc-tab" data-hmodel="t4b2v"><span class="dot"></span> 2. T4-B2V · 4K+1080P Voice/ADAS (₹7,989)</button>
+      <button class="g-dc-tab" data-hmodel="t8b2c"><span class="dot"></span> 3. T8-B2C · 4G Dual Live View (₹8,989)</button>
+      <button class="g-dc-tab" data-hmodel="t10g2c"><span class="dot"></span> 4. T10-G2C · 9.66″ 4G Touch Mirror (₹10,890)</button>
+      <button class="g-dc-tab" data-hmodel="t9b3g"><span class="dot"></span> 5. T9-B3G · 3-Ch 4K+Cabin+Rear (₹8,410)</button>
+    </div>
+    <div id="homeDashBoard"></div>
   </div>
 </section>
 
@@ -378,8 +414,72 @@
   /* rows */
   const card = window.Gcard;
   document.getElementById('lockRow').innerHTML = '<div class="rowcar-track">' + ['x95','x95g','x57','x28','titan','x82','vintage','shieldface','x3n'].map(id => card(G.byId(id))).join('') + '</div>';
-  document.getElementById('secRow').innerHTML = '<div class="rowcar-track">' + ['wc22k','db1','am05e','t10g2c','wc23k','am03e','wc15k'].map(id => card(G.byId(id))).join('') + '</div>';
+  document.getElementById('dashRow').innerHTML = '<div class="rowcar-track">' + ['t3b1v','t4b2v','t8b2c','t10g2c','t9b3g','t7g2v','t6b2v','t5t4c'].map(id => card(G.byId(id))).join('') + '</div>';
+  document.getElementById('secRow').innerHTML = '<div class="rowcar-track">' + ['t9b3g','t10g2c','t4b2v','t8b2c','t3b1v','wc22k','db1','am05e','wc23k','am03e','wc15k'].map(id => card(G.byId(id))).join('') + '</div>';
   document.getElementById('recGrid').innerHTML = ['x37','doorsafe','x39','instalock'].map(id => card(G.byId(id))).join('');
+
+  /* Interactive Dashcam Feature Graphic Board on Homepage */
+  function renderHomeDashBoard(id) {
+    const p = G.byId(id) || G.byId('t3b1v');
+    const box = document.getElementById('homeDashBoard');
+    if (!box || !p) return;
+    const svgMarkup = window.GOLENS_SVG_DIAGRAM ? window.GOLENS_SVG_DIAGRAM(p.channels, p.id) : '';
+    const bannerPath = p.bannerGraphic || 'assets/img/graphics/t9b3g-banner.jpg';
+    const gcards = (p.graphics || []).map(g => `
+      <div class="g-dc-gcard">
+        <div class="g-dc-gcard__media">
+          <img src="${g.img}" alt="${g.title}" loading="lazy">
+          <span class="g-dc-gcard__pill">${g.kicker}</span>
+          <span class="g-dc-gcard__metric">${g.metric}</span>
+        </div>
+        <div class="g-dc-gcard__body">
+          <h4>${g.title}</h4>
+          <p>${g.desc}</p>
+        </div>
+      </div>`).join('');
+    box.innerHTML = `
+      <div class="g-dc-board">
+        <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.1)">
+          <div>
+            <span style="font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#ff5c72">${p.sku} · ${p.line}</span>
+            <h4 style="font-size:clamp(18px,2.2vw,26px);font-weight:800;margin:4px 0 0;color:#fff">${p.name}</h4>
+            <p style="font-size:13px;color:#9aa5b8;margin:4px 0 0">${p.subtitle}</p>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px">
+            <span style="font-size:22px;font-weight:800;color:#fff">${window.Gfmt.inr(p.price)}</span>
+            ${p.mrp ? `<span style="font-size:13px;color:#8c96a8;text-decoration:line-through">${window.Gfmt.inr(p.mrp)}</span>` : ''}
+            <button class="btn-s btn-red" data-add="${p.id}">Add to Cart</button>
+            <a class="btn-s" style="background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.24)" href="product.html?p=${p.id}">Product Page →</a>
+            ${p.amazonUrl ? `<a class="btn-s" style="background:#ff9900;color:#111;font-weight:800" href="${p.amazonUrl}" target="_blank" rel="noopener">Amazon.in ↗</a>` : ''}
+          </div>
+        </div>
+        <div class="g-dc-board__top">
+          <div class="g-dc-banner-card">
+            <img src="${bannerPath}" alt="${p.name} A+ Graphic Banner">
+            <div class="g-dc-banner-actions">
+              <span><b>${p.sku} A+ Hero Banner Graphic</b> · 1600×900 HD</span>
+              <a href="${bannerPath}" download="${p.id}-aplus-banner.jpg" class="btn-s btn-red" style="padding:6px 12px;font-size:11.5px">⬇ Download HD Banner</a>
+            </div>
+          </div>
+          <div class="g-dc-svg-box">
+            <h4><span style="color:#fff">Optical Coverage Architecture</span><span style="font-size:11.5px;color:#ff5c72;font-weight:800">${p.channels}-Channel FOV</span></h4>
+            ${svgMarkup}
+            <p style="font-size:12px;color:#9aa5b8;line-height:1.45;margin:0"><b>${p.sku}:</b> ${p.videoResolution} (${p.fov}) · ${p.display}</p>
+          </div>
+        </div>
+        <div class="g-dc-graphic-grid">${gcards}</div>
+      </div>`;
+  }
+  renderHomeDashBoard('t3b1v');
+  const hTabs = document.getElementById('homeDashTabs');
+  if (hTabs) {
+    hTabs.addEventListener('click', e => {
+      const btn = e.target.closest('[data-hmodel]');
+      if (!btn) return;
+      hTabs.querySelectorAll('.g-dc-tab').forEach(b => b.classList.toggle('is-active', b === btn));
+      renderHomeDashBoard(btn.dataset.hmodel);
+    });
+  }
 
   document.querySelectorAll('[data-car]').forEach(btn => {
     btn.addEventListener('click', () => {

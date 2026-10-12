@@ -79,13 +79,28 @@
               </div>
             </li>
             <li data-dd>
+              <button class="navlink" aria-expanded="false" aria-haspopup="true">Dash Cameras <span class="g-nav__badge">NEW</span> ${IC.chev}</button>
+              <div class="mega">
+                <h5>Featured Dash Cameras</h5>
+                <a href="product.html?p=t3b1v">T3-B1V · Front 2K + WiFi <span class="pr">₹3,990</span></a>
+                <a href="product.html?p=t4b2v">T4-B2V · 4K+1080P Voice &amp; ADAS <span class="pr">₹7,989</span></a>
+                <a href="product.html?p=t8b2c">T8-B2C · 4G Dual Live View + GPS <span class="pr">₹8,989</span></a>
+                <a href="product.html?p=t10g2c">T10-G2C · 9.66″ 4G Touch Mirror <span class="pr">₹10,890</span></a>
+                <a href="product.html?p=t9b3g">T9-B3G · 3-Ch 4K+Cabin+Rear <span class="pr">₹8,410</span></a>
+                <h5 style="margin-top:8px">Explore &amp; Graphics</h5>
+                <a href="dashcams.html">All 8 Dash Camera Models →</a>
+                <a href="dashcams.html#graphics">A+ Feature Graphics &amp; Diagrams →</a>
+                <a href="dashcams.html#compare5">Compare All 5 Models →</a>
+              </div>
+            </li>
+            <li data-dd>
               <button class="navlink" aria-expanded="false" aria-haspopup="true">More Security ${IC.chev}</button>
               <div class="mega">
                 <h5>Cameras &amp; monitoring</h5>
                 <a href="https://golens.in/collections/cameras">Security Cameras</a>
                 <a href="https://golens.in/collections/doorbell">Video Doorbell</a>
                 <a href="https://golens.in/collections/cctv-kit">CCTV Kits</a>
-                <a href="https://golens.in/collections/dash-cameras">Dash Cams</a>
+                <a href="dashcams.html">Car Dash Cameras (8 Models)</a>
                 <h5 style="margin-top:8px">For workplaces</h5>
                 <a href="https://golens.in/collections/attendance-machines">Attendance Machines</a>
                 <a href="business.html">Bulk &amp; Project Supply</a>
@@ -118,10 +133,19 @@
         <li><a href="locks.html?f=camera">With Camera</a></li>
         <li><a href="https://golens.in/collections/cabinet-locks">Cabinet Locks</a></li>
       </ul></details>
+      <details><summary>Dash Cameras (New) ${IC.plus}</summary><ul>
+        <li><a href="dashcams.html">All 8 Dash Cameras</a></li>
+        <li><a href="product.html?p=t3b1v">T3-B1V · Front 2K WiFi (₹3,990)</a></li>
+        <li><a href="product.html?p=t4b2v">T4-B2V · 4K+1080P Voice &amp; ADAS (₹7,989)</a></li>
+        <li><a href="product.html?p=t8b2c">T8-B2C · 4G Live View + GPS (₹8,989)</a></li>
+        <li><a href="product.html?p=t10g2c">T10-G2C · 9.66″ 4G Touch Mirror (₹10,890)</a></li>
+        <li><a href="product.html?p=t9b3g">T9-B3G · 3-Ch 4K+Cabin+Rear (₹8,410)</a></li>
+        <li><a href="dashcams.html#graphics">A+ Feature Graphics Studio</a></li>
+      </ul></details>
       <details><summary>More Security ${IC.plus}</summary><ul>
         <li><a href="https://golens.in/collections/cameras">Cameras</a></li>
         <li><a href="https://golens.in/collections/doorbell">Video Doorbell</a></li>
-        <li><a href="https://golens.in/collections/dash-cameras">Dash Cams</a></li>
+        <li><a href="dashcams.html">Dash Cams</a></li>
         <li><a href="https://golens.in/collections/attendance-machines">Attendance Machines</a></li>
       </ul></details>
       <a href="find-my-lock.html" class="mob-flat">Find My Lock <span>→</span></a>
@@ -185,10 +209,18 @@
             <li><a href="locks.html?f=face">Face recognition</a></li>
             <li><a href="https://golens.in/collections/cabinet-locks">Cabinet locks</a></li>
           </ul></div>
+          <div><h4>Dash Cameras</h4><ul>
+            <li><a href="dashcams.html">All Dash Cameras (8)</a></li>
+            <li><a href="product.html?p=t3b1v">T3-B1V · Front 2K WiFi</a></li>
+            <li><a href="product.html?p=t4b2v">T4-B2V · 4K Voice &amp; ADAS</a></li>
+            <li><a href="product.html?p=t8b2c">T8-B2C · 4G Dual Live View</a></li>
+            <li><a href="product.html?p=t10g2c">T10-G2C · 4G Touch Mirror</a></li>
+            <li><a href="product.html?p=t9b3g">T9-B3G · 3-Ch 4K+Cabin+Rear</a></li>
+          </ul></div>
           <div><h4>Security</h4><ul>
             <li><a href="https://golens.in/collections/cameras">Cameras</a></li>
             <li><a href="https://golens.in/collections/doorbell">Video doorbell</a></li>
-            <li><a href="https://golens.in/collections/dash-cameras">Dash cams</a></li>
+            <li><a href="dashcams.html#graphics">Dashcam A+ Graphics</a></li>
             <li><a href="https://golens.in/collections/attendance-machines">Attendance</a></li>
           </ul></div>
           <div><h4>Support</h4><ul>
@@ -233,24 +265,25 @@
     </div>`;
   document.body.appendChild(so);
   const si = so.querySelector('#gsSearchInput'), sr = so.querySelector('#gsResults');
-  so.querySelector('#gsHintTags').innerHTML = ['X95', 'Face ID', 'Fingerprint', 'Glass door', 'Camera', 'Under ₹10,000'].map(t => `<button data-t="${t}">${t}</button>`).join('');
+  so.querySelector('#gsHintTags').innerHTML = ['Dash Cam', '4K Dashcam', 'T10-G2C', 'T9-B3G', 'X95', 'Face ID', 'Glass door', 'Under ₹10,000'].map(t => `<button data-t="${t}">${t}</button>`).join('');
   so.querySelector('#gsHintTags').addEventListener('click', e => { const b = e.target.closest('[data-t]'); if (b) { si.value = b.dataset.t === 'Under ₹10,000' ? 'under' : b.dataset.t; runSearch(); } });
   function runSearch() {
     const q = si.value.trim().toLowerCase();
     track('search', { query: q });
     if (!q) { sr.innerHTML = ''; return; }
     const hits = G.CATALOG.map(p => {
-      const hay = (p.name + ' ' + (p.line || '') + ' ' + p.subtitle + ' ' + p.bestFor + ' ' + (p.access || []).join(' ')).toLowerCase();
+      const hay = (p.name + ' ' + (p.sku || '') + ' ' + (p.line || '') + ' ' + p.subtitle + ' ' + p.bestFor + ' ' + (p.access || []).join(' ') + ' ' + (p.chips || []).join(' ') + ' ' + (p.videoResolution || '') + ' ' + (p.connectivity || '')).toLowerCase();
       let s = 0;
-      if (p.name.toLowerCase().includes(q)) s += 8;
-      if (hay.includes(q)) s += 4;
+      if (p.name.toLowerCase().includes(q) || (p.sku || '').toLowerCase().includes(q)) s += 10;
+      if (hay.includes(q)) s += 5;
+      if ((q.includes('dash') || q.includes('car') || q.includes('4k') || q.includes('4g') || q.includes('adas')) && p.category === 'dashcam') s += 7;
       if ((q === 'under' || q.includes('budget')) && p.price < 10000) s += 6;
       if (q.includes('face') && (p.access || []).some(a => a.startsWith('face'))) s += 6;
       if (q.includes('camera') && p.camera) s += 6;
       if (q.includes('glass') && (p.door || []).includes('glass')) s += 6;
       if (q.includes('wifi') && p.wifi) s += 5;
       return { p, s };
-    }).filter(h => h.s > 0).sort((a, b) => b.s - a.s).slice(0, 8);
+    }).filter(h => h.s > 0).sort((a, b) => b.s - a.s).slice(0, 10);
     sr.innerHTML = hits.length ? hits.map(h => `
       <a class="s-hit" href="product.html?p=${h.p.id}">
         <img src="${h.p.image}" alt="">
@@ -362,21 +395,29 @@
   /* ---------- CARD BUILDER ---------- */
   window.Gcard = function (p) {
     const off = p.mrp ? Math.round((1 - p.price / p.mrp) * 100) : 0;
-    const chips = (p.access || []).slice(0, 2).map(a => window.ACCESS_LABEL[a]).filter(Boolean);
-    if (p.camera) chips.push('Camera');
-    if (p.wifi) chips.push('Wi-Fi');
+    let chips = [];
+    if (p.chips && p.chips.length) {
+      chips = p.chips.slice(0, 4);
+    } else {
+      chips = (p.access || []).slice(0, 2).map(a => window.ACCESS_LABEL[a]).filter(Boolean);
+      if (p.camera) chips.push('Camera');
+      if (p.wifi) chips.push('Wi-Fi');
+    }
     const tag = p.soldOut ? '<span class="tag grey">Sold out</span>'
+      : p.badge === 'new' ? `<span class="tag red">New Launch${off >= 10 ? ' · ' + off + '% OFF' : ''}</span>`
+      : p.badge === 'flagship' ? `<span class="tag red">Flagship${off >= 10 ? ' · ' + off + '% OFF' : ''}</span>`
       : off >= 10 ? `<span class="tag red">${off}% OFF</span>`
-      : p.badge === 'flagship' ? '<span class="tag red">Flagship</span>'
-      : p.badge === 'new' ? '<span class="tag red">New</span>'
-      : p.badge === 'advanced' ? '<span class="tag">Most Advanced</span>`' : '';
+      : p.badge === 'advanced' ? '<span class="tag">Most Advanced</span>' : '';
+    const amzLink = p.amazonUrl
+      ? `<a class="g-card__amz" href="${p.amazonUrl}" target="_blank" rel="noopener" title="Buy on Amazon.in">Amazon.in ↗</a>`
+      : '';
     return `<article class="fcard">
       <a class="ph" href="product.html?p=${p.id}" aria-label="${p.name}">${tag}<img src="${p.image}" alt="${p.name}${p.line ? ' ' + p.line : ''}" loading="lazy"></a>
       <div class="body">
         <h3>${p.name}${p.line ? ` <span style="font-weight:600;color:#777;font-size:13px">· ${p.line}</span>` : ''}</h3>
         <p class="desc">${p.subtitle}</p>
         <div class="chips">${chips.map(c => `<span class="chip">${c}</span>`).join('')}</div>
-        <div class="price-row"><span class="price">${inr(p.price)}</span>${p.mrp ? `<s>${inr(p.mrp)}</s>` : ''}</div>
+        <div class="price-row"><span class="price">${inr(p.price)}</span>${p.mrp ? `<s>${inr(p.mrp)}</s>` : ''}${amzLink}</div>
       </div>
       <div class="actions">
         ${p.soldOut
@@ -385,6 +426,65 @@
              <a class="btn-s" style="border:1.5px solid #ddd" href="product.html?p=${p.id}">Details</a>`}
       </div>
     </article>`;
+  };
+
+  /* ---------- VECTOR CAR COVERAGE SVG DIAGRAM GENERATOR ---------- */
+  window.GOLENS_SVG_DIAGRAM = function (channels, modelCode) {
+    var ch = Number(channels) || 2;
+    var hasRear = ch >= 2;
+    var hasCabin = ch >= 3;
+    var hasSides = ch >= 4;
+    var label = ch === 1 ? '1-Channel 140° Front Wide Angle Coverage' :
+                ch === 2 ? '2-Channel Front (170°) + Rear (140°) Dual Coverage' :
+                ch === 3 ? '3-Channel Front 4K + Inside Cabin IR + Rear 1080P Coverage' :
+                           '4-Channel 360° Front + Left + Right + Rear Fleet Coverage';
+    return (
+      '<svg class="g-dc-svg" viewBox="0 0 560 300" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="' + label + '">' +
+        '<defs>' +
+          '<radialGradient id="frontCone_' + modelCode + '" cx="0.2" cy="0.5" r="0.85">' +
+            '<stop offset="0%" stop-color="#c8102e" stop-opacity="0.58"/>' +
+            '<stop offset="70%" stop-color="#c8102e" stop-opacity="0.16"/>' +
+            '<stop offset="100%" stop-color="#c8102e" stop-opacity="0.0"/>' +
+          '</radialGradient>' +
+          '<radialGradient id="rearCone_' + modelCode + '" cx="0.8" cy="0.5" r="0.85">' +
+            '<stop offset="0%" stop-color="#0066cc" stop-opacity="0.55"/>' +
+            '<stop offset="70%" stop-color="#0066cc" stop-opacity="0.15"/>' +
+            '<stop offset="100%" stop-color="#0066cc" stop-opacity="0.0"/>' +
+          '</radialGradient>' +
+          '<radialGradient id="cabinCone_' + modelCode + '" cx="0.35" cy="0.5" r="0.75">' +
+            '<stop offset="0%" stop-color="#00c48c" stop-opacity="0.58"/>' +
+            '<stop offset="100%" stop-color="#00c48c" stop-opacity="0.04"/>' +
+          '</radialGradient>' +
+        '</defs>' +
+        '<rect width="560" height="300" rx="18" fill="#0d111a"/>' +
+        '<line x1="20" y1="62" x2="540" y2="62" stroke="rgba(255,255,255,0.08)" stroke-dasharray="8 8"/>' +
+        '<line x1="20" y1="238" x2="540" y2="238" stroke="rgba(255,255,255,0.08)" stroke-dasharray="8 8"/>' +
+        '<line x1="20" y1="150" x2="540" y2="150" stroke="rgba(255,255,255,0.05)" stroke-dasharray="5 9"/>' +
+        '<path d="M218 150 L24 28 Q6 150 24 272 Z" fill="url(#frontCone_' + modelCode + ')" stroke="#ff4d67" stroke-opacity="0.55" stroke-width="1.5" stroke-dasharray="4 4"/>' +
+        (hasRear ? '<path d="M368 150 L538 46 Q552 150 538 254 Z" fill="url(#rearCone_' + modelCode + ')" stroke="#3898ff" stroke-opacity="0.55" stroke-width="1.5" stroke-dasharray="4 4"/>' : '') +
+        (hasSides ? '<path d="M285 110 L215 16 L365 16 Z" fill="url(#rearCone_' + modelCode + ')" stroke="#3898ff" stroke-opacity="0.4"/><path d="M285 190 L215 284 L365 284 Z" fill="url(#rearCone_' + modelCode + ')" stroke="#3898ff" stroke-opacity="0.4"/>' : '') +
+        '<rect x="172" y="104" width="212" height="92" rx="34" fill="#1b2232" stroke="#4b5670" stroke-width="2"/>' +
+        '<path d="M180 124 L216 114 M180 176 L216 186" stroke="#394359" stroke-width="1.5"/>' +
+        '<path d="M214 114 L238 118 L238 182 L214 186 Q204 150 214 114 Z" fill="#263147" stroke="#647494" stroke-width="1.5"/>' +
+        '<rect x="242" y="117" width="96" height="66" rx="12" fill="#141925" stroke="#3b455e" stroke-width="1.2"/>' +
+        '<path d="M342 119 L364 115 Q372 150 364 185 L342 181 Z" fill="#263147" stroke="#647494" stroke-width="1.5"/>' +
+        '<ellipse cx="175" cy="119" rx="4" ry="8" fill="#ffe484"/>' +
+        '<ellipse cx="175" cy="181" rx="4" ry="8" fill="#ffe484"/>' +
+        '<ellipse cx="382" cy="119" rx="3.5" ry="8" fill="#ff3b57"/>' +
+        '<ellipse cx="382" cy="181" rx="3.5" ry="8" fill="#ff3b57"/>' +
+        (hasCabin ? '<path d="M224 150 L338 118 L338 182 Z" fill="url(#cabinCone_' + modelCode + ')" stroke="#00e09e" stroke-opacity="0.7" stroke-width="1.5" stroke-dasharray="3 3"/>' : '') +
+        '<circle cx="222" cy="150" r="7" fill="#c8102e" stroke="#ffffff" stroke-width="2"/>' +
+        (hasCabin ? '<circle cx="232" cy="150" r="5" fill="#00c48c" stroke="#ffffff" stroke-width="1.5"/>' : '') +
+        (hasRear ? '<circle cx="364" cy="150" r="6.5" fill="#0066cc" stroke="#ffffff" stroke-width="2"/>' : '') +
+        '<rect x="18" y="16" width="144" height="28" rx="14" fill="rgba(200,16,46,0.22)" stroke="#ff4d67" stroke-width="1"/>' +
+        '<text x="90" y="34" fill="#ffffff" font-family="Manrope, Inter, sans-serif" font-size="11.5" font-weight="800" text-anchor="middle">FRONT ' + (ch === 1 || modelCode === 't8b2c' ? '2K' : '4K') + ' · ' + (ch === 1 ? '140°' : '170°') + ' FOV</text>' +
+        (hasCabin ? '<rect x="208" y="68" width="148" height="26" rx="13" fill="rgba(0,196,140,0.2)" stroke="#00e09e" stroke-width="1"/><text x="282" y="85" fill="#7bffd4" font-family="Manrope, Inter, sans-serif" font-size="11" font-weight="800" text-anchor="middle">CABIN 1080P IR NIGHT</text>' : '') +
+        (hasRear
+          ? '<rect x="404" y="16" width="138" height="28" rx="14" fill="rgba(0,102,204,0.25)" stroke="#3898ff" stroke-width="1"/><text x="473" y="34" fill="#ffffff" font-family="Manrope, Inter, sans-serif" font-size="11.5" font-weight="800" text-anchor="middle">REAR 1080P · 140°</text>'
+          : '<rect x="392" y="136" width="148" height="28" rx="14" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/><text x="466" y="154" fill="#9aa3b2" font-family="Manrope, Inter, sans-serif" font-size="11" font-weight="700" text-anchor="middle">Single-Ch Front Only</text>') +
+        '<text x="280" y="284" fill="#9aa3b2" font-family="Manrope, Inter, sans-serif" font-size="11.5" font-weight="700" text-anchor="middle">' + label + '</text>' +
+      '</svg>'
+    );
   };
 
   /* ---------- REVEALS ---------- */
